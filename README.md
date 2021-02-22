@@ -927,9 +927,8 @@ Event.RegisterSelf("player_hurt", hurt)
 
   [ **GetLocalPlayer** ]
 Syntax: EntityList.GetLocalPlayer();  
-Used to obtain movement values.  
-**Returns** an array object with forward move, side move, and up move.  
-```java
+**Used** to obtain localplayer.
+```lua
 local function cm()
 local localplayer = EntityList.GetLocalPlayer()
 local health = localplayer:GetPropInt("CBasePlayer", "m_iHealth")
