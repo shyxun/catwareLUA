@@ -22,6 +22,13 @@ https://github.com/ZaUserA**
 
 ---
 
+**EVENTNAME LIST:**
+- OnShot - *Used for things related to Ragebot_fire*
+- PaintTraverse - *Used for drawing.*
+- CreateMove - *Used for things related to commands, antiaim, etc..*
+
+---
+
 **HITBOXES ENUMERATION:** (usage example: Hitboxes.HITBOX_HEAD)     
 - HITBOX_HEAD,   
 - HITBOX_NECK,    
