@@ -116,14 +116,14 @@ https://github.com/ZaUserA**
 *https://wiki.alliedmods.net/Counter-Strike:_Global_Offensive_Events*        
 
 **GAME_EVENT STRUCTS:**           
-- GetBool(char keyName) **(bool)** - *Get Bool*        
-- GetInt(char keyName) **(integer)** - *Get Int*               
-- GetFloat(char keyName) **(float)** - *Get Float*                  
-- GetString(char keyName) **(bool)** - *Get String*                    
-- SetBool(char keyName, bool value) **(bool)** - *Set Bool*                           
-- SetInt(char keyName, int value) **(integer)** - *Set Int*                            
-- SetFloat(char keyName, float value) **(float)** - *Set Float*                        
-- SetString(char keyName, char value) **(bool)** - *Set String*                                       
+- GetBool([keyName: char]) **(bool)** - *Get Bool*        
+- GetInt([keyName: char]) **(integer)** - *Get Int*               
+- GetFloat([keyName: char]) **(float)** - *Get Float*                  
+- GetString([keyName: char]) **(char)** - *Get String*                    
+- SetBool([keyName: char], [Value: bool]) **(bool)** - *Set Bool*                           
+- SetInt([keyName: char], [Value: int]) **(integer)** - *Set Int*                            
+- SetFloat([keyName: char], [Value: float]) **(float)** - *Set Float*                        
+- SetString([keyName: char], [Value: char]) **(char)** - *Set String*                                       
 
 ---
 
@@ -148,6 +148,52 @@ https://github.com/ZaUserA**
 
 ---
 
+**ENTITY STRUCTS:**
+- GetPropInt([Table: string], [Var: string]) **(int)** - *Get integer property*
+- GetPropFloat([Table: string], [Var: string]) **(float)** - *Get float property*
+- GetPropBool([Table: string], [Var: string]) **(boolean)** - *Get boolean property*
+- GetPropString([Table: string], [Var: string]) **(string)** - *Get string property*
+- SetPropInt([Table: string], [Var: string], [Value: int]) **(void)** - *Set integer property*
+- SetPropFloat([Table: string], [Var: string], [Value: float]) **(void)** - *Set float property*
+- SetPropBool([Table: string], [Var: string], [Value: bool]) **(void)** - *Set boolean property*
+- SetPropString([Table: string], [Var: string], [Value: string]) **(void)** - *Set string property*
+
+---
+
+**WEAPON STRUCTS:**
+- IsEmpty **(bool)** - *Returns true if the weapon is empty (no ammo at all), or else not.*
+- CanFire(bool revolver_check) **(bool)** - *Checks if you can really fire the gun.*
+- IsNonAim **(bool)** - *Checks if the weapon you use is suitable for aimbot or not.*
+- CanDoubleTap **(bool)** - *Checks if your weapon can doubletapping or not.*
+- GetName **(string)** - *Obtain your weapon name.*
+- GetInaccuracy **(float)** - *Obtain your weapon inaccuracy.*
+- GetSpread **(float)** - *Obtain your weapon spread.*
+- GetPropInt([Table: string], [Var: string]) **(int)** - *Get integer property*
+- GetPropFloat([Table: string], [Var: string]) **(float)** - *Get float property*
+- GetPropBool([Table: string], [Var: string]) **(boolean)** - *Get boolean property*
+- GetPropString([Table: string], [Var: string]) **(string)** - *Get string property*
+- SetPropInt([Table: string], [Var: string], [Value: int]) **(void)** - *Set integer property*
+- SetPropFloat([Table: string], [Var: string], [Value: float]) **(void)** - *Set float property*
+- SetPropBool([Table: string], [Var: string], [Value: bool]) **(void)** - *Set boolean property*
+- SetPropString([Table: string], [Var: string], [Value: string]) **(void)** - *Set string property*
+
+---
+
+**PLAYER STRUCTS:**
+- EntIndex **(int)** - *Obtain player index.*
+- IsDormant **(bool)** - *Obtain player dormancy.*
+- IsAlive **(bool)** - *Will be true if the player alive, or else it'll not.*
+- GetPropInt([Table: string], [Var: string]) **(int)** - *Get integer property*
+- GetPropFloat([Table: string], [Var: string]) **(float)** - *Get float property*
+- GetPropBool([Table: string], [Var: string]) **(boolean)** - *Get boolean property*
+- GetPropString([Table: string], [Var: string]) **(string)** - *Get string property*
+- SetPropInt([Table: string], [Var: string], [Value: int]) **(void)** - *Set integer property*
+- SetPropFloat([Table: string], [Var: string], [Value: float]) **(void)** - *Set float property*
+- SetPropBool([Table: string], [Var: string], [Value: bool]) **(void)** - *Set boolean property*
+- SetPropString([Table: string], [Var: string], [Value: string]) **(void)** - *Set string property*
+
+---
+
 **VECTOR STRUCTS:**     
 - x **(float)**     
 - y **(float)**   
@@ -159,9 +205,9 @@ https://github.com/ZaUserA**
 - IsZero **(boolean)** - *Checks whenever all fields of the vector are 0.*       
 - IsValid **(boolean)** - *Checks when the vector is all valid.*    
 - Zero **(void)** - *Sets x, y and z to 0.*          
-- DistTo(const Vector& Target) **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
+- DistTo([Target: Vector]) **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
 - DistToSqr **(float)** - *Returns the squared distance of 2 vectors*       
-- CrossProduct(const Vector& Target) **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
+- CrossProduct([Target: Vector]) **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
 - Normalize **(float)** - *Normalizes the given vector. This changes the vector you call it on.*      
 
 ---
@@ -779,7 +825,7 @@ local function draw()
 Render.DrawRect(10, 10, 100, 100, color.new(150, 150, 200)) 
 end 
 
-Global.RegisterCallBack("on_paint", draw)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **DrawFilledRect** ]          
@@ -790,7 +836,7 @@ local function draw()
 Render.DrawFilledRect(10, 10, 100, 100, color.new(150, 150, 200)) 
 end 
 
-Global.RegisterCallBack("on_paint", draw)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **DrawFilledRectGradient** ]          
@@ -801,7 +847,7 @@ local function draw()
 Render.DrawFilledRectGradient(10, 10, 100, 100, color.new(150, 150, 200), color.new(255, 255, 255)) 
 end 
 
-Global.RegisterCallBack("on_paint", draw)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **DrawCircle** ]          
@@ -812,7 +858,7 @@ local function draw()
 Render.DrawCircle(100, 20, 60, 20, color.new(255, 255, 255)) 
 end 
 
-Global.RegisterCallBack("on_paint", draw)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **DrawFilledCircle** ]          
@@ -823,7 +869,7 @@ local function draw()
 Render.DrawFilledCircle(100, 20, 60, 20, color.new(255, 255, 255)) 
 end 
 
-Global.RegisterCallBack("on_paint", draw)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **DrawFilledCircle** ]          
@@ -834,7 +880,7 @@ local function draw()
 Render.DrawTriangle(100, 20, 60, 20, 80, 40, color.new(255, 255, 255)) 
 end 
 
-Global.RegisterCallBack("on_paint", draw)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
 [back to Contents](#-1)
@@ -937,17 +983,38 @@ end
 Global.RegisterCallBack("CreateMove", cm)
 ```
 
+  [ **GetPlayerByIndex** ]
+Syntax: EntityList.GetPlayerByIndex([Index: integer]);  
+**Used** to obtain player from it's index.
+```lua
+local function test()
+for i = 0, 64 do
+local e = EntityList.GetPlayerByIndex(i)
+if e ~= nil and e:IsAlive() then
+Global.AddLog("index " .. tostring(i) .. " is alive!" )
+end
+end
+end
 
-**IN OT V3 CRACK NOT WORKS**  [ **SETVIEWANGLES** ]
-Syntax:UserCMD.SetViewAngles( [x,y,z], bool silent );  
-Control user angles.  
-```java
-function setAngle()
-{
-    curAngle = Local.GetViewAngles();
-    UserCMD.SetViewAngles([curAngle[0], 180, curAngle[2]], true) ;
-}
-Cheat.RegisterCallback("CreateMove", "setAngle");
+Global.RegisterCallBack("CreateMove", test)
+```
+
+  [ **GetWeaponByPlayer** ]
+Syntax: EntityList.GetWeaponByPlayer([Player: entity]);  
+**Used** to obtain gun from a player.
+```lua
+local function test()
+  for i = 0, 64 do
+     local e = EntityList.GetPlayerByIndex(i)
+     if e ~= nil and e:IsAlive() then
+       local weapon = EntityList.GetWeaponByPlayer(e)
+       local weapon_name = weapon:GetPropInt("CWeaponCSBaseGun", "m_iClip1")
+       Global.AddLog("index " .. tostring(i) .. " has" .. "ammo!")
+     end
+  end
+end
+
+Global.RegisterCallBack("CreateMove", test)
 ```
 
 **IN OT V3 CRACK NOT WORKS**  [ **SEND** ]
