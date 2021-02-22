@@ -213,7 +213,7 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 Syntax: Menu.GetKeyMode([Keybind: integer])
 Get current mode of Keybind. 
 
-**MODE**
+**MODE:**
 Hold will return 0.
 Toggle will return 1.
 
