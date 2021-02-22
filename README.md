@@ -46,9 +46,9 @@ Length2DSqr **(float)** - *Returns the squared length of the vectors x and y val
 IsZero **(boolean)** - *Checks whenever all fields of the vector are 0.*       
 IsValid **(boolean)** - *Checks when the vector is all valid.*    
 Zero **(void)** - *Sets x, y and z to 0.*          
-DistTo **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
+DistTo*(const Vector& Target)* **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
 DistToSqr **(float)** - *Returns the squared distance of 2 vectors*       
-CrossProduct **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
+CrossProduct*(const Vector& Target)* **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
 Normalize **(float)** - *Normalizes the given vector. This changes the vector you call it on.*      
 
 ---
