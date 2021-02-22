@@ -158,14 +158,14 @@ menu.AddColorPicker("Hit list Color")
 
   [ **AddCheckBox** ]
 Syntax: Menu.AddCheckBox([Name: string])   
-**Create* a checkbox in LUA tab.
+**Create** a checkbox in LUA tab.
 ```lua
 Menu.AddCheckBox("Checkbox")   
 ```
 
   [ **AddComboBox** ]             
 Syntax: Menu.AddComboBox([Name: string], [Labels: string vector])                  
-**Create* a combobox in LUA tab.           
+**Create** a combobox in LUA tab.           
 ```lua
 Menu.AddComboBox("Combobox", { "Selection 1", "Selection 2" })   
 ```
