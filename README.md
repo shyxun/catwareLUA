@@ -91,7 +91,7 @@ key_bind_mode.toggle - *MODE TOGGLE*
 
 [ **RegisterCallBack** ]       
 Syntax: Global.RegisterCallBack([EventName: string, Function: string])     
-Used to call the functions you write.    
+**Used** to call the functions you write.    
 ```lua
 local function paint_traverse()
 Render.DrawText(font, 0, 0, color.new(255, 255, 255, 255), "Hi")
@@ -102,21 +102,21 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 
 [ **LoadLUA** ]              
 Syntax: Global.LoadLUA([Name: string])      
-Used to load another LUA you type inside of LoadLUA.       
+**Used** to load another LUA you type inside of LoadLUA.       
 ```lua
 Global.LoadLUA("HitList")
 ```
 
 [ **UnloadLUA** ]              
 Syntax: Global.UnloadLUA([Name: string])        
-Used to unload another LUA you type inside of UnloadLUA       
+**Used** to unload another LUA you type inside of UnloadLUA       
 ```lua
 Global.UnloadLUA("HitList")
 ```
 
 [ **AddLog** ]           
 Syntax: Global.AddLog([Text: string])         
-Add the text you write inside AddLog into the cheat eventlogger        
+**Add** the text you write inside AddLog into the cheat eventlogger        
 ```lua
 local function paint_traverse()
 Global.AddLog("Hi from the event logger")
@@ -127,7 +127,7 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 
 [ **Username** ]          
 Syntax: Global.Username             
-Used to get forum username.               
+**Used** to get forum username.               
 ```lua
 Global.Username()
 ```
@@ -139,7 +139,7 @@ Global.Username()
 
   [ **IsVisible** ]         
 Syntax: Menu.IsVisible()          
-True if the menu is open, false otherwise.               
+**True** if the menu is open, false otherwise.               
 ```lua
 if (Menu.IsVisible() == true)
 Global.AddLog("Menu is open!")
@@ -148,7 +148,7 @@ end
 
   [ **NextLine** ]              
 Syntax: Menu.NextLine()                 
-Skip last menu line.           
+**Skip** last menu line.           
 ```lua
 Menu.AddCheckbox("Enable Hit list") // this will be skipped
 Menu.AddCheckbox("Enable Spectator List") // this is from another LUA.
@@ -158,14 +158,14 @@ menu.AddColorPicker("Hit list Color")
 
   [ **AddCheckBox** ]
 Syntax: Menu.AddCheckBox([Name: string])   
-Create a checkbox in LUA tab.
+**Create* a checkbox in LUA tab.
 ```lua
 Menu.AddCheckBox("Checkbox")   
 ```
 
   [ **AddComboBox** ]             
 Syntax: Menu.AddComboBox([Name: string], [Labels: string vector])                  
-Create a combobox in LUA tab.           
+**Create* a combobox in LUA tab.           
 ```lua
 Menu.AddComboBox("Combobox", { "Selection 1", "Selection 2" })   
 ```
@@ -173,28 +173,28 @@ Menu.AddComboBox("Combobox", { "Selection 1", "Selection 2" })
 
   [ **AddSliderInt** ]               
 Syntax: Menu.AddSliderInt([Name: string], [Min: integer], [Max: integer])                          
-Create a slider (integer).  
+**Create** a slider *(integer)*.  
 ```lua
 Menu.AddSliderInt("Int", 0, 100) 
 ```
 
   [ **AddSliderFloat** ]                    
 Syntax: Menu.AddSliderFloat([Name: string], [Min: float], [Max: float])             
-Create a slider (float).              
+**Create** a slider *(float)*.              
 ```lua
 Menu.AddSliderFloat("Float", 0.0, 100.0) 
 ```
 
   [ **AddColorPicker** ]              
 Syntax: Menu.AddColorPicker([Name: string])                 
-Create a Color Picker.               
+**Create** a Color Picker.               
 ```lua
 Menu.AddColorPicker("Color Picker") 
 ```
 
   [ **GetBool** ]              
 Syntax: Menu.GetBool([Name: string])                
-Get bool statement of LUA item and Config items.         
+**Get** bool statement of LUA item and Config items.         
 ```lua
 Menu.AddCheckBox("Checkbox") 
 
@@ -211,7 +211,7 @@ Global.RegisterCallBack("PaintTraverse", draw)
 
   [ **GetInt** ]          
 Syntax: Menu.GetInt([Name: string])                       
-Get integer statement of LUA items and Config items. Can be Combo Box or Slider Int!                   
+**Get** integer statement of LUA items and Config items. *Can be Combo Box or Slider Int!*                   
 ```lua
 Menu.AddSliderInt("Slider", 0, 1) 
 
@@ -228,7 +228,7 @@ Global.RegisterCallBack("PaintTraverse", draw)
 
   [ **GetFloat** ]                 
 Syntax: Menu.GetFloat([Name: string])               
-Get float statement of LUA items and Config items. Only Float Slider.            
+**Get** float statement of LUA items and Config items. *Only Float Slider*.            
 ```lua
 Menu.AddSliderFloat("Slider", 0, 1) 
 
@@ -245,7 +245,7 @@ Global.RegisterCallBack("PaintTraverse", draw)
 
   [ **GetColor** ]                      
 Syntax: Menu.GetColor([Name: string])                 
-Get color of LUA items and Config items.               
+**Get** color of LUA items and Config items.               
 ```lua
 local function draw()
 local color = Menu.GetColor("Hit list Color")
@@ -257,7 +257,7 @@ Global.RegisterCallBack("PaintTraverse", draw)
 
   [ **GetKeyState** ]                  
 Syntax: Menu.GetKeyState([Keybind: integer])                  
-Get current state of Keybind.                
+**Get** current state of Keybind.                
 ```lua
 local function draw()
 if menu.get_key_bind_state(key_binds.double_tap) then
@@ -270,7 +270,7 @@ Global.RegisterCallBack("PaintTraverse", draw)
 
   [ **GetKeyMode** ]                 
 Syntax: Menu.GetKeyMode([Keybind: integer])               
-Get current mode of Keybind.                    
+**Get** current mode of Keybind.                    
          
 **MODE:**          
 Hold will return 0.               
@@ -282,28 +282,28 @@ local type = Menu.GetKeyMode(key_binds.body_aim)
 
   [ **SetBool** ]              
 Syntax: Menu.SetBool([Name: string], [Value: boolean])            
-Force set boolean of an items.               
+**Force** set boolean of an items.               
 ```lua
 Menu.SetBool("Player.enable", true)  
 ```
 
   [ **SetInt** ]               
 Syntax: Menu.SetInt([Name: string], [Value: integer])               
-Force set integer of an items.              
+**Force** set integer of an items.              
 ```lua
 Menu.SetInt("Esp.viewmodel_fov", 100)  
 ```
 
   [ **SetFloat** ]                
 Syntax: Menu.SetBool([Name: string], [Value: float])               
-Force set float of an items.         
+**Force** set float of an items.         
 ```lua
 Menu.SetFloat("Esp.aspect_ratio_amount", 2.0)  
 ```
 
   [ **SetColor** ]               
 Syntax: Menu.SetBool([Name: string], [Value: color])              
-Force set color of an items.            
+**Force** set color of an items.            
 ```lua
 Menu.SetColor("Esp.projectiles_color", color.new(0, 0, 0, 0))  
 ```
