@@ -15,10 +15,10 @@ https://github.com/ZaUserA**
 |[Console](#5)|
 |[Event](#6)|
 |[Entity List](#7)|
-|[Sound](#8)|
-|[Local](#9)|
-|[Cheat](#q)|
-|[Input](#w)|
+|[User CMD](#8)|
+|[Utils](#9)|
+|[Indicators](#q)|
+|[HTTP](#w)|
 |[World](#e)|
 |[AntiAim](#r)|
 |[Exploit](#a)|
@@ -955,9 +955,9 @@ local bot_kick = Console.GetString("bot_kick", "all");
 ## <a name="6"></a>Event
 |-------------------------------|
 
-  [ **RegisterSelf** ]
-Syntax: Event.RegisterSelf([Event Name: string], [Function: function])  
-**Used** to call event functions you write.    
+  [ **RegisterSelf** ]        
+Syntax: Event.RegisterSelf([Event Name: string], [Function: function])            
+**Used** to call event functions you write.            
 ```lua
 local function hurt(event)
 Global.AddLog("Player hurt")
@@ -971,9 +971,9 @@ Event.RegisterSelf("player_hurt", hurt)
 ## <a name="7"></a>Entity List
 |-------------------------------|
 
-  [ **GetLocalPlayer** ]
-Syntax: EntityList.GetLocalPlayer();  
-**Used** to obtain localplayer.
+  [ **GetLocalPlayer** ]        
+Syntax: EntityList.GetLocalPlayer();     
+**Used** to obtain localplayer.      
 ```lua
 local function cm()
 local localplayer = EntityList.GetLocalPlayer()
@@ -983,9 +983,9 @@ end
 Global.RegisterCallBack("CreateMove", cm)
 ```
 
-  [ **GetPlayerByIndex** ]
-Syntax: EntityList.GetPlayerByIndex([Index: integer]);  
-**Used** to obtain player from it's index.
+  [ **GetPlayerByIndex** ]         
+Syntax: EntityList.GetPlayerByIndex([Index: integer]);           
+**Used** to obtain player from it's index.              
 ```lua
 local function test()
 for i = 0, 64 do
@@ -999,290 +999,151 @@ end
 Global.RegisterCallBack("CreateMove", test)
 ```
 
-  [ **GetWeaponByPlayer** ]
-Syntax: EntityList.GetWeaponByPlayer([Player: entity]);  
-**Used** to obtain gun from a player.
+  [ **GetWeaponByPlayer** ]           
+Syntax: EntityList.GetWeaponByPlayer([Player: entity]);      
+**Used** to obtain gun from a player.          
 ```lua
 local function test()
-  for i = 0, 64 do
-     local e = EntityList.GetPlayerByIndex(i)
-     if e ~= nil and e:IsAlive() then
-       local weapon = EntityList.GetWeaponByPlayer(e)
-       local weapon_name = weapon:GetPropInt("CWeaponCSBaseGun", "m_iClip1")
-       Global.AddLog("index " .. tostring(i) .. " has" .. "ammo!")
-     end
-  end
+for i = 0, 64 do
+local e = EntityList.GetPlayerByIndex(i)
+if e ~= nil and e:IsAlive() then
+local weapon = EntityList.GetWeaponByPlayer(e)
+local weapon_name = weapon:GetPropInt("CWeaponCSBaseGun", "m_iClip1")
+Global.AddLog("index " .. tostring(i) .. " has" .. "ammo!")
+end
+end
 end
 
 Global.RegisterCallBack("CreateMove", test)
 ```
 
-**IN OT V3 CRACK NOT WORKS**  [ **SEND** ]
-Syntax:UserCMD.Send()  
-Please note that this function may be overruled by internal processing related to, but not limited to, shot handling, anti-aim, and exploits.
-
-**IN OT V3 CRACK NOT WORKS**  [ **CHOKE** ]
-Syntax:UserCMD.Choke()  
-Please note that this function may be overruled by internal processing related to, but not limited to, shot handling, anti-aim, and exploits.
-
-
-**IN OT V3 CRACK NOT WORKS**  [ **SETBUTTONS** ]
-Syntax:UUserCMD.SetButtons();  
-Used to set buttons.  
-```java
-function forceJump()
-{
-    var buttons = UserCMD.GetButtons();
-    UserCMD.SetButtons(buttons | (1 << 1));
-    
-}
-Cheat.RegisterCallback("CreateMove", "forceJump")
-```
-
-
-**IN OT V3 CRACK NOT WORKS**  [ **SETBUTTONS** ]
-Syntax:UserCMD.GetButtons();  
-Used to set buttons.  
-**Returns** buttons.  
-```java
-function forceJump()
-{
-    var buttons = UserCMD.GetButtons();
-    UserCMD.SetButtons(buttons | (1 << 1));
-    
-}
-Cheat.RegisterCallback("CreateMove", "forceJump")
-```
-
-  [ **SETMOVEMENT** ]
-Syntax:UserCMD.SetMovement([forwardmove, sidemove, upmove]);  
-Control user movement.  
-```java
-function moveForward()
-{
-    UserCMD.SetMovement( [ 450, 0, 0 ] );
-}
-Cheat.RegisterCallback("CreateMove", "moveForward");
-```
-
 [back to Contents](#-1)
 
-## <a name="8"></a>Sound
+## <a name="8"></a>User CMD
 |-------------------------------|
 
-  [ **STOPMICROPHONE** ]
-Syntax:Sound.StopMicrophone( );  
-Used to stop Sound.PlayMicrophone  
-```java
-Sound.StopMicrophone( );
+  [ **GetSendPacket** ]     
+Syntax: UserCMD.GetSendPacket()       
+**Used** to get send packet.         
+```lua
+UserCMD.GetSendPacket()
 ```
 
-  [ **PLAYMICROPHONE** ]
-Syntax:Sound.PlayMicrophone(path)  
-Plays a sound on microphone.  
-```java
-Sound.PlayMicrophone(path);
+  [ **SetSendPacket** ]
+Syntax: UserCMD.SetSendPacket([SendPacket: boolean])  
+**Used** to force send packet to desired value.    
+```lua
+UserCMD.SetSendPacket(15)
 ```
 
-  [ **PLAY** ]
-Syntax:Sound.Play( string path )  
-Plays a sound.  
-```java
-function playSoundOnKill()
-{
-    localplayer_index = Entity.GetLocalPlayer();
-    attacker = Event.GetInt("attacker");
-    attacker_index = Entity.GetEntityFromUserID(attacker);
+  [ **GetChoke** ]
+Syntax: UserCMD.GetChoke()  
+**Used** to get current choked commands number. 
+```lua
+UserCMD.GetChoke()  
+```
 
-    if (attacker_index == localplayer_index)
-    {
-        Sound.Play("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\ot\\scripts\\headshot.wav");
-    }
+  [ **GetButton** ]
+Syntax: UserCMD.GetButton([Button: integer])  
+**Used** to get current active button. (ex: IN_ATTACK) 
+```lua
+local function attack()
+if UserCMD.GetButton(Buttons.IN_ATTACK) then
+Global.AddLog("You are currently holding attack button!")
+end
 
-}
+Global.RegisterCallBack("CreateMove", attack)
+```
 
-Cheat.RegisterCallback("player_death", "playSoundOnKill");
+  [ **SetButton** ]
+Syntax: UserCMD.SetButton()  
+**Used** to set buttons. 
+```lua
+local function attack()
+  UserCMD.SetButton(Buttons.in_duck, true)
+end
+
+Global.RegisterCallBack("CreateMove", attack)
 ```
 
 
 [back to Contents](#-1)
 
-## <a name="9"></a>Local
+## <a name="9"></a>Utils
 |-------------------------------|
 
 
-  [ **GETINACCURACY** ]
-Syntax:Local.GetInaccuracy();  
-**Returns** inaccuracy.  
-```java
-inaccuracy = Local.GetInaccuracy();
-Cheat.Print(inaccuracy + "\n");
-```
+  [ **FindSignature** ]
+Syntax: Utils.FindSignature([Module: string], [Signature: string]);  
+**Used** to find signature.  
+```lua
+local ffi = require("ffi")
 
-  [ **GETSPREAD** ]
-Syntax:Local.GetSpread();  
-**Returns** spread.  
-```java
-spread = Local.GetSpread();
-Cheat.Print(spread + "\n");
-```
+ffi.cdef[[
+typedef int(__fastcall* clantag_t)(const char*, const char*);
+]]
 
-  [ **GETFAKEYAW** ]
-Syntax:Local.GetFakeYaw();   
-**Returns** fake yaw angle.  
-```java
-fakeyaw = Local.GetFakeYaw();
-Cheat.Print(fakeyaw + "\n");
-```
+local fn_change_clantag
+local set_clantag
 
-  [ **GETREALYAW** ]
-Syntax:Local.GetRealYaw();  
-**Returns** real yaw angle.   
-```java
-realyaw = Local.GetRealYaw();
-Cheat.Print(realyaw + "\n");
-```
+local function clantag()
+  if (fn_change_clantag == nil) then
+    fn_change_clantag = Utils.FindSignature("engine.dll", "53 56 57 8B DA 8B F9 FF 15")
+  end
 
-  [ **SETCLANTAG** ]
-Syntax:Local.SetClanTag(string text);    
-```java
-Local.SetClanTag("onetap.su");
-```
+  if ((set_clantag == nil) and (fn_change_clantag ~= nil)) then
+     set_clantag =  ffi.cast("clantag_t", fn_change_clantag)
+  end
 
-  [ **SETVIEWANGLES** ]
-Syntax:Local.SetViewAngles(array)  
-Sets user-defined view angles.  
-```java
-    viewAngles = Local.GetViewAngles();
-    Cheat.Print("PITCH: " + viewAngles[0] + " YAW: " + viewAngles[1] + " ROLL: " + viewAngles[2] + "\n");
-    Local.SetViewAngles([ 89, 180, 0 ]);
-    newAngles = Local.GetViewAngles();
-    Cheat.Print("PITCH: " + newAngles[0] + " YAW: " + newAngles[1] + " ROLL: " + newAngles[2] + "\n")
-```
+  local choke = cmd.get_choke()
 
+  if (choke == 0) then
+    set_clantag("132", "312")
+  end
+end
 
-  [ **GETVIEWANGLES** ]
-Syntax:Local.GetViewAngles();  
-**Returns** array object with pitch, yaw and roll of your local view.  
-```java
-var viewAngles = Local.GetViewAngles();
-Cheat.Print("Current view angles: " + viewAngles);
-```
-
-
-  [ **LATENCY** ]
-Syntax:Local.Latency()  
-**Returns** local player ping to the server.  
-```java
-var myPing = Local.Latency();
-Cheat.Print("Your ping is : " + myPing);
-```
-
-
-[back to Contents](#-1)
-
-
-## <a name="q"></a>Cheat
-|-------------------------------|
-
-  [ **GETUSERNAME** ]
-Syntax:Cheat.GetUsername()  
-**Returns** forum username.  
-```java
-username = Cheat.GetUsername();
-Cheat.Print(username + "\n");
-```
-
-  [ **PRINTCHAT** ]
-Syntax:Cheat.PrintChat(string text)  
-Prints a message in in-game chat.  
-```java
-Cheat.PrintChat("printing in chat :-)" + "\n");
-```
-
-  [ **REGISTERCALLBACK** ]
-Syntax:Cheat.RegisterCallback(callback, function)  
-Callback: any function/event listed below  
-Function: function to be invoked  
-
-**Currently available**  
-"CreateMove" useful for adjusting antiaim/ragebot settings with a script before antiaim/ragebot runs  
-"Draw" the only place in a script u can call Render functions, is inside a "Draw" callbacks  
-"Unload" called when script is unloaded  
-"Material" called before materials are applied. Material functions (except Create and Destroy) must be called in this callback  
-"ragebot_fire"  
-FRAME_START  
-FRAME_RENDER_START  
-FRAME_RENDER_END  
-FRAME_NET_UPDATE_START  
-FRAME_NET_UPDATE_END  
-FRAME_NET_UPDATE_POSTDATAUPDATE_START  
-FRAME_NET_UPDATE_POSTDATAUPDATE_END  
-Other game events  
-list can be found HERE  https://wiki.alliedmods.net/Counter-Strike:_Global_Offensive_Events
-```java
-function test()
-{
-    Cheat.Print("hi from test function\n");
-}
-
-Cheat.RegisterCallback("round_start", "test");
-// This function prints the text to the in-game console every time "round_start" event is called.
-```
-
-
-  [ **EXECUTECOMMAND** ]
-Syntax:Cheat.ExecuteCommand(cmd)  
-Prints a message in in-game chat.  
-```java
-Cheat.ExecuteCommand( "say hello" );
-// This function will say hello in chat when script is loaded.
-```
-
-  [ **PRINTCOLOR** ]
-Syntax:Cheat.PrintColor([ r, g, b, a ], "Text")  
-Cheat.PrintColor is used for same purpose(s) as Cheat.Print, in addition you can make your console outputs in different colors.  
-```java
-Cheat.PrintColor( [ 255, 0, 0, 255 ], "This is red text" );
-```
-
-  [ **PRINT** ]
-Syntax:Cheat.Print(message)  
-Used to print out wide ranges of information to your console, as well as simple messages.  
-```java
-Cheat.Print( 'hello' );
+Global.RegisterCallBack("on_createmove", clantag)
 ```
 
 [back to Contents](#-1)
 
 
-## <a name="w"></a>Input
+## <a name="q"></a>Indicators
 |-------------------------------|
 
+  [ **Add** ]       
+Syntax: Indicators.Add([Text: string], [Color: color])       
+**Add** new items on indicators.      
+```lua
+Indicators.Add("HEY", color.new(255, 255, 255))
+```
 
-  [ **GETCURSORPOSITION** ]
-Syntax:Input.GetCursorPosition()  
-**Returns** an array object with X, Y for cursor position.  
-```java
-function getCursorPosition()
-{
-    var cursor_pos = Input.GetCursorPosition();
-    Cheat.Print( "Cursor pos X is: " + cursor_pos[0] + "\n");
-    Cheat.Print( "Cursor pos Y is: " + cursor_pos[1] + "\n");
-}
-Cheat.RegisterCallback("Draw", "getCursorPosition")
-// This function will print your cursor position x and y in in-game console.
+  [ **AddWithPosition** ]
+Syntax: Indicators.AddWithPosition([Text: string], [Color: color], [Position: integer])  
+**Add** new items on indicators with position. 
+```lua
+Indicators.AddWithPosition("Hello World", color.new(255, 255, 255), 15)  
+```
+
+[back to Contents](#-1)
+
+
+## <a name="w"></a>HTTP
+|-------------------------------|
+
+  [ **Get** ]
+Syntax: HTTP.Get([Link: string])  
+**Get**
+```lua
+HTTP.Get(www.example.com)  
 ```
 
 
-  [ **ISKEYPRESSED** ]
-Syntax:Input.IsKeyPressed(VK_KEY)  
-**Returns** boolean value whether or not a key was pressed.  
-```java
-if (Input.IsKeyPressed(0x01))
-{
-   Cheat.ExecuteCommand("say hello");
-}
+  [ **Post** ]
+Syntax: HTTP.Post([Link: string], [Parameters: string])  
+**Post**
+```lua
+HTTP.Get(www.example.com) 
 ```
 A full list of virtual keys can be found HERE. https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes  
 
