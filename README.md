@@ -1,6 +1,7 @@
 # catwareLUA
 
-**CREDIT TO https://github.com/ZaUserA**
+**CREDIT TO 
+https://github.com/ZaUserA**
 
 <a name="-1"></a>
 
