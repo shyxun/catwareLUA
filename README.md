@@ -4,7 +4,7 @@
 
 |Contents|
 |--------|
-|[Globals](#0)|
+|[Global](#0)|
 |[UI](#1)|
 |[Entity](#2)|
 |[Render](#3)|
@@ -24,7 +24,7 @@
 
 ---
 
-## <a name="0"></a>Globals
+## <a name="0"></a>Global
 |-------------------------------|
 
 [ **RegisterCallBack** ]
