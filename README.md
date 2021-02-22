@@ -22,7 +22,7 @@ https://github.com/ZaUserA**
 
 ---
 
-**HITBOXES ENUMERATION:**     
+**HITBOXES ENUMERATION:** (usage example: Hitboxes.HITBOX_HEAD)     
 - HITBOX_HEAD,   
 - HITBOX_NECK,    
 - HITBOX_PELVIS,     
@@ -45,33 +45,33 @@ https://github.com/ZaUserA**
 
 ---
 
-**KEY_BINDS ENUMERATION:**         
-- key_binds.legit_automatic_fire - *LEGIT AUTO FIRE KEY*      
-- key_binds.legit_enable - *LEGIT ENABLE KEY*    
-- key_binds.double_tap - *DOUBLE TAP KEY*   
-- key_binds.safe_points - *SAFE POINTS KEY*    
-- key_binds.damage_override - *DAMAGE OVERRIDE KEY*   
-- key_binds.hide_shots - *HIDE SHOTS KEY*    
-- key_binds.manual_back - *MANUAL AA BACK KEY*   
-- key_binds.manual_left - *MANUAL AA LEFT KEY*    
-- key_binds.manual_right - *MANUAL AA RIGHT KEY*   
-- key_binds.flip_desync - *FLIP DESYNC KEY*    
-- key_binds.thirdperson - *THIRDPERSON KEY*   
-- key_binds.automatic_peek - *AUTO PEEK KEY*   
-- key_binds.edge_jump - *EDGE JUMP KEY*    
-- key_binds.fakeduck - *FAKE DUCK KEY*    
-- key_binds.slowwalk - *SLOW WALK KEY*   
-- key_binds.body_aim - *BODY AIM KEY*   
+**KEY_BINDS ENUMERATION:** (usage example: Key_binds.double_tap)         
+- legit_automatic_fire - *LEGIT AUTO FIRE KEY*      
+- legit_enable - *LEGIT ENABLE KEY*    
+- double_tap - *DOUBLE TAP KEY*   
+- safe_points - *SAFE POINTS KEY*    
+- damage_override - *DAMAGE OVERRIDE KEY*   
+- hide_shots - *HIDE SHOTS KEY*    
+- manual_back - *MANUAL AA BACK KEY*   
+- manual_left - *MANUAL AA LEFT KEY*    
+- manual_right - *MANUAL AA RIGHT KEY*   
+- flip_desync - *FLIP DESYNC KEY*    
+- thirdperson - *THIRDPERSON KEY*   
+- automatic_peek - *AUTO PEEK KEY*   
+- edge_jump - *EDGE JUMP KEY*    
+- fakeduck - *FAKE DUCK KEY*    
+- slowwalk - *SLOW WALK KEY*   
+- body_aim - *BODY AIM KEY*   
 
 ---
 
-**KEY_BIND_MODE ENUMERATION:**            
+**KEY_BIND_MODE ENUMERATION:** (usage example: Key_bind_mode.hold)            
 - key_bind_mode.hold - *MODE HOLD*              
 - key_bind_mode.toggle - *MODE TOGGLE*            
     
 ---
 
-**BUTTONS ENUMERATION:**
+**BUTTONS ENUMERATION:** (usage example: Buttons.IN_ATTACK)  
 - IN_ATTACK,
 - IN_JUMP,
 - IN_DUCK,
@@ -130,7 +130,7 @@ https://github.com/ZaUserA**
 
 ---
 
-**RAGEBOT_INFO STRUCTS:**
+**RAGEBOT_INFO STRUCTS:** (usage example: Ragebot_info.hitchance) 
 - target_name **(string)** - *Returns target name*
 - result **(string)** - *Returns shot result. RESULT : ("Spread", "Resolver", "Hit")*
 - client_hitbox **(string)** - *Returns client hitbox*
