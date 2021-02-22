@@ -27,10 +27,10 @@
 ## <a name="0"></a>Globals
 |-------------------------------|
 
-**IN OT V3 CRACK NOT WORKS** [ **ChokedCommands** ]
-Syntax: Globals.ChokedCommands()  
+[ **RegisterCallBack** ]
+Syntax: Global.RegisterCallBack()  
 **Returns** amount of choked commands.
-```java
+```lua
 function choked_commands()
 {
     var choked = Globals.ChokedCommands();
