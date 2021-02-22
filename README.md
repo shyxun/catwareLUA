@@ -14,7 +14,7 @@ https://github.com/ZaUserA**
 |[Render](#4)|
 |[Console](#5)|
 |[Event](#6)|
-|[User CMD](#7)|
+|[Entity List](#7)|
 |[Sound](#8)|
 |[Local](#9)|
 |[Cheat](#q)|
