@@ -29,7 +29,7 @@
 
 [ **RegisterCallBack** ]
 Usage: Global.RegisterCallBack([EventName: string, Function: string])  
-Used to call the functions you write
+Used to call the functions you write.
 ```lua
 
 local function paint_traverse()
@@ -39,11 +39,11 @@ end
 Global.RegisterCallBack("PaintTraverse", "paint_traverse")
 ```
 
-[ **REALTIME** ]
-Syntax: Globals.Realtime()  
-**Returns** time in seconds since CS:GO was started.
-```java
-realtime = Globals.Realtime();
+[ **LoadLUA** ]
+Usage: Global.LoadLUA([Name: string])  
+Used to load another LUA.
+```lua
+Global.LoadLUA("HitList")
 ```
 
 [ **FRAMETIME** ]
