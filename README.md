@@ -136,15 +136,15 @@ https://github.com/ZaUserA**
 ---
 
 **RAGEBOT_INFO STRUCTS:**
-- target_name **(string)**
-- result **(string)**
-- client_hitbox **(string)**
-- server_hitbox **(string)**
-- client_damage **(integer)**
-- server_damage **(integer)**
-- hitchance **(integer)**
-- backtrack_ticks **(integer)**
-- aim_point **(Vector)**
+- target_name **(string)** - *Returns target name*
+- result **(string)** - *Returns shot result. RESULT : ("Spread", "Resolver", "Hit")*
+- client_hitbox **(string)** - *Returns client hitbox*
+- server_hitbox **(string)** - *Returns server hitbox*
+- client_damage **(integer)** - *Returns client damage*
+- server_damage **(integer)** - *Returns server damage*
+- hitchance **(integer)** - *Returns hitchance*
+- backtrack_ticks **(integer)** - *Returns backtrack ticks*
+- aim_point **(Vector)** - *Returns aimpoint*
 
 ---
 
