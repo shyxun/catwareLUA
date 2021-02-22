@@ -33,7 +33,7 @@ g **(integer)** - *green*
 b **(integer)** - *blue*    
 a **(integer)** - *alpha*    
 
---
+---
 
 **VECTOR STRUCTS:**     
 x **(float)**     
