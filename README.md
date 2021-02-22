@@ -28,16 +28,15 @@
 |-------------------------------|
 
 [ **RegisterCallBack** ]
-Syntax: Global.RegisterCallBack()  
-**Returns** amount of choked commands.
+Usage: Global.RegisterCallBack([EventName: string, Function: string])  
+Used to call the functions you write
 ```lua
-function choked_commands()
-{
-    var choked = Globals.ChokedCommands();
-    Cheat.Print(choked+'\n');
 
-}
-Cheat.RegisterCallback("CreateMove", "choked_commands")
+local function paint_traverse()
+Render.DrawText(font, 0, 0, color.new(255, 255, 255, 255), "Hi")
+end
+
+Global.RegisterCallBack("PaintTraverse", "paint_traverse")
 ```
 
 [ **REALTIME** ]
