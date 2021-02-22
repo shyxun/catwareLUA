@@ -46,61 +46,7 @@ https://github.com/ZaUserA**
 - HITBOX_RIGHT_UPPER_ARM,              
 - HITBOX_RIGHT_FOREARM,            
 - HITBOX_LEFT_UPPER_ARM,            
-- HITBOX_LEFT_FOREARM                
-  
----
-
-**CSGO GAME EVENT LIST**                   
-*https://wiki.alliedmods.net/Counter-Strike:_Global_Offensive_Events*        
-
-**GAME_EVENT STRUCTS:**           
-- GetBool(char keyName) **(bool)** - *Get Bool*        
-- GetInt(char keyName) **(integer)** - *Get Int*               
-- GetFloat(char keyName) **(float)** - *Get Float*                  
-- GetString(char keyName) **(bool)** - *Get String*                    
-- SetBool(char keyName, bool value) **(bool)** - *Set Bool*                           
-- SetInt(char keyName, int value) **(integer)** - *Set Int*                            
-- SetFloat(char keyName, float value) **(float)** - *Set Float*                        
-- SetString(char keyName, char value) **(bool)** - *Set String*                     
-
----
-
-**GRADIENTTYPE ENUMERATION:**                 
-- GRADIENT_HORIZONTAL       
-- GRADIENT_VERTICAL                     
-
----
-
-**COLOR STRUCTS:**       
-- r **(integer)** - *red*                   
-- g **(integer)** - *green*   
-- b **(integer)** - *blue*    
-- a **(integer)** - *alpha*    
-
----
-
-**VECTOR STRUCTS:**     
-- x **(float)**     
-- y **(float)**   
-- z **(float)**      
-- Length **(float)** - *Returns the euclidean length.*      
-- LengthSqr **(float)** - *Returns the squared length of the vector.*          
-- Length2D **(float)** - *Returns the length of the vector in two dimensions, without the Z axis.*         
-- Length2DSqr **(float)** - *Returns the squared length of the vectors x and y value.*        
-- IsZero **(boolean)** - *Checks whenever all fields of the vector are 0.*       
-- IsValid **(boolean)** - *Checks when the vector is all valid.*    
-- Zero **(void)** - *Sets x, y and z to 0.*          
-- DistTo(const Vector& Target) **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
-- DistToSqr **(float)** - *Returns the squared distance of 2 vectors*       
-- CrossProduct(const Vector& Target) **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
-- Normalize **(float)** - *Normalizes the given vector. This changes the vector you call it on.*      
-
----
-
-**PLAYER_INFO STRUCTS:**        
-- fakeplayer **(bool)** - *Checks whether a player is a bot or not.*        
-- szName[128] **(integer)** - *Get Player Name*        
-- szSteamID[20] **(char)** - *STEAM:X:Y:Z*       
+- HITBOX_LEFT_FOREARM          
 
 ---
 
@@ -127,7 +73,104 @@ https://github.com/ZaUserA**
 **KEY_BIND_MODE ENUMERATION:**            
 - key_bind_mode.hold - *MODE HOLD*              
 - key_bind_mode.toggle - *MODE TOGGLE*            
-  
+    
+---
+
+**BUTTONS ENUMERATION:**
+- IN_ATTACK,
+- IN_JUMP,
+- IN_DUCK,
+- IN_FORWARD,
+- IN_BACK,
+- IN_USE,
+- IN_CANCEL,
+- IN_LEFT,
+- IN_RIGHT,
+- IN_MOVELEFT,
+- IN_MOVERIGHT,
+- IN_ATTACK2,
+- IN_RUN,
+- IN_RELOAD,
+- IN_ALT1,
+- IN_ALT2,
+- IN_SCORE,
+- IN_SPEED,
+- IN_WALK,
+- IN_ZOOM,
+- IN_WEAPON1,
+- IN_WEAPON2,
+- IN_BULLRUSH,
+- IN_GRENADE1,
+- IN_GRENADE2,
+- IN_LOOKSPIN
+
+---
+
+**GRADIENTTYPE ENUMERATION:**                 
+- GRADIENT_HORIZONTAL       
+- GRADIENT_VERTICAL   
+
+---
+
+**CSGO GAME EVENT LIST**                   
+*https://wiki.alliedmods.net/Counter-Strike:_Global_Offensive_Events*        
+
+**GAME_EVENT STRUCTS:**           
+- GetBool(char keyName) **(bool)** - *Get Bool*        
+- GetInt(char keyName) **(integer)** - *Get Int*               
+- GetFloat(char keyName) **(float)** - *Get Float*                  
+- GetString(char keyName) **(bool)** - *Get String*                    
+- SetBool(char keyName, bool value) **(bool)** - *Set Bool*                           
+- SetInt(char keyName, int value) **(integer)** - *Set Int*                            
+- SetFloat(char keyName, float value) **(float)** - *Set Float*                        
+- SetString(char keyName, char value) **(bool)** - *Set String*                                       
+
+---
+
+**COLOR STRUCTS:**       
+- r **(integer)** - *red*                   
+- g **(integer)** - *green*   
+- b **(integer)** - *blue*    
+- a **(integer)** - *alpha*    
+
+---
+
+**RAGEBOT_INFO STRUCTS:**
+- target_name **(string)**
+- result **(string)**
+- client_hitbox **(string)**
+- server_hitbox **(string)**
+- client_damage **(integer)**
+- server_damage **(integer)**
+- hitchance **(integer)**
+- backtrack_ticks **(integer)**
+- aim_point **(Vector)**
+
+---
+
+**VECTOR STRUCTS:**     
+- x **(float)**     
+- y **(float)**   
+- z **(float)**      
+- Length **(float)** - *Returns the euclidean length.*      
+- LengthSqr **(float)** - *Returns the squared length of the vector.*          
+- Length2D **(float)** - *Returns the length of the vector in two dimensions, without the Z axis.*         
+- Length2DSqr **(float)** - *Returns the squared length of the vectors x and y value.*        
+- IsZero **(boolean)** - *Checks whenever all fields of the vector are 0.*       
+- IsValid **(boolean)** - *Checks when the vector is all valid.*    
+- Zero **(void)** - *Sets x, y and z to 0.*          
+- DistTo(const Vector& Target) **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
+- DistToSqr **(float)** - *Returns the squared distance of 2 vectors*       
+- CrossProduct(const Vector& Target) **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
+- Normalize **(float)** - *Normalizes the given vector. This changes the vector you call it on.*      
+
+---
+
+**PLAYER_INFO STRUCTS:**        
+- fakeplayer **(bool)** - *Checks whether a player is a bot or not.*        
+- szName[128] **(integer)** - *Get Player Name*        
+- szSteamID[20] **(char)** - *STEAM:X:Y:Z*       
+
 ---
 
 ## <a name="0"></a>Global
