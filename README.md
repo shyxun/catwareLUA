@@ -874,9 +874,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **DrawFilledCircle** ]          
+  [ **DrawTriangle** ]          
 Syntax: Render.DrawTriangle([X: float], [Y: float], [X2: float], [Y2: float], [X3: float], [Y3: float], [Color: color])        
-**Draw** filled circle.     
+**Draw** triangle.     
 ```lua
 local function draw() 
 Render.DrawTriangle(100, 20, 60, 20, 80, 40, Color.new(255, 255, 255)) 
