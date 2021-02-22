@@ -129,7 +129,13 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 Syntax: Global.Username             
 **Used** to get forum username.               
 ```lua
-Global.Username()
+local font = Render.CreateFont("Verdana", 13, 500, false, true, false)
+
+local function paint_traverse()
+Render.DrawText(font, 0, 0, color.new(255, 255, 255), tostring(Global.Username()))
+end
+
+Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
 [back to Contents](#-1)
