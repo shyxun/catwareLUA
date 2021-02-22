@@ -27,52 +27,52 @@ https://github.com/ZaUserA**
 
 ---
 
-**HITBOXES ENUMERATION:**
-- HITBOX_HEAD,
-- HITBOX_NECK,
-- HITBOX_PELVIS,
-- HITBOX_STOMACH,
-- HITBOX_LOWER_CHEST,
-- HITBOX_CHEST,
-- HITBOX_UPPER_CHEST,
-- HITBOX_RIGHT_THIGH,
-- HITBOX_LEFT_THIGH,
-- HITBOX_RIGHT_CALF,
-- HITBOX_LEFT_CALF,
-- HITBOX_RIGHT_FOOT,
-- HITBOX_LEFT_FOOT,
-- HITBOX_RIGHT_HAND,
-- HITBOX_LEFT_HAND,
-- HITBOX_RIGHT_UPPER_ARM,
-- HITBOX_RIGHT_FOREARM,
-- HITBOX_LEFT_UPPER_ARM,
-- HITBOX_LEFT_FOREARM
+**HITBOXES ENUMERATION:**     
+- HITBOX_HEAD,   
+- HITBOX_NECK,    
+- HITBOX_PELVIS,     
+- HITBOX_STOMACH,     
+- HITBOX_LOWER_CHEST,     
+- HITBOX_CHEST,      
+- HITBOX_UPPER_CHEST,       
+- HITBOX_RIGHT_THIGH,       
+- HITBOX_LEFT_THIGH,     
+- HITBOX_RIGHT_CALF,     
+- HITBOX_LEFT_CALF,       
+- HITBOX_RIGHT_FOOT,     
+- HITBOX_LEFT_FOOT,    
+- HITBOX_RIGHT_HAND,          
+- HITBOX_LEFT_HAND,                 
+- HITBOX_RIGHT_UPPER_ARM,              
+- HITBOX_RIGHT_FOREARM,            
+- HITBOX_LEFT_UPPER_ARM,            
+- HITBOX_LEFT_FOREARM                
   
---
+---
 
-**CSGO GAME EVENT LIST**         
-*https://wiki.alliedmods.net/Counter-Strike:_Global_Offensive_Events*
+**CSGO GAME EVENT LIST**                   
+*https://wiki.alliedmods.net/Counter-Strike:_Global_Offensive_Events*        
 
-**GAME_EVENT STRUCTS:**
-GetBool(char keyName) **(bool)** - *Get Bool*
-GetInt(char keyName) **(integer)** - *Get Int*
-GetFloat(char keyName) **(float)** - *Get Float*
-GetString(char keyName) **(bool)** - *Get String*
-SetBool(char keyName, bool value) **(bool)** - *Set Bool*
-SetInt(char keyName, int value) **(integer)** - *Set Int*
-SetFloat(char keyName, float value) **(float)** - *Set Float*
-SetString(char keyName, char value) **(bool)** - *Set String*
+**GAME_EVENT STRUCTS:**           
+GetBool(char keyName) **(bool)** - *Get Bool*        
+GetInt(char keyName) **(integer)** - *Get Int*               
+GetFloat(char keyName) **(float)** - *Get Float*                  
+GetString(char keyName) **(bool)** - *Get String*                    
+SetBool(char keyName, bool value) **(bool)** - *Set Bool*                           
+SetInt(char keyName, int value) **(integer)** - *Set Int*                            
+SetFloat(char keyName, float value) **(float)** - *Set Float*                        
+SetString(char keyName, char value) **(bool)** - *Set String*                     
 
 ---
 
-**GRADIENTTYPE ENUMERATION:**
-- GRADIENT_HORIZONTAL
-- GRADIENT_VERTICAL
+**GRADIENTTYPE ENUMERATION:**                 
+- GRADIENT_HORIZONTAL       
+- GRADIENT_VERTICAL                     
 
 ---
 
-**COLOR STRUCTS:**    
-r **(integer)** - *red*    
+**COLOR STRUCTS:**       
+r **(integer)** - *red*                   
 g **(integer)** - *green*   
 b **(integer)** - *blue*    
 a **(integer)** - *alpha*    
