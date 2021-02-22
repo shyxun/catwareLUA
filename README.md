@@ -27,7 +27,7 @@ https://github.com/ZaUserA**
 
 ---
 
-** COLOR STRUCTS:**    
+**COLOR STRUCTS:**    
 r **(integer)** - *red*    
 g **(integer)** - *green*   
 b **(integer)** - *blue*    
