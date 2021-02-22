@@ -227,7 +227,7 @@ Syntax: Global.RegisterCallBack([EventName: string, Function: function])
 **Used** to call the functions you write.    
 ```lua
 local function paint_traverse()
-Render.DrawText(font, 0, 0, color.new(255, 255, 255, 255), "Hi")
+Render.DrawText(font, 0, 0, Color.new(255, 255, 255, 255), "Hi")
 end
 
 Global.RegisterCallBack("PaintTraverse", paint_traverse)
@@ -264,7 +264,7 @@ Syntax: Global.Username()
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
-Render.DrawText(font, 100, 100, color.new(255, 0, 0), tostring(Global.Username()))
+Render.DrawText(font, 100, 100, Color.new(255, 0, 0), tostring(Global.Username()))
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -443,7 +443,7 @@ Menu.SetFloat("Esp.aspect_ratio_amount", 2.0)
 Syntax: Menu.SetBool([Name: string], [Value: color])              
 **Force** set color of an items.            
 ```lua
-Menu.SetColor("Esp.projectiles_color", color.new(0, 0, 0, 0))  
+Menu.SetColor("Esp.projectiles_color", Color.new(0, 0, 0, 0))  
 ```
 
 [back to Contents](#-1)
@@ -603,7 +603,7 @@ Syntax: Engine.SetViewAngles([Aim_Angles: vector])
 ```lua
 local function cm()
 local viewangles = engine.GetViewAngles()
-Engine.SetViewAngles(vector.new(viewangles.x, viewangles.y + 180.0, viewangles.z))
+Engine.SetViewAngles(Vector.new(viewangles.x, viewangles.y + 180.0, viewangles.z))
 end
 
 Global.RegisterCallBack("CreateMove", cm)
@@ -643,7 +643,7 @@ Syntax: Engine.LevelName()
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
-Render.DrawText(font, 100, 100, color.new(255, 0, 0), tostring(Engine.LevelName()))
+Render.DrawText(font, 100, 100, Color.new(255, 0, 0), tostring(Engine.LevelName()))
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -655,7 +655,7 @@ Syntax: Engine.LevelNameShort()
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
-Render.DrawText(font, 100, 100, color.new(255, 0, 0), tostring(Engine.LevelNameShort()))
+Render.DrawText(font, 100, 100, Color.new(255, 0, 0), tostring(Engine.LevelNameShort()))
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -667,7 +667,7 @@ Syntax: Engine.MapGroupName()
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
-Render.DrawText(font, 100, 100, color.new(255, 0, 0), tostring(Engine.MapGroupName()))
+Render.DrawText(font, 100, 100, Color.new(255, 0, 0), tostring(Engine.MapGroupName()))
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -755,8 +755,8 @@ Syntax: Render.WorldToScreen([World: Vector])
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
-local random_origin = Render.WorldToScreen(Vector.New(1400, 600, 200))
-Render.DrawText(font, random_origin.x , random_origin.y , color.new(255, 0, 0), tostring(engine.get_level_name))
+local random_origin = Render.WorldToScreen(Vector.new(1400, 600, 200))
+Render.DrawText(font, random_origin.x , random_origin.y , Color.new(255, 0, 0), tostring(engine.get_level_name))
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -788,7 +788,7 @@ Syntax: Render.CreateFont([Font: font], [x: float], [y: float], [Color: color], 
 local font = Render.CreateFont("Verdana", 12, 500, true, true, true)
 
 local function draw()
-Render.DrawText(font, 0, 0, color.new(255, 255, 255), "Hi")
+Render.DrawText(font, 0, 0, Color.new(255, 255, 255), "Hi")
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -800,7 +800,7 @@ Syntax: Render.DrawCenteredText([Font: font], [x: float], [y: float], [Color: co
 ```lua
 local function draw()
 local font = Render.CreateFont("Verdana", 12, 600, true, true, true)
-Render.DrawCenteredText(font, 100, 100, color.new(255, 0, 0), true, true, "Hello!")
+Render.DrawCenteredText(font, 100, 100, Color.new(255, 0, 0), true, true, "Hello!")
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -811,7 +811,7 @@ Syntax: Render.DrawLine([X: float], [Y: float], [X2: float], [Y2: float], [Color
 **Draw** line.     
 ```lua
 local function draw()
-    Render.DrawLine(10, 10, 150, 150, color.new(0, 0, 255))
+    Render.DrawLine(10, 10, 150, 150, Color.new(0, 0, 255))
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -822,7 +822,7 @@ Syntax: Render.DrawRect([X: float], [Y: float], [W: float], [H: float], [Color: 
 **Draw** rectangle.     
 ```lua
 local function draw() 
-Render.DrawRect(10, 10, 100, 100, color.new(150, 150, 200)) 
+Render.DrawRect(10, 10, 100, 100, Color.new(150, 150, 200)) 
 end 
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -833,7 +833,7 @@ Syntax: Render.DrawRect([X: float], [Y: float], [W: float], [H: float], [Color: 
 **Draw** filled rectangle.     
 ```lua
 local function draw() 
-Render.DrawFilledRect(10, 10, 100, 100, color.new(150, 150, 200)) 
+Render.DrawFilledRect(10, 10, 100, 100, Color.new(150, 150, 200)) 
 end 
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -844,7 +844,7 @@ Syntax: Render.DrawFilledRectGradient([X: float], [Y: float], [W: float], [H: fl
 **Draw** gradient filled rectangle.     
 ```lua
 local function draw() 
-Render.DrawFilledRectGradient(10, 10, 100, 100, color.new(150, 150, 200), color.new(255, 255, 255)) 
+Render.DrawFilledRectGradient(10, 10, 100, 100, Color.new(150, 150, 200), Color.new(255, 255, 255)) 
 end 
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -855,7 +855,7 @@ Syntax: Render.DrawCircle([X: float], [Y: float], [Points: float], [Radius: floa
 **Draw** circle.     
 ```lua
 local function draw() 
-Render.DrawCircle(100, 20, 60, 20, color.new(255, 255, 255)) 
+Render.DrawCircle(100, 20, 60, 20, Color.new(255, 255, 255)) 
 end 
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -866,7 +866,7 @@ Syntax: Render.DrawFilledCircle([X: float], [Y: float], [Points: float], [Radius
 **Draw** circle.     
 ```lua
 local function draw() 
-Render.DrawFilledCircle(100, 20, 60, 20, color.new(255, 255, 255)) 
+Render.DrawFilledCircle(100, 20, 60, 20, Color.new(255, 255, 255)) 
 end 
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -877,7 +877,7 @@ Syntax: Render.DrawTriangle([X: float], [Y: float], [X2: float], [Y2: float], [X
 **Draw** filled circle.     
 ```lua
 local function draw() 
-Render.DrawTriangle(100, 20, 60, 20, 80, 40, color.new(255, 255, 255)) 
+Render.DrawTriangle(100, 20, 60, 20, 80, 40, Color.new(255, 255, 255)) 
 end 
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -1115,14 +1115,14 @@ Global.RegisterCallBack("on_createmove", clantag)
 Syntax: Indicators.Add([Text: string], [Color: color])       
 **Add** new items on indicators.      
 ```lua
-Indicators.Add("HEY", color.new(255, 255, 255))
+Indicators.Add("HEY", Color.new(255, 255, 255))
 ```
 
   [ **AddWithPosition** ]
 Syntax: Indicators.AddWithPosition([Text: string], [Color: color], [Position: integer])  
 **Add** new items on indicators with position. 
 ```lua
-Indicators.AddWithPosition("Hello World", color.new(255, 255, 255), 15)  
+Indicators.AddWithPosition("Hello World", Color.new(255, 255, 255), 15)  
 ```
 
 [back to Contents](#-1)
