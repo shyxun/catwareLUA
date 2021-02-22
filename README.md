@@ -19,11 +19,6 @@ https://github.com/ZaUserA**
 |[Utils](#9)|
 |[Indicators](#q)|
 |[HTTP](#w)|
-|[World](#e)|
-|[AntiAim](#r)|
-|[Exploit](#a)|
-|[RageBot](#s)|
-|[Material](#d)|
 
 ---
 
