@@ -41,65 +41,27 @@ Global.RegisterCallBack("PaintTraverse", "paint_traverse")
 
 [ **LoadLUA** ]
 Usage: Global.LoadLUA([Name: string])  
-Used to load another LUA.
+Used to load another LUA you type inside of LoadLUA.
 ```lua
 Global.LoadLUA("HitList")
 ```
 
-[ **FRAMETIME** ]
-Syntax: Globals.Frametime()  
-**Returns** time in seconds it took to render the frame.
-```java
-frametime = Globals.Frametime();
+[ **UnloadLUA** ]
+Usage: Global.UnloadLUA([Name: string])  
+Used to unload another LUA you type inside of UnloadLUA
+```lua
+Global.UnloadLUA("HitList")
 ```
 
-[ **CURTIME** ]
-Syntax: Globals.Curtime()  
-**Returns** the game time in seconds.
-```java
-var curTime = Globals.Curtime();
-Cheat.Print("Current game time in seconds: " + curTime);
-```
-[ **TICKINTERVAL** ]
-Syntax: Globals.TickInterval()  
-**Returns** the game time in seconds.
-```java
-var tickInterval = Globals.TickInterval();
-Cheat.Print("Tick interval: " + tickInterval);
-```
+[ **AddLog** ]
+Usage: Global.AddLog([Text: string])  
+Add the text you write inside AddLog into cheat EventLog
+```lua
+local function paint_traverse()
+Global.AddLog("Hi from the event logger")
+end
 
-[ **TICKRATE** ]
-Syntax: Globals.Tickrate()  
-**Returns** server tick settings, usually 64 or 128.
-```java
-var tickrate = Globals.Tickrate();
-Cheat.Print("Server tickrate: " + tickrate);
-```
-[ **TICKCOUNT** ]
-Syntax: Globals.Tickcount()  
-**Returns** amount of ticks elapsed on the server.
-```java
-var tickcount = Globals.Tickcount();
-Cheat.Print("Ticks elapsed on server: " + tickcount);
-```
-
-[ **TICKCOUNT** ]
-Syntax: Globals.FrameStage()  
-Used to get current frame stage
-
-**Returns**  
-0 = FRAME_START  
-1 = FRAME_NET_UPDATE_START  
-2 = FRAME_NET_UPDATE_POSTDATAUPDATE_START  
-3 = FRAME_NET_UPDATE_POSTDATAUPDATE_END  
-4 = FRAME_NET_UPDATE_END  
-5 = FRAME_RENDER_START  
-6 = FRAME_RENDER_END  
-
-```java
-var current_stage = Globals.FrameStage();
-Cheat.Print(current_stage);
-// Prints current stage.
+Global.RegisterCallBack("PaintTraverse", "paint_traverse")
 ```
 
 [back to Contents](#-1)
