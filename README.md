@@ -922,26 +922,20 @@ Event.RegisterSelf("player_hurt", hurt)
 
 [back to Contents](#-1)
 
-## <a name="7"></a>UserCMD
+## <a name="7"></a>Entity List
 |-------------------------------|
 
-
-  [ **GETMOVEMENT** ]
-Syntax:UserCMD.GetMovement();  
+  [ **GetLocalPlayer** ]
+Syntax: EntityList.GetLocalPlayer();  
 Used to obtain movement values.  
 **Returns** an array object with forward move, side move, and up move.  
 ```java
-function onCreateMove()
-{
-    var movement = UserCMD.GetMovement();
+local function cm()
+local localplayer = EntityList.GetLocalPlayer()
+local health = localplayer:GetPropInt("CBasePlayer", "m_iHealth")
+end
 
-    forward = movement[0];
-    side = movement[1];
-    up = movement[2];
-
-    Cheat.Print("Forward: " + forward + "\nSide: " + side + "\nUp: " +  up + "\n");
-}
-Cheat.RegisterCallback("CreateMove", "onCreateMove");
+Global.RegisterCallBack("CreateMove", cm)
 ```
 
 
