@@ -887,9 +887,9 @@ Global.RegisterCallBack("PaintTraverse", draw)
 Syntax: Console.Execute([Command: string])    
 **Execute** command.      
 ```lua 
-local function shot(shot_info)
-    local result = shot_info.result
-    if result == "Hit" and shot_info.server_damage >= 100 then
+local function shot(Ragebot_info)
+    local result = Ragebot_info.result
+    if result == "Hit" and Ragebot_info.server_damage >= 100 then
        Console.Execute("say 1")
     end
 end
