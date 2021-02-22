@@ -27,7 +27,7 @@ https://github.com/ZaUserA**
 
 ---
 
-**STRUCTS:**
+**VECTOR STRUCTS:**
 x **(float)**
 y **(float)**
 z **(float)** 
@@ -42,6 +42,15 @@ DistTo **Returns the euclidean distance between the vector and the other vector.
 DistToSqr **Returns the squared distance of 2 vectors**
 CrossProduct **Calculates the cross product of this vector and the passed one.**
 Normalize **Normalizes the given vector. This changes the vector you call it on.**
+
+---
+
+**PLAYER INFO STRUCTS:**
+fakeplayer **(bool)** - *Checks whether a player is a bot or not.*
+szName **(integer)** - *Get Player Name*
+szSteamID **(char)** - *STEAM:X:Y:Z*
+
+---
 
 ## <a name="0"></a>Global
 |-------------------------------|
@@ -370,16 +379,6 @@ Menu.AddSliderInt("Screen Height", 0, Engine.ScreenHeight())
 
   [ **GetPlayerInfo** ]
 Syntax: Engine.GetPlayerInfo()
-
-**STRUCTS:**
-szName **(char)** - *Player Name*
-userId **(integer)** - *Unique Server Identifier*
-szSteamID **(char)** - *STEAM:X:Y:Z*
-iSteamID **(integer)** - *Steam ID*
-friendsName **(char)** - *Friends Name*
-fakeplayer **(boolean)** - *Bots*
-ishltv **(boolean)** - *HLTV*
-
 **Returns** player info. 
 ```lua
 Engine.GetPlayerInfo()
