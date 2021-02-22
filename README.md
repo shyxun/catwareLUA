@@ -5,7 +5,7 @@
 |Contents|
 |--------|
 |[Global](#0)|
-|[UI](#1)|
+|[Menu](#1)|
 |[Entity](#2)|
 |[Render](#3)|
 |[Convar](#4)|
@@ -55,7 +55,7 @@ Global.UnloadLUA("HitList")
 
 [ **AddLog** ]
 Usage: Global.AddLog([Text: string])  
-Add the text you write inside AddLog into cheat EventLog
+Add the text you write inside AddLog into the cheat eventlogger
 ```lua
 local function paint_traverse()
 Global.AddLog("Hi from the event logger")
@@ -66,13 +66,13 @@ Global.RegisterCallBack("PaintTraverse", "paint_traverse")
 
 [back to Contents](#-1)
 
-## <a name="1"></a>UI
+## <a name="1"></a>Menu
 |-------------------------------|
 
-  [ **ADDLABEL** ]
-string text.
-```java
-UI.AddLabel("Test");
+  [ **IsVisible** ]
+Check whether if the menu is visible or not.
+```lua
+Menu.IsVisible()
 ```
 
   [ **TOGGLEHOTKEY** ]
