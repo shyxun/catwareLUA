@@ -69,7 +69,7 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 |-------------------------------|
 
   [ **IsVisible** ]
-Syntax: Menu.IsVisible
+Syntax: Menu.IsVisible. 
 True if the menu is open, false otherwise. 
 ```lua
 if (Menu.IsVisible == true)
