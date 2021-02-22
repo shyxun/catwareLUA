@@ -70,6 +70,8 @@ key_binds.fakeduck - *FAKE DUCK*
 key_binds.slowwalk - *SLOW WALK*   
 key_binds.body_aim - *BODY AIM*   
 
+---
+
 **KEY BINDS MODE ENUMERATION:**            
 key_bind_mode.hold - *MODE HOLD*              
 key_bind_mode.toggle - *MODE TOGGLE*            
