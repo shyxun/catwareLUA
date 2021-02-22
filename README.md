@@ -31,12 +31,11 @@
 Usage: Global.RegisterCallBack([EventName: string, Function: string])  
 Used to call the functions you write.
 ```lua
-
 local function paint_traverse()
 Render.DrawText(font, 0, 0, color.new(255, 255, 255, 255), "Hi")
 end
 
-Global.RegisterCallBack("PaintTraverse", "paint_traverse")
+Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
 [ **LoadLUA** ]
@@ -61,7 +60,7 @@ local function paint_traverse()
 Global.AddLog("Hi from the event logger")
 end
 
-Global.RegisterCallBack("PaintTraverse", "paint_traverse")
+Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
 [back to Contents](#-1)
@@ -70,238 +69,169 @@ Global.RegisterCallBack("PaintTraverse", "paint_traverse")
 |-------------------------------|
 
   [ **IsVisible** ]
-Check whether if the menu is visible or not.
+Syntax: Menu.IsVisible
+True if the menu is open, false otherwise. 
 ```lua
-Menu.IsVisible()
+if (Menu.IsVisible == true)
+Global.AddLog("Menu is open!")
+end
 ```
 
-  [ **TOGGLEHOTKEY** ]
-Syntax: UI.ToggleHotkey(...item)  
-Can be used to toggle a hotkey or simulate key press.  
-**Return Values:** 1 is key is active, 0 if the key is inactive  
-```java
-UI.ToggleHotkey("Rage", "GENERAL", "Exploits", "Doubletap");
-function toggleDoubletap()
-{
-   
-    var isKeyActive = UI.IsHotkeyActive( "Rage", "GENERAL", "Exploits", "Doubletap" );
-    Cheat.Print( "Key is: " + isKeyActive + "\n");
-   
-}
-Global.RegisterCallback("CreateMove", "toggleDoubletap");
+  [ **NextLine** ]
+Syntax: Menu.NextLine()   
+Skip last menu line.
+```lua
+Menu.AddCheckbox("Enable Hit list") // this will be skipped
+Menu.AddCheckbox("Enable Spectator List") // this is from another LUA.
+Menu.NextLine()   
+menu.AddColorPicker("Hit list Color")
 ```
 
-  [ **ADDTEXTBOX** ]
-Syntax: UI.AddTextbox("string")  
-Adds a textbox in which you can input text and read it later on.  
-**Returns** an array of strings.  
-```java
-var textbox;
-
-function test( ) {
-    var test = UI.GetString.apply( this, textbox );
-  
-    Cheat.Print( test + "\n" );
-}
-
-function init( ) {
-    checkbox = UI.AddTextbox( "Test" );
-    Cheat.RegisterCallback( "Draw", "test" );
-}
-
-init( );
+  [ **AddCheckBox** ]
+Usage: Menu.AddCheckBox([Name: string])   
+Create a checkbox in LUA tab.
+```lua
+Menu.AddCheckBox("Checkbox")   
 ```
 
-  [ **SETCOLOR** ]
-Syntax: UI.SetColor(...item)  
-Used to set precise RGBA color codes in color picker.  
-```java
-function HSVtoRGB(h, s, v) {
-    var r, g, b, i, f, p, q, t;
-    if (arguments.length === 1) {
-        s = h.s, v = h.v, h = h.h;
-    }
-    i = Math.floor(h * 6);
-    f = h * 6 - i;
-    p = v * (1 - s);
-    q = v * (1 - f * s);
-    t = v * (1 - (1 - f) * s);
-    switch (i % 6) {
-        case 0: r = v, g = t, b = p; break;
-        case 1: r = q, g = v, b = p; break;
-        case 2: r = p, g = v, b = t; break;
-        case 3: r = p, g = q, b = v; break;
-        case 4: r = t, g = p, b = v; break;
-        case 5: r = v, g = p, b = q; break;
-    }
-    return {
-        r: Math.round(r * 255),
-        g: Math.round(g * 255),
-        b: Math.round(b * 255)
-    };
-}
-
-function rainbowColors( )
-{
-    tickcount = Globals.Tickcount();
-    color = HSVtoRGB(tickcount % 350 / 350, 1, 1, 1, 255);
-    UI.SetColor("Visual", "ENEMIES", "ESP", "Glow", [color.r, color.g, color.b, 255]);
-
-}
-Cheat.RegisterCallback("Draw", "rainbowColors");
+  [ **AddComboBox** ]
+Usage: Menu.AddComboBox([Name: string], [Labels: string vector])   
+Create a combobox in LUa tab. 
+```lua
+Menu.AddComboBox("Combobox", { "Selection 1", "Selection 2" })   
 ```
 
 
-  [ **ADDCOLORPICKER** ]
-Syntax: UI.AddColorPicker(string name)  
-Adds a color picker.  
-```java
-colorpicker = UI.AddColorPicker("example");
+  [ **AddSliderInt** ]
+Usage: Menu.AddSliderInt([Name: string], [Min: integer], [Max: integer])    
+Create a slider (integer).  
+```lua
+Menu.AddSliderInt("Int", 0, 100) 
 ```
 
-  [ **ADDMULTIDROPDOWN** ]
-Syntax: UI.AddMultiDropdown(name, items)  
-Will create a dropdown in which you can select more items under Misc - JAVASCRIPT - Script items.  
-```java
-UI.AddMultiDropdown( "Test", [ "one", "two", "three", "four" ] );
+  [ **AddSliderFloat** ]
+Usage: Menu.AddSliderFloat([Name: string], [Min: float], [Max: float])
+Create a slider (float). 
+```lua
+Menu.AddSliderFloat("Float", 0.0, 100.0) 
 ```
 
-  [ **ISMENUOPEN** ]
-Syntax: UI.IsMenuOpen()  
-**Returns** true if the menu is open, false otherwise.  
-```java
-if (UI.IsMenuOpen( ) == true)
-{
-    Cheat.Print("Menu is open");
-}
+  [ **AddColorPicker** ]
+Usage: Menu.AddColorPicker([Name: string])  
+Create a Color Picker.
+```lua
+Menu.AddColorPicker("Color Picker") 
 ```
 
-  [ **ADDDROPDOWN** ]
-Syntax: UI.AddHotkey(name)  
-Will create a dropdown with items under Misc - JAVASCRIPT - Script items.  
-```java
-UI.AddDropdown( "Test", [ "one", "two", "three", "four" ] );
+  [ **GetBool** ]
+Usage: Menu.GetBool([Name: string])  
+Get bool statement of LUA item and Config items.  
+```lua
+Menu.AddCheckBox("Checkbox") 
+
+local function paint_traverse()
+if Menu.GetBool("Checkbox") then
+Global.AddLog("This bool is currently active!")
+end
+else
+Global.AddLog("This bool is currently disabled!")
+end
+
+Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
-  [ **ADDHOTKEY** ]
-Syntax: UI.AddHotkey(name)  
-Create a label with a key picker control under Misc - JAVASCRIPT - Script items.    
-```java
-UI.AddHotkey( "Test" );
+  [ **GetInt** ]
+Usage: Menu.GetInt([Name: string])  
+Get integer statement of LUA items and Config items. Can be Combo Box or Slider Int!  
+```lua
+Menu.AddSliderInt("Slider", 0, 1) 
+
+local function paint_traverse()
+if Menu.GetInt("Slider") > 0 then
+Global.AddLog("This int is currently 1!")
+end
+else
+Global.AddLog("This int is currently 0!")
+end
+
+Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
-  [ **ADDSLIDERFLOAT** ]
-Syntax: UI.AddSliderFloat(name, min_value, max_value)    
-Create a floating point slider under Misc - JAVASCRIPT - Script items.  
-```java
-UI.AddSliderFloat( "Test", 0.0, 2.5 );
+  [ **GetFloat** ]
+Usage: Menu.GetFloat([Name: string])  
+Get float statement of LUA items and Config items ( example: . Only Slider Float.  
+```lua
+Menu.AddSliderFloat("Slider", 0, 1) 
+
+local function paint_traverse()
+if Menu.GetFloat("Slider") > 0.1 then
+Global.AddLog("This int is currently higher than 0!")
+end
+else
+Global.AddLog("This int is currently 0!")
+end
+
+Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
-  [ **ADDSLIDERINT** ]
-Syntax: UI.AddSliderInt(name, min_value, max_value)  
-Create a integer slider under Misc - JAVASCRIPT - Script items.  
-```java
-UI.AddSliderInt( "Test", 0, 100 );
+  [ **GetColor** ]
+Syntax: Menu.GetColor([Name: string])  
+Get color of LUA items.
+```lua
+local function paint_traverse()
+local color = Menu.GetColor("Hit list Color")
+render.draw_rect_filled(0, 0, 1366, 768, color) 
+end
+
+Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
-  [ **ADDCHECKBOX** ]
-Syntax: UI.AddSliderInt(name, min_value, max_value)  
-Create a checkbox control under Misc - JAVASCRIPT - Script items.    
-```java
-UI.AddCheckbox( "Test" );
+  [ **GetKeyState** ]
+Usage: Menu.GetKeyState([Keybind: integer])
+Get current state of Keybind.   
+```lua
+local function paint_traverse()
+if menu.get_key_bind_state(key_binds.double_tap) then
+Global.AddLog("Doubletap is currently active!")
+end
+end
+
+Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
-  [ **ISHOTKEYACTIVE** ]
-Syntax: UI.AddSliderInt(name, min_value, max_value)  
-Can be used to determine whether or not hotkey is active.  
-**Return values**	undefined if an item could not be found, or if the item doesn't contain a key picker; otherwise 1 if the key is active, 0 if the key is inactive.  
-```java
-function isKeyActive()
-{
-    var isKeyActive = UI.IsHotkeyActive( "Legit", "GENERAL", "General", "Enabled" );
-    Cheat.Print( "Key is: " + isKeyActive + "\n" );
-    // Above line will print 0 or 1 depending whether the hotkey is active or not.
-}
+  [ **GetKeyMode** ]
+Usage: Menu.GetKeyMode([Keybind: integer])
+Get current mode of Keybind. Hold mode will return 0. Toggle mode will return 1.
+```lua
+local type = Menu.GetKeyMode(key_binds.body_aim)
 ```
 
-  [ **GETCOLOR** ]
-Syntax: UI.GetColor(...item)  
-Can be used to get precise RGBA color codes from color picker.  
-**Return values**	undefined if an item could not be found, or if the item doesn't contain a color picker  
-```java
-function ammoColor()
-{
-    var ammo_color = UI.GetColor( "Visuals", "SELF", "ESP", "Ammo" );
-    Cheat.Print( "Ammo color is: " + ammo_color + "\n" );
-    // Above line will print RGBA value of ammo color picker.
-}
+  [ **SetBool** ]
+Usage: Menu.SetBool([Name: string], [Value: boolean])  
+Force set bool of an items.
+```lua
+Menu.SetBool("Player.enable", true)  
 ```
 
-  [ **GETSTRING** ]
-Syntax: UI.GetString (...item)  
-**Returns** a string representation of an item's current value.
-
-UI item searches are not explicit: the search will return the first found item. This means that **UI.GetValue( "Legit", "Triggerbot", "Enabled" )** will return the same value as **UI.GetValue( "Legit", "GENERAL", "Triggerbot", "Enabled" ).  **
-
-All script-added items are located in a groupbox within the misc tab, under javascript group called "Script items". Searching for ( "Script Items", *item name* ) is certain to return a script control.  
-```java
-function hitboxesEnabled()
-{
-    var hb = UI.GetString( "Legit", "GENERAL", "Default config", "Hitboxes" );
-    Cheat.Print( "enabled hitboxes: " + hb + "\n" );
-    // Above line will print enabled hitboxes in default legit config into in-game console when this script is loaded.
-}
+  [ **SetInt** ]
+Usage: Menu.SetInt([Name: string], [Value: integer])  
+Force set integer of an items.
+```lua
+Menu.SetInt("Esp.viewmodel_fov", 100)  
 ```
 
-  [ **SETENABLED** ]
-Syntax: UI.SetEnabled (...item)  
-Changes menu item(s) visibility.  
-
-UI item searches are not explicit: the search will return the first found item. This means that **UI.GetValue( "Legit", "Triggerbot", "Enabled" )** will return the same value as **UI.GetValue( "Legit", "GENERAL", "Triggerbot", "Enabled" )**.  
-
-All script-added items are located in a groupbox within the misc tab, under javascript group called "Script items". Searching for ( "Script Items", *item name* ) is certain to return a script control.  
-UI.SetEnabled does not work on tabs/subtabs.  
-
-
-```java
-function hideTriggerbotCheckbox()
-{
-    UI.SetEnabled( "Legit", "GENERAL", "Triggerbot", "Enabled", false );
-    // Above line will hide the triggerbot "Enabled" checkbox however, its value can still be changed and accessed.
-}
-```  
-
-  [ **SETVALUE** ]
-Syntax: UI.SetValue (...item, value)  
-Sets the value of an UI item's setting.  
-**Return values**	undefined if an item could not be found, setting value otherwise
-UI item searches are not explicit: the search will return the first found item. This means that **UI.GetValue( "Legit", "Triggerbot", "Enabled" )** will return the same value as **UI.GetValue( "Legit", "GENERAL", "Triggerbot", "Enabled" ). ** 
-
-All script-added items are located in a groupbox within the misc tab, under javascript group called "Script items". Searching for ( "Script Items", *item name* ) is certain to return a script control.  
-
-```java
-function enableMagnet()
-{
-   UI.SetValue( "Legit", "GENERAL", "Triggerbot", "Magnet", true );
-   UI.SetValue( "Legit", "GENERAL", "General", "Reaction time", 0.2 );
-}
-// This function will enable triggerbot magnet option and set aimbot reaction time to 0.2
+  [ **SetFloat** ]
+Usage: Menu.SetBool([Name: string], [Value: float])  
+Force set float of an items.
+```lua
+Menu.SetFloat("Esp.aspect_ratio_amount", 2.0)  
 ```
 
-  [ **GETVALUE** ]
-Syntax: UI.GetValue (...item)
-Returns the value of UI item's setting.  
-
-UI item searches are not explicit: the search will return the first found item. This means that **UI.GetValue( "Legit", "Triggerbot", "Enabled" )** will return the same value as **UI.GetValue( "Legit", "GENERAL", "Triggerbot", "Enabled" )**.
-
-All script-added items are located in a groupbox within the misc tab, under javascript group called "Script items". Searching for ( "Script Items", *item name* ) is certain to return a script control.
-```java
-function enableMagnet()
-{
-   UI.SetValue( "Legit", "GENERAL", "Triggerbot", "Magnet", true );
-   UI.SetValue( "Legit", "GENERAL", "General", "Reaction time", 0.2 );
-}
-// This function will enable triggerbot magnet option and set aimbot reaction time to 0.2
+  [ **SetColor** ]
+Usage: Menu.SetBool([Name: string], [Value: color])  
+Force set SetInt of an items.
+```lua
+Menu.SetColor("Esp.projectiles_color", color.new(0, 0, 0, 0))  
 ```
 
 [back to Contents](#-1)
