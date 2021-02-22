@@ -281,7 +281,7 @@ Global.RegisterCallBack("PaintTraverse", draw)
 Syntax: Menu.IsVisible()          
 **True** if the menu is open, false otherwise.               
 ```lua
-if (Menu.IsVisible() == true)
+if Menu.IsVisible() then
 Global.AddLog("Menu is open!")
 end
 ```
