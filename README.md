@@ -118,24 +118,23 @@ Global.UnloadLUA("HitList")
 Syntax: Global.AddLog([Text: string])         
 **Add** the text you write inside AddLog into the cheat eventlogger        
 ```lua
-local function paint_traverse()
+local function draw()
 Global.AddLog("Hi from the event logger")
 end
 
-Global.RegisterCallBack("PaintTraverse", paint_traverse)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
 [ **Username** ]          
-Syntax: Global.Username             
-**Used** to get forum username.               
+Syntax: Global.Username()             
+**Returns** forum username.               
 ```lua
-local font = Render.CreateFont("Verdana", 13, 500, false, true, false)
-
-local function paint_traverse()
-Render.DrawText(font, 0, 0, color.new(255, 255, 255), tostring(Global.Username()))
+local function draw()
+local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
+Render.DrawText(font, 100, 100, color.new(255, 0, 0), tostring(Global.Username()))
 end
 
-Global.RegisterCallBack("PaintTraverse", paint_traverse)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
 [back to Contents](#-1)
@@ -431,7 +430,7 @@ Syntax: Engine.GetPlayerForUserID()
 local function draw()
 local player = Engine.GetPlayerForUserID(1)
 local me = Engine.GetLocalPlayerIndex()
-if player ~= me then
+if player == me then
 Global.AddLog("I'm local player!")
 end
 end
@@ -446,7 +445,7 @@ Syntax: Engine.GetLocalPlayerIndex()
 local function draw()
 local player = Engine.GetPlayerForUserID(1)
 local me = Engine.GetLocalPlayerIndex()
-if player ~= me then
+if player == me then
 Global.AddLog("I'm local player!")
 end
 end
@@ -458,12 +457,48 @@ Global.RegisterCallBack("PaintTraverse", draw)
 Syntax: Engine.GetViewAngles()              
 **Returns** local player viewangles.            
 ```lua
-local function draw()
-local player = Engine.GetPlayerForUserID(1)
-local me = Engine.GetLocalPlayerIndex()
-if player ~= me then
-Global.AddLog("I'm local player!")
+local function cm()
+local viewangles = Engine.GetViewAngles()
 end
+
+Global.RegisterCallBack("CreateMove", cm)
+```
+
+  [ **SetViewAngles** ]             
+Syntax: Engine.SetViewAngles([Aim_Angles: vector])              
+**Sets** local player viewangles.            
+```lua
+local function cm()
+local viewangles = engine.GetViewAngles()
+Engine.SetViewAngles(vector.new(viewangles.x, viewangles.y + 180.0, viewangles.z))
+end
+
+Global.RegisterCallBack("CreateMove", cm)
+```
+
+  [ **IsInGame** ]              
+Syntax: Engine.IsInGame()           
+**Returns** true as if we are in game and will return false if we are not.               
+```lua
+local function draw()
+if Engine.IsInGame() then
+Global.AddLog("You are in game!")
+else
+Global.AddLog("You are not in game!")
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
+```
+
+  [ **IsConnected** ]              
+Syntax: Engine.IsConnected()           
+**Returns** true as if we are connected and will return false if we are not.               
+```lua
+local function draw()
+if Engine.IsConnected() then
+Global.AddLog("You are in connect!")
+else
+Global.AddLog("You are not connected!")
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -500,6 +535,76 @@ Syntax: Engine.MapGroupName()
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
 Render.DrawText(font, 100, 100, color.new(255, 0, 0), tostring(Engine.MapGroupName()))
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
+```
+
+  [ **IsPlayingDemo** ]              
+Syntax: Engine.IsPlayingDemo()           
+**Returns** true as if we are playing demo and will return false if we are not.               
+```lua
+local function draw()
+if Engine.IsPlayingDemo() then
+Global.AddLog("You are playing demo!")
+else
+Global.AddLog("You are not playing demo!")
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
+```
+
+  [ **IsRecordingDemo** ]              
+Syntax: Engine.IsRecordingDemo()           
+**Returns** true as if we are recording demo and will return false if we are not.               
+```lua
+local function draw()
+if Engine.IsRecordingDemo() then
+Global.AddLog("You are recording demo!")
+else
+Global.AddLog("You are not recording demo!")
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
+```
+
+  [ **IsPaused** ]              
+Syntax: Engine.IsPaused()           
+**Returns** true as if we are pause the game and will return false if we are not.               
+```lua
+local function draw()
+if Engine.IsPaused() then
+Global.AddLog("The game is paused!")
+else
+Global.AddLog("The game is not paused!")
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
+```
+
+  [ **IsTakingScreenshot** ]              
+Syntax: Engine.IsTakingScreenshot()           
+**Returns** true as if we are taking screenshot and will return false if we are not.               
+```lua
+local function draw()
+if Engine.IsTakingScreenshot() then
+Global.AddLog("You are taking screenshot!")
+else
+Global.AddLog("You are not taking screenshot!")
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
+```
+
+  [ **IsHLTV** ]              
+Syntax: Engine.IsHLTV()           
+**Returns** true as if hltv and will return false if it's not.               
+```lua
+local function draw()
+if Engine.IsHLTV() then
+Global.AddLog("HLTV!")
+else
+Global.AddLog("not HLTV!")
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
