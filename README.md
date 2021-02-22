@@ -627,9 +627,9 @@ Syntax: Render.WorldToScreen([World: Vector])
 **Transform** world position to screen position. *(non-Z)*         
 ```lua
 local function draw()
-  local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
-  local random_origin = Render.WorldToScreen(Vector.New(1400, 600, 200))
-  Render.DrawText(font, random_origin.x , random_origin.y , color.new(255, 0, 0), tostring(engine.get_level_name))
+local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
+local random_origin = Render.WorldToScreen(Vector.New(1400, 600, 200))
+Render.DrawText(font, random_origin.x , random_origin.y , color.new(255, 0, 0), tostring(engine.get_level_name))
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
@@ -640,8 +640,8 @@ Syntax: Render.GetTextWidth([Font: font], [Text: string])
 **Returns** the width value.
 ```lua
 local function draw()
-  local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
-  local padding = Render.GetTextWidth(font, "Hello")
+local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
+local padding = Render.GetTextWidth(font, "Hello")
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
