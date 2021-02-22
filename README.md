@@ -11,7 +11,7 @@ https://github.com/ZaUserA**
 |[Menu](#1)|
 |[Game](#2)|
 |[Engine](#3)|
-|[Convar](#4)|
+|[Render](#4)|
 |[Event](#5)|
 |[Trace](#6)|
 |[User CMD](#7)|
@@ -24,6 +24,12 @@ https://github.com/ZaUserA**
 |[Exploit](#a)|
 |[RageBot](#s)|
 |[Material](#d)|
+
+---
+
+**GRADIENT TYPE ENUMERATION:**
+- GRADIENT_HORIZONTAL
+- GRADIENT_VERTICAL
 
 ---
 
@@ -46,17 +52,17 @@ Length2DSqr **(float)** - *Returns the squared length of the vectors x and y val
 IsZero **(boolean)** - *Checks whenever all fields of the vector are 0.*       
 IsValid **(boolean)** - *Checks when the vector is all valid.*    
 Zero **(void)** - *Sets x, y and z to 0.*          
-DistTo*(const Vector& Target)* **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
+DistTo(const Vector& Target) **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
 DistToSqr **(float)** - *Returns the squared distance of 2 vectors*       
-CrossProduct*(const Vector& Target)* **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
+CrossProduct(const Vector& Target) **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
 Normalize **(float)** - *Normalizes the given vector. This changes the vector you call it on.*      
 
 ---
 
 **PLAYER INFO STRUCTS:**        
 fakeplayer **(bool)** - *Checks whether a player is a bot or not.*        
-szName **(integer)** - *Get Player Name*        
-szSteamID **(char)** - *STEAM:X:Y:Z*       
+szName[128] **(integer)** - *Get Player Name*        
+szSteamID[20] **(char)** - *STEAM:X:Y:Z*       
 
 ---
 
@@ -417,14 +423,14 @@ Menu.AddSliderInt("Screen Height", 0, Engine.ScreenHeight())
 ```
 
   [ **GetPlayerInfo** ]             
-Syntax: Engine.GetPlayerInfo()              
+Syntax: Engine.GetPlayerInfo([Index: integer])              
 **Returns** player info.              
 ```lua
 Engine.GetPlayerInfo()
 ```
 
   [ **GetPlayerForUserID** ]                
-Syntax: Engine.GetPlayerForUserID()          
+Syntax: Engine.GetPlayerForUserID([Index: integer])          
 **Returns** player for userid.            
 ```lua
 local function draw()
@@ -613,58 +619,141 @@ Global.RegisterCallBack("PaintTraverse", draw)
 [back to Contents](#-1)
 
 
-## <a name="4"></a>Convar
+## <a name="4"></a>Render
 |-------------------------------|
 
-  [ **SETSTRING** ]
-Syntax:Convar.SetString("cmd", string)  
-Sets the string value of the given console command.      
-**Returns** true on success or false on failure.  
-```java
-Convar.SetString ("r_aspectratio", "1");
+  [ **WorldToScreen** ]          
+Syntax: Render.WorldToScreen([World: Vector])        
+**Transform** world position to screen position. *(non-Z)*         
+```lua
+local function draw()
+  local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
+  local random_origin = Render.WorldToScreen(Vector.New(1400, 600, 200))
+  Render.DrawText(font, random_origin.x , random_origin.y , color.new(255, 0, 0), tostring(engine.get_level_name))
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GETSTRING** ]
-Syntax:Convar.GetString("cmd")  
-Finds the string value of the given console command.   
-**Returns** the value of the parameter or false.   
-```java
-var name = Convar.GetString("name");
-Cheat.Print(name);
+  [ **GetTextWidth** ]
+Syntax: Render.GetTextWidth([Font: font], [Text: string])  
+**Returns** the width value.
+```lua
+local function draw()
+  local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
+  local padding = Render.GetTextWidth(font, "Hello")
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **SETFLOAT** ]
-Syntax:Convar.SetFloat ("cmd", value)  
-Sets the float value of the given console command.  
-**Returns** true on success or false on failure.  
-```java
-Convar.SetFloat("cl_ragdoll_gravity", 100.00);
+  [ **CreateFont** ]          
+Syntax: Render.CreateFont([Font Name: string], [Size: float], [Weight: float], [AntiAliasing: boolean], [DropShadow: boolean], [Outline: boolean])        
+**Create** font.                    
+```lua
+local font = Render.CreateFont("Verdana", 12, 500, true, true, true)
 ```
 
-  [ **GETFLOAT** ]
-Syntax:Convar.GetFloat("cmd")   
-Finds the float value of the given console command.  
-**Returns** the value of the parameter or false.  
-```java
-var sv_gravity_value = Convar.GetFloat("cl_ragdoll_gravity");
-Cheat.Print(sv_gravity_value);
+  [ **DrawText** ]          
+Syntax: Render.CreateFont([Font: font], [x: float], [y: float], [Color: color], [Text: string])        
+**Draw** text.           
+```lua
+local font = Render.CreateFont("Verdana", 12, 500, true, true, true)
+
+local function draw()
+Render.DrawText(font, 0, 0, color.new(255, 255, 255), "Hi")
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **SETINT** ]
-Syntax:Convar.SetInt("cmd", value)  
-Sets the integer value of the given console command.  
-**Returns** true on success or false on failure.  
-```java
-Convar.SetInt("cl_ragdoll_gravity", 100);
+  [ **DrawCenteredText** ]          
+Syntax: Render.DrawCenteredText([Font: font], [x: float], [y: float], [Color: color], [Centered X: boolean], [Centered Y: boolean], [Text: string])        
+**Draw** centered text.         
+```lua
+local function draw()
+local font = Render.CreateFont("Verdana", 12, 600, true, true, true)
+Render.DrawCenteredText(font, 100, 100, color.new(255, 0, 0), true, true, "Hello!")
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GETINT** ]
-Syntax:Convar.GetInt("cmd")
-Finds the integer value of the given console command.  
-**Returns** the value of the parameter or false.   
-```java
-var sv_gravity_value = Convar.GetInt("cl_ragdoll_gravity");
-Cheat.Print(sv_gravity_value);
+  [ **DrawLine** ]          
+Syntax: Render.DrawLine([X: float], [Y: float], [X2: float], [Y2: float], [Color: color])        
+**Draw** line.     
+```lua
+local function draw()
+    Render.DrawLine(10, 10, 150, 150, color.new(0, 0, 255))
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
+```
+
+  [ **DrawRect** ]          
+Syntax: Render.DrawRect([X: float], [Y: float], [W: float], [H: float], [Color: color])        
+**Draw** rectangle.     
+```lua
+local function draw() 
+Render.DrawRect(10, 10, 100, 100, color.new(150, 150, 200)) 
+end 
+
+Global.RegisterCallBack("on_paint", draw)
+```
+
+  [ **DrawFilledRect** ]          
+Syntax: Render.DrawRect([X: float], [Y: float], [W: float], [H: float], [Color: color])        
+**Draw** filled rectangle.     
+```lua
+local function draw() 
+Render.DrawFilledRect(10, 10, 100, 100, color.new(150, 150, 200)) 
+end 
+
+Global.RegisterCallBack("on_paint", draw)
+```
+
+  [ **DrawFilledRectGradient** ]          
+Syntax: Render.DrawFilledRectGradient([X: float], [Y: float], [W: float], [H: float], [Color: color], [Color2: color], [GradientType: integer])        
+**Draw** gradient filled rectangle.     
+```lua
+local function draw() 
+Render.DrawFilledRectGradient(10, 10, 100, 100, color.new(150, 150, 200), color.new(255, 255, 255)) 
+end 
+
+Global.RegisterCallBack("on_paint", draw)
+```
+
+  [ **DrawCircle** ]          
+Syntax: Render.DrawCircle([X: float], [Y: float], [Points: float], [Radius: float], [Color: color])        
+**Draw** circle.     
+```lua
+local function draw() 
+Render.DrawCircle(100, 20, 60, 20, color.new(255, 255, 255)) 
+end 
+
+Global.RegisterCallBack("on_paint", draw)
+```
+
+  [ **DrawFilledCircle** ]          
+Syntax: Render.DrawFilledCircle([X: float], [Y: float], [Points: float], [Radius: float], [Color: color])        
+**Draw** circle.     
+```lua
+local function draw() 
+Render.DrawFilledCircle(100, 20, 60, 20, color.new(255, 255, 255)) 
+end 
+
+Global.RegisterCallBack("on_paint", draw)
+```
+
+  [ **DrawFilledCircle** ]          
+Syntax: Render.DrawTriangle([X: float], [Y: float], [X2: float], [Y2: float], [X3: float], [Y3: float], [Color: color])        
+**Draw** filled circle.     
+```lua
+local function draw() 
+Render.DrawTriangle(100, 20, 60, 20, 80, 40, color.new(255, 255, 255)) 
+end 
+
+Global.RegisterCallBack("on_paint", draw)
 ```
 
 [back to Contents](#-1)
