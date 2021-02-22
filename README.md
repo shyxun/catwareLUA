@@ -27,28 +27,28 @@ https://github.com/ZaUserA**
 
 ---
 
-**VECTOR STRUCTS:**
-x **(float)**
-y **(float)**
-z **(float)** 
-Length **Returns the euclidean length.**
-LengthSqr **Returns the squared length of the vector.**
-Length2D **Returns the length of the vector in two dimensions, without the Z axis.**
-Length2DSqr **Returns the squared length of the vectors x and y value.**
-IsZero **Checks whenever all fields of the vector are 0.**
-IsValid **Checks when the vector is all valid.**
-Zero **Sets x, y and z to 0.**
-DistTo **Returns the euclidean distance between the vector and the other vector.**
-DistToSqr **Returns the squared distance of 2 vectors**
-CrossProduct **Calculates the cross product of this vector and the passed one.**
-Normalize **Normalizes the given vector. This changes the vector you call it on.**
+**VECTOR STRUCTS:**     
+x **(float)**     
+y **(float)**   
+z **(float)**      
+Length **Returns the euclidean length.**      
+LengthSqr **Returns the squared length of the vector.**        
+Length2D **Returns the length of the vector in two dimensions, without the Z axis.**      
+Length2DSqr **Returns the squared length of the vectors x and y value.**     
+IsZero **Checks whenever all fields of the vector are 0.**    
+IsValid **Checks when the vector is all valid.**    
+Zero **Sets x, y and z to 0.**    
+DistTo **Returns the euclidean distance between the vector and the other vector.**    
+DistToSqr **Returns the squared distance of 2 vectors**    
+CrossProduct **Calculates the cross product of this vector and the passed one.**      
+Normalize **Normalizes the given vector. This changes the vector you call it on.**     
 
 ---
 
-**PLAYER INFO STRUCTS:**
-fakeplayer **(bool)** - *Checks whether a player is a bot or not.*
-szName **(integer)** - *Get Player Name*
-szSteamID **(char)** - *STEAM:X:Y:Z*
+**PLAYER INFO STRUCTS:**     
+fakeplayer **(bool)** - *Checks whether a player is a bot or not.*     
+szName **(integer)** - *Get Player Name*     
+szSteamID **(char)** - *STEAM:X:Y:Z*    
 
 ---
 
