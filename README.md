@@ -27,6 +27,14 @@ https://github.com/ZaUserA**
 
 ---
 
+** COLOR STRUCTS:**    
+r **(integer)** - *red*    
+g **(integer)** - *green*   
+b **(integer)** - *blue*    
+a **(integer)** - *alpha*    
+
+--
+
 **VECTOR STRUCTS:**     
 x **(float)**     
 y **(float)**   
@@ -53,22 +61,22 @@ szSteamID **(char)** - *STEAM:X:Y:Z*
 ---
 
 **KEY BINDS ENUMERATION:**         
-key_binds.legit_automatic_fire - *LEGIT AUTO FIRE*      
-key_binds.legit_enable - *LEGIT ENABLE*    
-key_binds.double_tap - *DOUBLE TAP*   
-key_binds.safe_points - *SAFE POINTS*    
-key_binds.damage_override - *DAMAGE OVERRIDE*   
-key_binds.hide_shots - *HIDE SHOTS*    
-key_binds.manual_back - *MANUAL AA BACK*   
-key_binds.manual_left - *MANUAL AA LEFT*    
-key_binds.manual_right - *MANUAL AA RIGHT*   
-key_binds.flip_desync - *FLIP DESYNC*    
-key_binds.thirdperson - *THIRDPERSON*   
-key_binds.automatic_peek - *AUTO PEEK*   
-key_binds.edge_jump - *EDGE JUMP*    
-key_binds.fakeduck - *FAKE DUCK*    
-key_binds.slowwalk - *SLOW WALK*   
-key_binds.body_aim - *BODY AIM*   
+key_binds.legit_automatic_fire - *LEGIT AUTO FIRE KEY*      
+key_binds.legit_enable - *LEGIT ENABLE KEY*    
+key_binds.double_tap - *DOUBLE TAP KEY*   
+key_binds.safe_points - *SAFE POINTS KEY*    
+key_binds.damage_override - *DAMAGE OVERRIDE KEY*   
+key_binds.hide_shots - *HIDE SHOTS KEY*    
+key_binds.manual_back - *MANUAL AA BACK KEY*   
+key_binds.manual_left - *MANUAL AA LEFT KEY*    
+key_binds.manual_right - *MANUAL AA RIGHT KEY*   
+key_binds.flip_desync - *FLIP DESYNC KEY*    
+key_binds.thirdperson - *THIRDPERSON KEY*   
+key_binds.automatic_peek - *AUTO PEEK KEY*   
+key_binds.edge_jump - *EDGE JUMP KEY*    
+key_binds.fakeduck - *FAKE DUCK KEY*    
+key_binds.slowwalk - *SLOW WALK KEY*   
+key_binds.body_aim - *BODY AIM KEY*   
 
 ---
 
