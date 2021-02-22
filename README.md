@@ -56,7 +56,7 @@ szSteamID **(char)** - *STEAM:X:Y:Z*
 |-------------------------------|
 
 [ **RegisterCallBack** ]
-Usage: Global.RegisterCallBack([EventName: string, Function: string])  
+Syntax: Global.RegisterCallBack([EventName: string, Function: string])  
 Used to call the functions you write.
 ```lua
 local function paint_traverse()
@@ -67,21 +67,21 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
 [ **LoadLUA** ]
-Usage: Global.LoadLUA([Name: string])  
+Syntax: Global.LoadLUA([Name: string])  
 Used to load another LUA you type inside of LoadLUA.
 ```lua
 Global.LoadLUA("HitList")
 ```
 
 [ **UnloadLUA** ]
-Usage: Global.UnloadLUA([Name: string])  
+Syntax: Global.UnloadLUA([Name: string])  
 Used to unload another LUA you type inside of UnloadLUA
 ```lua
 Global.UnloadLUA("HitList")
 ```
 
 [ **AddLog** ]
-Usage: Global.AddLog([Text: string])  
+Syntax: Global.AddLog([Text: string])  
 Add the text you write inside AddLog into the cheat eventlogger
 ```lua
 local function paint_traverse()
