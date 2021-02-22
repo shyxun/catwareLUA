@@ -156,9 +156,9 @@ https://github.com/ZaUserA**
 ---
 
 **WEAPON STRUCTS:**
-- IsEmpty **(bool)** - *Returns true if the weapon is empty (no ammo at all), or else not.*
-- CanFire(bool revolver_check) **(bool)** - *Checks if you can really fire the gun.*
-- IsNonAim **(bool)** - *Checks if the weapon you use is suitable for aimbot or not.*
+- IsEmpty **(boolean)** - *Returns true if the weapon is empty (no ammo at all), or else not.*
+- CanFire(bool revolver_check) **(boolean)** - *Checks if you can really fire the gun.*
+- IsNonAim **(boolean)** - *Checks if the weapon you use is suitable for aimbot or not.*
 - CanDoubleTap **(bool)** - *Checks if your weapon can doubletapping or not.*
 - GetName **(string)** - *Obtain your weapon name.*
 - GetInaccuracy **(float)** - *Obtain your weapon inaccuracy.*
@@ -176,8 +176,8 @@ https://github.com/ZaUserA**
 
 **PLAYER STRUCTS:**
 - EntIndex **(int)** - *Obtain player index.*
-- IsDormant **(bool)** - *Obtain player dormancy.*
-- IsAlive **(bool)** - *Will be true if the player alive, or else it'll not.*
+- IsDormant **(boolean)** - *Obtain player dormancy.*
+- IsAlive **(boolean)** - *Will be true if the player alive, or else it'll not.*
 - GetPropInt([Table: string], [Var: string]) **(int)** - *Get integer property*
 - GetPropFloat([Table: string], [Var: string]) **(float)** - *Get float property*
 - GetPropBool([Table: string], [Var: string]) **(boolean)** - *Get boolean property*
@@ -208,7 +208,7 @@ https://github.com/ZaUserA**
 ---
 
 **PLAYER_INFO STRUCTS:**        
-- fakeplayer **(bool)** - *Checks whether a player is a bot or not.*        
+- fakeplayer **(boolean)** - *Checks whether a player is a bot or not.*        
 - szName[128] **(integer)** - *Get Player Name*        
 - szSteamID[20] **(char)** - *STEAM:X:Y:Z*       
 
