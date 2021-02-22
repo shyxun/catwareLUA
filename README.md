@@ -52,6 +52,30 @@ szSteamID **(char)** - *STEAM:X:Y:Z*
 
 ---
 
+**KEY BINDS ENUMERATION:**         
+key_binds.legit_automatic_fire *LEGIT AUTO FIRE*      
+key_binds.legit_enable *LEGIT ENABLE*    
+key_binds.double_tap *DOUBLE TAP*   
+key_binds.safe_points *SAFE POINTS*    
+key_binds.damage_override *DAMAGE OVERRIDE*   
+key_binds.hide_shots *HIDE SHOTS*    
+key_binds.manual_back *MANUAL AA BACK*   
+key_binds.manual_left *MANUAL AA LEFT*    
+key_binds.manual_right *MANUAL AA RIGHT*   
+key_binds.flip_desync *FLIP DESYNC*    
+key_binds.thirdperson *THIRDPERSON*   
+key_binds.automatic_peek *AUTO PEEK*   
+key_binds.edge_jump *EDGE JUMP*    
+key_binds.fakeduck *FAKE DUCK*    
+key_binds.slowwalk *SLOW WALK*   
+key_binds.body_aim *BODY AIM*   
+
+**KEY BINDS MODE ENUMERATION:**            
+key_bind_mode.hold *MODE HOLD*              
+key_bind_mode.toggle *MODE TOGGLE*            
+  
+---
+
 ## <a name="0"></a>Global
 |-------------------------------|
 
