@@ -31,33 +31,33 @@ https://github.com/ZaUserA**
 x **(float)**     
 y **(float)**   
 z **(float)**      
-Length **Returns the euclidean length.**      
-LengthSqr **Returns the squared length of the vector.**        
-Length2D **Returns the length of the vector in two dimensions, without the Z axis.**      
-Length2DSqr **Returns the squared length of the vectors x and y value.**     
-IsZero **Checks whenever all fields of the vector are 0.**    
-IsValid **Checks when the vector is all valid.**    
-Zero **Sets x, y and z to 0.**    
-DistTo **Returns the euclidean distance between the vector and the other vector.**    
-DistToSqr **Returns the squared distance of 2 vectors**    
-CrossProduct **Calculates the cross product of this vector and the passed one.**      
-Normalize **Normalizes the given vector. This changes the vector you call it on.**     
+Length **(float)** - *Returns the euclidean length.*      
+LengthSqr **(float)** - *Returns the squared length of the vector.*          
+Length2D **(float)** - *Returns the length of the vector in two dimensions, without the Z axis.*         
+Length2DSqr **(float)** - *Returns the squared length of the vectors x and y value.*        
+IsZero **(boolean)** - *Checks whenever all fields of the vector are 0.*       
+IsValid **(boolean)** - *Checks when the vector is all valid.*    
+Zero **(void)** - *Sets x, y and z to 0.*          
+DistTo **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
+DistToSqr **(float)** - *Returns the squared distance of 2 vectors*       
+CrossProduct **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
+Normalize **(float)** - *Normalizes the given vector. This changes the vector you call it on.*      
 
 ---
 
-**PLAYER INFO STRUCTS:**     
-fakeplayer **(bool)** - *Checks whether a player is a bot or not.*     
-szName **(integer)** - *Get Player Name*     
-szSteamID **(char)** - *STEAM:X:Y:Z*    
+**PLAYER INFO STRUCTS:**        
+fakeplayer **(bool)** - *Checks whether a player is a bot or not.*        
+szName **(integer)** - *Get Player Name*        
+szSteamID **(char)** - *STEAM:X:Y:Z*       
 
 ---
 
 ## <a name="0"></a>Global
 |-------------------------------|
 
-[ **RegisterCallBack** ]
-Syntax: Global.RegisterCallBack([EventName: string, Function: string])  
-Used to call the functions you write.
+[ **RegisterCallBack** ]       
+Syntax: Global.RegisterCallBack([EventName: string, Function: string])     
+Used to call the functions you write.    
 ```lua
 local function paint_traverse()
 Render.DrawText(font, 0, 0, color.new(255, 255, 255, 255), "Hi")
@@ -66,23 +66,23 @@ end
 Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
-[ **LoadLUA** ]
-Syntax: Global.LoadLUA([Name: string])  
-Used to load another LUA you type inside of LoadLUA.
+[ **LoadLUA** ]              
+Syntax: Global.LoadLUA([Name: string])      
+Used to load another LUA you type inside of LoadLUA.       
 ```lua
 Global.LoadLUA("HitList")
 ```
 
-[ **UnloadLUA** ]
-Syntax: Global.UnloadLUA([Name: string])  
-Used to unload another LUA you type inside of UnloadLUA
+[ **UnloadLUA** ]              
+Syntax: Global.UnloadLUA([Name: string])        
+Used to unload another LUA you type inside of UnloadLUA       
 ```lua
 Global.UnloadLUA("HitList")
 ```
 
-[ **AddLog** ]
-Syntax: Global.AddLog([Text: string])  
-Add the text you write inside AddLog into the cheat eventlogger
+[ **AddLog** ]           
+Syntax: Global.AddLog([Text: string])         
+Add the text you write inside AddLog into the cheat eventlogger        
 ```lua
 local function paint_traverse()
 Global.AddLog("Hi from the event logger")
@@ -91,9 +91,9 @@ end
 Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
-[ **Username** ]
-Syntax: Global.Username
-Used to get forum username.
+[ **Username** ]          
+Syntax: Global.Username             
+Used to get forum username.               
 ```lua
 Global.Username()
 ```
@@ -103,18 +103,18 @@ Global.Username()
 ## <a name="1"></a>Menu
 |-------------------------------|
 
-  [ **IsVisible** ]
-Syntax: Menu.IsVisible() 
-True if the menu is open, false otherwise. 
+  [ **IsVisible** ]         
+Syntax: Menu.IsVisible()          
+True if the menu is open, false otherwise.               
 ```lua
 if (Menu.IsVisible() == true)
 Global.AddLog("Menu is open!")
 end
 ```
 
-  [ **NextLine** ]
-Syntax: Menu.NextLine()   
-Skip last menu line.
+  [ **NextLine** ]              
+Syntax: Menu.NextLine()                 
+Skip last menu line.           
 ```lua
 Menu.AddCheckbox("Enable Hit list") // this will be skipped
 Menu.AddCheckbox("Enable Spectator List") // this is from another LUA.
@@ -129,38 +129,38 @@ Create a checkbox in LUA tab.
 Menu.AddCheckBox("Checkbox")   
 ```
 
-  [ **AddComboBox** ]
-Syntax: Menu.AddComboBox([Name: string], [Labels: string vector])   
-Create a combobox in LUa tab. 
+  [ **AddComboBox** ]             
+Syntax: Menu.AddComboBox([Name: string], [Labels: string vector])                  
+Create a combobox in LUA tab.           
 ```lua
 Menu.AddComboBox("Combobox", { "Selection 1", "Selection 2" })   
 ```
 
 
-  [ **AddSliderInt** ]
-Syntax: Menu.AddSliderInt([Name: string], [Min: integer], [Max: integer])    
+  [ **AddSliderInt** ]               
+Syntax: Menu.AddSliderInt([Name: string], [Min: integer], [Max: integer])                          
 Create a slider (integer).  
 ```lua
 Menu.AddSliderInt("Int", 0, 100) 
 ```
 
-  [ **AddSliderFloat** ]
-Syntax: Menu.AddSliderFloat([Name: string], [Min: float], [Max: float])
-Create a slider (float). 
+  [ **AddSliderFloat** ]                    
+Syntax: Menu.AddSliderFloat([Name: string], [Min: float], [Max: float])             
+Create a slider (float).              
 ```lua
 Menu.AddSliderFloat("Float", 0.0, 100.0) 
 ```
 
-  [ **AddColorPicker** ]
-Syntax: Menu.AddColorPicker([Name: string])  
-Create a Color Picker.
+  [ **AddColorPicker** ]              
+Syntax: Menu.AddColorPicker([Name: string])                 
+Create a Color Picker.               
 ```lua
 Menu.AddColorPicker("Color Picker") 
 ```
 
-  [ **GetBool** ]
-Syntax: Menu.GetBool([Name: string])  
-Get bool statement of LUA item and Config items.  
+  [ **GetBool** ]              
+Syntax: Menu.GetBool([Name: string])                
+Get bool statement of LUA item and Config items.         
 ```lua
 Menu.AddCheckBox("Checkbox") 
 
@@ -175,9 +175,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GetInt** ]
-Syntax: Menu.GetInt([Name: string])  
-Get integer statement of LUA items and Config items. Can be Combo Box or Slider Int!  
+  [ **GetInt** ]          
+Syntax: Menu.GetInt([Name: string])                       
+Get integer statement of LUA items and Config items. Can be Combo Box or Slider Int!                   
 ```lua
 Menu.AddSliderInt("Slider", 0, 1) 
 
@@ -192,9 +192,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GetFloat** ]
-Syntax: Menu.GetFloat([Name: string])  
-Get float statement of LUA items and Config items. Only Float Slider.  
+  [ **GetFloat** ]                 
+Syntax: Menu.GetFloat([Name: string])               
+Get float statement of LUA items and Config items. Only Float Slider.            
 ```lua
 Menu.AddSliderFloat("Slider", 0, 1) 
 
@@ -209,9 +209,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GetColor** ]
-Syntax: Menu.GetColor([Name: string])  
-Get color of LUA items and Config items.
+  [ **GetColor** ]                      
+Syntax: Menu.GetColor([Name: string])                 
+Get color of LUA items and Config items.               
 ```lua
 local function draw()
 local color = Menu.GetColor("Hit list Color")
@@ -221,9 +221,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GetKeyState** ]
-Syntax: Menu.GetKeyState([Keybind: integer])
-Get current state of Keybind.   
+  [ **GetKeyState** ]                  
+Syntax: Menu.GetKeyState([Keybind: integer])                  
+Get current state of Keybind.                
 ```lua
 local function draw()
 if menu.get_key_bind_state(key_binds.double_tap) then
@@ -234,42 +234,42 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GetKeyMode** ]
-Syntax: Menu.GetKeyMode([Keybind: integer])
-Get current mode of Keybind. 
-
-**MODE:**
-Hold will return 0.
-Toggle will return 1.
+  [ **GetKeyMode** ]                 
+Syntax: Menu.GetKeyMode([Keybind: integer])               
+Get current mode of Keybind.                    
+         
+**MODE:**          
+Hold will return 0.               
+Toggle will return 1.          
 
 ```lua
 local type = Menu.GetKeyMode(key_binds.body_aim)
 ```
 
-  [ **SetBool** ]
-Syntax: Menu.SetBool([Name: string], [Value: boolean])  
-Force set boolean of an items.
+  [ **SetBool** ]              
+Syntax: Menu.SetBool([Name: string], [Value: boolean])            
+Force set boolean of an items.               
 ```lua
 Menu.SetBool("Player.enable", true)  
 ```
 
-  [ **SetInt** ]
-Syntax: Menu.SetInt([Name: string], [Value: integer])  
-Force set integer of an items.
+  [ **SetInt** ]               
+Syntax: Menu.SetInt([Name: string], [Value: integer])               
+Force set integer of an items.              
 ```lua
 Menu.SetInt("Esp.viewmodel_fov", 100)  
 ```
 
-  [ **SetFloat** ]
-Syntax: Menu.SetBool([Name: string], [Value: float])  
-Force set float of an items.
+  [ **SetFloat** ]                
+Syntax: Menu.SetBool([Name: string], [Value: float])               
+Force set float of an items.         
 ```lua
 Menu.SetFloat("Esp.aspect_ratio_amount", 2.0)  
 ```
 
-  [ **SetColor** ]
-Syntax: Menu.SetBool([Name: string], [Value: color])  
-Force set color of an items.
+  [ **SetColor** ]               
+Syntax: Menu.SetBool([Name: string], [Value: color])              
+Force set color of an items.            
 ```lua
 Menu.SetColor("Esp.projectiles_color", color.new(0, 0, 0, 0))  
 ```
@@ -280,80 +280,80 @@ Menu.SetColor("Esp.projectiles_color", color.new(0, 0, 0, 0))
 ## <a name="2"></a>Game
 |-------------------------------|
 
-  [ **Framerate** ]
-Syntax: Game.Framerate()
-**Returns** framerate.
+  [ **Framerate** ]                    
+Syntax: Game.Framerate()                
+**Returns** framerate.                 
 ```lua
 Game.Framerate()
 ```
 
-  [ **Ping** ]
-Syntax: Game.Ping()
-**Returns** ping.
+  [ **Ping** ]       
+Syntax: Game.Ping()              
+**Returns** ping.       
 ```lua
 Game.Ping()
 ```
 
-  [ **ServerIPAddress** ]
-Syntax: Game.ServerIPAddress()
-**Returns** Server IP Address.
+  [ **ServerIPAddress** ]          
+Syntax: Game.ServerIPAddress()          
+**Returns** Server IP Address.          
 ```lua
 Game.ServerIPAddress()
 ```
 
-  [ **Time** ]
-Syntax: Game.Time()
-**Returns** windows current time.  
+  [ **Time** ]             
+Syntax: Game.Time()              
+**Returns** windows current time.             
 ```lua
 Game.Time()
 ```
 
-  [ **Realtime** ]
-Syntax: Game.Realtime()  
-**Returns** realtime. 
+  [ **Realtime** ]              
+Syntax: Game.Realtime()            
+**Returns** realtime.          
 ```lua
 Game.Realtime()
 ```
 
-  [ **Curtime** ]
-Syntax: Game.Curtime()
-**Returns** curtime.  
+  [ **Curtime** ]         
+Syntax: Game.Curtime()          
+**Returns** curtime.             
 ```lua
 Game.Curtime()
 ```
 
-  [ **Frametime** ]
-Syntax: Game.Frametime() 
-**Returns** frametime.
+  [ **Frametime** ]        
+Syntax: Game.Frametime()            
+**Returns** frametime.               
 ```lua
 Game.Frametime() 
 ```
 
 
-  [ **Tickcount** ]
-Syntax: Game.Tickcount() 
-**Returns** tickcount.
+  [ **Tickcount** ]        
+Syntax: Game.Tickcount()           
+**Returns** tickcount.           
 ```lua
 Game.Tickcount()
 ```
 
-  [ **Framecount** ]
-Syntax: Game.Framecount()
-**Returns** framecount. 
+  [ **Framecount** ]             
+Syntax: Game.Framecount()             
+**Returns** framecount.            
 ```lua
 Game.Framecount()
 ```
 
-  [ **IntervalPerTick** ]
-Syntax: Game.IntervalPerTick()
-**Returns** interval per tick.
+  [ **IntervalPerTick** ]         
+Syntax: Game.IntervalPerTick()              
+**Returns** interval per tick.                  
 ```lua
 Game.IntervalPerTick()
 ```
 
-  [ **MaxClients** ]
-Syntax: Game.MaxClients()
-**Returns** max clients.
+  [ **MaxClients** ]                
+Syntax: Game.MaxClients()              
+**Returns** max clients.                     
 ```lua
 Game.MaxClients()
 ```
@@ -363,30 +363,30 @@ Game.MaxClients()
 ## <a name="3"></a>Engine
 |-------------------------------|
 
-  [ **ScreenWidth** ]
-Syntax: Engine.ScreenWidth()
-**Returns** screen width. 
+  [ **ScreenWidth** ]               
+Syntax: Engine.ScreenWidth()               
+**Returns** screen width.                  
 ```lua
 Menu.AddSliderInt("Screen Width", 0, Engine.ScreenWidth())
 ```
 
-  [ **ScreenHeight** ]
-Syntax: Engine.ScreenHeight()
-**Returns** screen height. 
+  [ **ScreenHeight** ]          
+Syntax: Engine.ScreenHeight()             
+**Returns** screen height.           
 ```lua
 Menu.AddSliderInt("Screen Height", 0, Engine.ScreenHeight())
 ```
 
-  [ **GetPlayerInfo** ]
-Syntax: Engine.GetPlayerInfo()
-**Returns** player info. 
+  [ **GetPlayerInfo** ]             
+Syntax: Engine.GetPlayerInfo()              
+**Returns** player info.              
 ```lua
 Engine.GetPlayerInfo()
 ```
 
-  [ **GetPlayerForUserID** ]
-Syntax: Engine.GetPlayerForUserID()
-**Returns** player for userid. 
+  [ **GetPlayerForUserID** ]                
+Syntax: Engine.GetPlayerForUserID()          
+**Returns** player for userid.            
 ```lua
 local function draw()
 local player = Engine.GetPlayerForUserID(1)
@@ -399,9 +399,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GetLocalPlayerIndex** ]
-Syntax: Engine.GetLocalPlayerIndex()
-**Returns** local player index. 
+  [ **GetLocalPlayerIndex** ]          
+Syntax: Engine.GetLocalPlayerIndex()              
+**Returns** local player index.                     
 ```lua
 local function draw()
 local player = Engine.GetPlayerForUserID(1)
@@ -414,10 +414,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GetViewAngles** ]
-Syntax: Engine.GetViewAngles()
-
-**Returns** local player viewangles. 
+  [ **GetViewAngles** ]             
+Syntax: Engine.GetViewAngles()              
+**Returns** local player viewangles.            
 ```lua
 local function draw()
 local player = Engine.GetPlayerForUserID(1)
@@ -430,9 +429,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **LevelName** ]
-Syntax: Engine.LevelName()
-**Returns** level name. 
+  [ **LevelName** ]          
+Syntax: Engine.LevelName()              
+**Returns** level name.              
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
@@ -442,9 +441,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **LevelNameShort** ]
-Syntax: Engine.LevelNameShort()
-**Returns** short level name. 
+  [ **LevelNameShort** ]              
+Syntax: Engine.LevelNameShort()           
+**Returns** short level name.               
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
@@ -454,9 +453,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **MapGroupName** ]
-Syntax: Engine.MapGroupName()
-**Returns** map group name. 
+  [ **MapGroupName** ]              
+Syntax: Engine.MapGroupName()                
+**Returns** map group name.                    
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
