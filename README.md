@@ -208,7 +208,7 @@ https://github.com/ZaUserA**
 - IsValid **(boolean)** - *Checks when the vector is all valid.*    
 - Zero **(void)** - *Sets x, y and z to 0.*          
 - DistTo([Target: Vector]) **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
-- DistToSqr **(float)** - *Returns the squared distance of 2 vectors*       
+- DistToSqr([Target: Vector]) **(float)** - *Returns the squared distance of 2 vectors*       
 - CrossProduct([Target: Vector]) **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
 - Normalize **(float)** - *Normalizes the given vector. This changes the vector you call it on.*      
 
