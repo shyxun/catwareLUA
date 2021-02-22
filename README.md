@@ -12,7 +12,7 @@ https://github.com/ZaUserA**
 |[Game](#2)|
 |[Engine](#3)|
 |[Render](#4)|
-|[Event](#5)|
+|[Console](#5)|
 |[Trace](#6)|
 |[User CMD](#7)|
 |[Sound](#8)|
@@ -27,7 +27,45 @@ https://github.com/ZaUserA**
 
 ---
 
-**GRADIENT TYPE ENUMERATION:**
+**HITBOXES ENUMERATION:**
+- HITBOX_HEAD,
+- HITBOX_NECK,
+- HITBOX_PELVIS,
+- HITBOX_STOMACH,
+- HITBOX_LOWER_CHEST,
+- HITBOX_CHEST,
+- HITBOX_UPPER_CHEST,
+- HITBOX_RIGHT_THIGH,
+- HITBOX_LEFT_THIGH,
+- HITBOX_RIGHT_CALF,
+- HITBOX_LEFT_CALF,
+- HITBOX_RIGHT_FOOT,
+- HITBOX_LEFT_FOOT,
+- HITBOX_RIGHT_HAND,
+- HITBOX_LEFT_HAND,
+- HITBOX_RIGHT_UPPER_ARM,
+- HITBOX_RIGHT_FOREARM,
+- HITBOX_LEFT_UPPER_ARM,
+- HITBOX_LEFT_FOREARM
+  
+--
+
+**CSGO GAME EVENT LIST**         
+*https://wiki.alliedmods.net/Counter-Strike:_Global_Offensive_Events*
+
+**GAME_EVENT STRUCTS:**
+GetBool(char keyName) **(bool)** - *Get Bool*
+GetInt(char keyName) **(integer)** - *Get Int*
+GetFloat(char keyName) **(float)** - *Get Float*
+GetString(char keyName) **(bool)** - *Get String*
+SetBool(char keyName, bool value) **(bool)** - *Set Bool*
+SetInt(char keyName, int value) **(integer)** - *Set Int*
+SetFloat(char keyName, float value) **(float)** - *Set Float*
+SetString(char keyName, char value) **(bool)** - *Set String*
+
+---
+
+**GRADIENTTYPE ENUMERATION:**
 - GRADIENT_HORIZONTAL
 - GRADIENT_VERTICAL
 
@@ -59,14 +97,14 @@ Normalize **(float)** - *Normalizes the given vector. This changes the vector yo
 
 ---
 
-**PLAYER INFO STRUCTS:**        
+**PLAYER_INFO STRUCTS:**        
 fakeplayer **(bool)** - *Checks whether a player is a bot or not.*        
 szName[128] **(integer)** - *Get Player Name*        
 szSteamID[20] **(char)** - *STEAM:X:Y:Z*       
 
 ---
 
-**KEY BINDS ENUMERATION:**         
+**KEY_BINDS ENUMERATION:**         
 key_binds.legit_automatic_fire - *LEGIT AUTO FIRE KEY*      
 key_binds.legit_enable - *LEGIT ENABLE KEY*    
 key_binds.double_tap - *DOUBLE TAP KEY*   
@@ -86,7 +124,7 @@ key_binds.body_aim - *BODY AIM KEY*
 
 ---
 
-**KEY BINDS MODE ENUMERATION:**            
+**KEY_BIND_MODE ENUMERATION:**            
 key_bind_mode.hold - *MODE HOLD*              
 key_bind_mode.toggle - *MODE TOGGLE*            
   
@@ -758,107 +796,21 @@ Global.RegisterCallBack("on_paint", draw)
 
 [back to Contents](#-1)
 
-## <a name="5"></a>Event
+## <a name="5"></a>Console
 |-------------------------------|
 
-  [ **RAGEBOT_FIRE** ]
-Syntax:ragebot_fire  
-**Returns** information on ragebot_fire event.  
+  [ **Execute** ]
+Syntax: Console.Execute([Command: string])    
+**Execute** command.      
+```lua 
+local function shot(shot_info)
+    local result = shot_info.result
+    if result == "Hit" and shot_info.server_damage >= 100 then
+       Console.Execute("say 1")
+    end
+end
 
-Following arguments can be used with Event.GetInt for the ragebot_fire event  
-target_index  
-hitbox  
-hitchance  
-safepoint  
-exploit  
-0 = no exploit    
-1 = hide shots/1st shot from doubletap  
-2 = second shot from doubletap  
-
-```java
-function getHitboxName(index)
-{
-    var hitboxName = "";
-    switch (index)
-    {
-        case 0:
-            hitboxName = "Head";
-            break;
-        case 1:
-            hitboxName = "Neck";
-            break;
-        case 2:
-            hitboxName = "Pelvis";
-            break;
-        case 3:
-            hitboxName = "Body";
-            break;
-        case 4:
-            hitboxName = "Thorax";
-            break;
-        case 5:
-            hitboxName = "Chest";
-            break;
-        case 6:
-            hitboxName = "Upper chest";
-            break;
-        case 7:
-            hitboxName = "Left thigh";
-            break;
-        case 8:
-            hitboxName = "Right thigh";
-            break;
-        case 9:
-            hitboxName = "Left calf";
-            break;
-        case 10:
-            hitboxName = "Right calf";
-            break;
-        case 11:
-            hitboxName = "Left foot";
-            break;
-        case 12:
-            hitboxName = "Right foot";
-            break;
-        case 13:
-            hitboxName = "Left hand";
-            break;
-        case 14:
-            hitboxName = "Right hand";
-            break;
-        case 15:
-            hitboxName = "Left upper arm";
-            break;
-        case 16:
-            hitboxName = "Left forearm";
-            break;
-        case 17:
-            hitboxName = "Right upper arm";
-            break;
-        case 18:
-            hitboxName = "Right forearm";
-            break;
-        default:
-            hitboxName = "Generic";
-    }
-
-    return hitboxName;
-}
-function ragebotLogs()
-{
-  
-    ragebot_target = Event.GetInt("target_index");
-    ragebot_target_hitbox = Event.GetInt("hitbox");
-    ragebot_target_hitchance = Event.GetInt("hitchance");
-    ragebot_target_safepoint = Event.GetInt("safepoint");
-    ragebot_target_exploit = Event.GetInt("exploit");
-    targetName = Entity.GetName(ragebot_target);
-  
-    Cheat.Print("[onetap] TARGET: " + targetName + " HITBOX: " + getHitboxName(ragebot_target_hitbox) + " HC: " + ragebot_target_hitchance + " SAFEPOINT: " + ragebot_target_safepoint + " EXPLOIT: " + ragebot_target_exploit + " \n");
-
-}
-
-Cheat.RegisterCallback("ragebot_fire", "ragebotLogs");
+Global.RegisterCallBack("Ragebot_Shot", shot)
 ```
 
   [ **GETSTRING** ]
