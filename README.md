@@ -54,14 +54,14 @@ https://github.com/ZaUserA**
 *https://wiki.alliedmods.net/Counter-Strike:_Global_Offensive_Events*        
 
 **GAME_EVENT STRUCTS:**           
-GetBool(char keyName) **(bool)** - *Get Bool*        
-GetInt(char keyName) **(integer)** - *Get Int*               
-GetFloat(char keyName) **(float)** - *Get Float*                  
-GetString(char keyName) **(bool)** - *Get String*                    
-SetBool(char keyName, bool value) **(bool)** - *Set Bool*                           
-SetInt(char keyName, int value) **(integer)** - *Set Int*                            
-SetFloat(char keyName, float value) **(float)** - *Set Float*                        
-SetString(char keyName, char value) **(bool)** - *Set String*                     
+- GetBool(char keyName) **(bool)** - *Get Bool*        
+- GetInt(char keyName) **(integer)** - *Get Int*               
+- GetFloat(char keyName) **(float)** - *Get Float*                  
+- GetString(char keyName) **(bool)** - *Get String*                    
+- SetBool(char keyName, bool value) **(bool)** - *Set Bool*                           
+- SetInt(char keyName, int value) **(integer)** - *Set Int*                            
+- SetFloat(char keyName, float value) **(float)** - *Set Float*                        
+- SetString(char keyName, char value) **(bool)** - *Set String*                     
 
 ---
 
@@ -72,61 +72,61 @@ SetString(char keyName, char value) **(bool)** - *Set String*
 ---
 
 **COLOR STRUCTS:**       
-r **(integer)** - *red*                   
-g **(integer)** - *green*   
-b **(integer)** - *blue*    
-a **(integer)** - *alpha*    
+- r **(integer)** - *red*                   
+- g **(integer)** - *green*   
+- b **(integer)** - *blue*    
+- a **(integer)** - *alpha*    
 
 ---
 
 **VECTOR STRUCTS:**     
-x **(float)**     
-y **(float)**   
-z **(float)**      
-Length **(float)** - *Returns the euclidean length.*      
-LengthSqr **(float)** - *Returns the squared length of the vector.*          
-Length2D **(float)** - *Returns the length of the vector in two dimensions, without the Z axis.*         
-Length2DSqr **(float)** - *Returns the squared length of the vectors x and y value.*        
-IsZero **(boolean)** - *Checks whenever all fields of the vector are 0.*       
-IsValid **(boolean)** - *Checks when the vector is all valid.*    
-Zero **(void)** - *Sets x, y and z to 0.*          
-DistTo(const Vector& Target) **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
-DistToSqr **(float)** - *Returns the squared distance of 2 vectors*       
-CrossProduct(const Vector& Target) **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
-Normalize **(float)** - *Normalizes the given vector. This changes the vector you call it on.*      
+- x **(float)**     
+- y **(float)**   
+- z **(float)**      
+- Length **(float)** - *Returns the euclidean length.*      
+- LengthSqr **(float)** - *Returns the squared length of the vector.*          
+- Length2D **(float)** - *Returns the length of the vector in two dimensions, without the Z axis.*         
+- Length2DSqr **(float)** - *Returns the squared length of the vectors x and y value.*        
+- IsZero **(boolean)** - *Checks whenever all fields of the vector are 0.*       
+- IsValid **(boolean)** - *Checks when the vector is all valid.*    
+- Zero **(void)** - *Sets x, y and z to 0.*          
+- DistTo(const Vector& Target) **(float)** - *Returns the euclidean distance between the vector an the other vector.*     
+- DistToSqr **(float)** - *Returns the squared distance of 2 vectors*       
+- CrossProduct(const Vector& Target) **(Vector)** - *Calculates the cross product of this vector and the passed one.*      
+- Normalize **(float)** - *Normalizes the given vector. This changes the vector you call it on.*      
 
 ---
 
 **PLAYER_INFO STRUCTS:**        
-fakeplayer **(bool)** - *Checks whether a player is a bot or not.*        
-szName[128] **(integer)** - *Get Player Name*        
-szSteamID[20] **(char)** - *STEAM:X:Y:Z*       
+- fakeplayer **(bool)** - *Checks whether a player is a bot or not.*        
+- szName[128] **(integer)** - *Get Player Name*        
+- szSteamID[20] **(char)** - *STEAM:X:Y:Z*       
 
 ---
 
 **KEY_BINDS ENUMERATION:**         
-key_binds.legit_automatic_fire - *LEGIT AUTO FIRE KEY*      
-key_binds.legit_enable - *LEGIT ENABLE KEY*    
-key_binds.double_tap - *DOUBLE TAP KEY*   
-key_binds.safe_points - *SAFE POINTS KEY*    
-key_binds.damage_override - *DAMAGE OVERRIDE KEY*   
-key_binds.hide_shots - *HIDE SHOTS KEY*    
-key_binds.manual_back - *MANUAL AA BACK KEY*   
-key_binds.manual_left - *MANUAL AA LEFT KEY*    
-key_binds.manual_right - *MANUAL AA RIGHT KEY*   
-key_binds.flip_desync - *FLIP DESYNC KEY*    
-key_binds.thirdperson - *THIRDPERSON KEY*   
-key_binds.automatic_peek - *AUTO PEEK KEY*   
-key_binds.edge_jump - *EDGE JUMP KEY*    
-key_binds.fakeduck - *FAKE DUCK KEY*    
-key_binds.slowwalk - *SLOW WALK KEY*   
-key_binds.body_aim - *BODY AIM KEY*   
+- key_binds.legit_automatic_fire - *LEGIT AUTO FIRE KEY*      
+- key_binds.legit_enable - *LEGIT ENABLE KEY*    
+- key_binds.double_tap - *DOUBLE TAP KEY*   
+- key_binds.safe_points - *SAFE POINTS KEY*    
+- key_binds.damage_override - *DAMAGE OVERRIDE KEY*   
+- key_binds.hide_shots - *HIDE SHOTS KEY*    
+- key_binds.manual_back - *MANUAL AA BACK KEY*   
+- key_binds.manual_left - *MANUAL AA LEFT KEY*    
+- key_binds.manual_right - *MANUAL AA RIGHT KEY*   
+- key_binds.flip_desync - *FLIP DESYNC KEY*    
+- key_binds.thirdperson - *THIRDPERSON KEY*   
+- key_binds.automatic_peek - *AUTO PEEK KEY*   
+- key_binds.edge_jump - *EDGE JUMP KEY*    
+- key_binds.fakeduck - *FAKE DUCK KEY*    
+- key_binds.slowwalk - *SLOW WALK KEY*   
+- key_binds.body_aim - *BODY AIM KEY*   
 
 ---
 
 **KEY_BIND_MODE ENUMERATION:**            
-key_bind_mode.hold - *MODE HOLD*              
-key_bind_mode.toggle - *MODE TOGGLE*            
+- key_bind_mode.hold - *MODE HOLD*              
+- key_bind_mode.toggle - *MODE TOGGLE*            
   
 ---
 
