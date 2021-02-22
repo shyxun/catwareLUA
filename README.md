@@ -290,8 +290,8 @@ end
 Syntax: Menu.NextLine()                 
 **Skip** last menu line.           
 ```lua
-Menu.AddCheckbox("Enable Hit list") // this will be skipped
-Menu.AddCheckbox("Enable Spectator List") // this is from another LUA.
+Menu.AddCheckBox("Enable Hit list") // this will be skipped
+Menu.AddCheckBox("Enable Spectator List") // this is from another LUA.
 Menu.NextLine()   
 menu.AddColorPicker("Hit list Color")
 ```
