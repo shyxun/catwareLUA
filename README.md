@@ -13,7 +13,7 @@ https://github.com/ZaUserA**
 |[Engine](#3)|
 |[Render](#4)|
 |[Console](#5)|
-|[Trace](#6)|
+|[Event](#6)|
 |[User CMD](#7)|
 |[Sound](#8)|
 |[Local](#9)|
