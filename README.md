@@ -122,7 +122,7 @@ https://github.com/ZaUserA**
 
 ---
 
-**COLOR STRUCTS:**       
+**COLOR STRUCTS:** (usage example: Color.new(255, 255, 255, 255)       
 - r **(integer)** - *red*                   
 - g **(integer)** - *green*   
 - b **(integer)** - *blue*    
@@ -189,7 +189,7 @@ https://github.com/ZaUserA**
 
 ---
 
-**VECTOR STRUCTS:**     
+**VECTOR STRUCTS:** (usage example: Vector.new(100, 50, 100)     
 - x **(float)**     
 - y **(float)**   
 - z **(float)**      
