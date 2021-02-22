@@ -169,7 +169,7 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 
   [ **GetFloat** ]
 Syntax: Menu.GetFloat([Name: string])  
-Get float statement of LUA items and Config items ( example: . Only Slider Float.  
+Get float statement of LUA items and Config items. Only Float Slider.  
 ```lua
 Menu.AddSliderFloat("Slider", 0, 1) 
 
@@ -186,7 +186,7 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 
   [ **GetColor** ]
 Syntax: Menu.GetColor([Name: string])  
-Get color of LUA items.
+Get color of LUA items and Config items.
 ```lua
 local function paint_traverse()
 local color = Menu.GetColor("Hit list Color")
@@ -223,7 +223,7 @@ local type = Menu.GetKeyMode(key_binds.body_aim)
 
   [ **SetBool** ]
 Syntax: Menu.SetBool([Name: string], [Value: boolean])  
-Force set bool of an items.
+Force set boolean of an items.
 ```lua
 Menu.SetBool("Player.enable", true)  
 ```
@@ -244,7 +244,7 @@ Menu.SetFloat("Esp.aspect_ratio_amount", 2.0)
 
   [ **SetColor** ]
 Syntax: Menu.SetBool([Name: string], [Value: color])  
-Force set SetInt of an items.
+Force set color of an items.
 ```lua
 Menu.SetColor("Esp.projectiles_color", color.new(0, 0, 0, 0))  
 ```
