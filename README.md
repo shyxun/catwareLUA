@@ -9,7 +9,7 @@ https://github.com/ZaUserA**
 |--------|
 |[Global](#0)|
 |[Menu](#1)|
-|[Entity](#2)|
+|[Game](#2)|
 |[Render](#3)|
 |[Convar](#4)|
 |[Event](#5)|
@@ -66,16 +66,23 @@ end
 Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
+[ **Username** ]
+Syntax: Global.Username
+Used to get forum username.
+```lua
+Global.Username()
+```
+
 [back to Contents](#-1)
 
 ## <a name="1"></a>Menu
 |-------------------------------|
 
   [ **IsVisible** ]
-Syntax: Menu.IsVisible. 
+Syntax: Menu.IsVisible() 
 True if the menu is open, false otherwise. 
 ```lua
-if (Menu.IsVisible == true)
+if (Menu.IsVisible() == true)
 Global.AddLog("Menu is open!")
 end
 ```
@@ -91,14 +98,14 @@ menu.AddColorPicker("Hit list Color")
 ```
 
   [ **AddCheckBox** ]
-Usage: Menu.AddCheckBox([Name: string])   
+Syntax: Menu.AddCheckBox([Name: string])   
 Create a checkbox in LUA tab.
 ```lua
 Menu.AddCheckBox("Checkbox")   
 ```
 
   [ **AddComboBox** ]
-Usage: Menu.AddComboBox([Name: string], [Labels: string vector])   
+Syntax: Menu.AddComboBox([Name: string], [Labels: string vector])   
 Create a combobox in LUa tab. 
 ```lua
 Menu.AddComboBox("Combobox", { "Selection 1", "Selection 2" })   
@@ -106,28 +113,28 @@ Menu.AddComboBox("Combobox", { "Selection 1", "Selection 2" })
 
 
   [ **AddSliderInt** ]
-Usage: Menu.AddSliderInt([Name: string], [Min: integer], [Max: integer])    
+Syntax: Menu.AddSliderInt([Name: string], [Min: integer], [Max: integer])    
 Create a slider (integer).  
 ```lua
 Menu.AddSliderInt("Int", 0, 100) 
 ```
 
   [ **AddSliderFloat** ]
-Usage: Menu.AddSliderFloat([Name: string], [Min: float], [Max: float])
+Syntax: Menu.AddSliderFloat([Name: string], [Min: float], [Max: float])
 Create a slider (float). 
 ```lua
 Menu.AddSliderFloat("Float", 0.0, 100.0) 
 ```
 
   [ **AddColorPicker** ]
-Usage: Menu.AddColorPicker([Name: string])  
+Syntax: Menu.AddColorPicker([Name: string])  
 Create a Color Picker.
 ```lua
 Menu.AddColorPicker("Color Picker") 
 ```
 
   [ **GetBool** ]
-Usage: Menu.GetBool([Name: string])  
+Syntax: Menu.GetBool([Name: string])  
 Get bool statement of LUA item and Config items.  
 ```lua
 Menu.AddCheckBox("Checkbox") 
@@ -144,7 +151,7 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
   [ **GetInt** ]
-Usage: Menu.GetInt([Name: string])  
+Syntax: Menu.GetInt([Name: string])  
 Get integer statement of LUA items and Config items. Can be Combo Box or Slider Int!  
 ```lua
 Menu.AddSliderInt("Slider", 0, 1) 
@@ -161,7 +168,7 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
   [ **GetFloat** ]
-Usage: Menu.GetFloat([Name: string])  
+Syntax: Menu.GetFloat([Name: string])  
 Get float statement of LUA items and Config items ( example: . Only Slider Float.  
 ```lua
 Menu.AddSliderFloat("Slider", 0, 1) 
@@ -190,7 +197,7 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
   [ **GetKeyState** ]
-Usage: Menu.GetKeyState([Keybind: integer])
+Syntax: Menu.GetKeyState([Keybind: integer])
 Get current state of Keybind.   
 ```lua
 local function paint_traverse()
@@ -203,35 +210,40 @@ Global.RegisterCallBack("PaintTraverse", paint_traverse)
 ```
 
   [ **GetKeyMode** ]
-Usage: Menu.GetKeyMode([Keybind: integer])
-Get current mode of Keybind. Hold mode will return 0. Toggle mode will return 1.
+Syntax: Menu.GetKeyMode([Keybind: integer])
+Get current mode of Keybind. 
+
+**MODE**
+Hold will return 0.
+Toggle will return 1.
+
 ```lua
 local type = Menu.GetKeyMode(key_binds.body_aim)
 ```
 
   [ **SetBool** ]
-Usage: Menu.SetBool([Name: string], [Value: boolean])  
+Syntax: Menu.SetBool([Name: string], [Value: boolean])  
 Force set bool of an items.
 ```lua
 Menu.SetBool("Player.enable", true)  
 ```
 
   [ **SetInt** ]
-Usage: Menu.SetInt([Name: string], [Value: integer])  
+Syntax: Menu.SetInt([Name: string], [Value: integer])  
 Force set integer of an items.
 ```lua
 Menu.SetInt("Esp.viewmodel_fov", 100)  
 ```
 
   [ **SetFloat** ]
-Usage: Menu.SetBool([Name: string], [Value: float])  
+Syntax: Menu.SetBool([Name: string], [Value: float])  
 Force set float of an items.
 ```lua
 Menu.SetFloat("Esp.aspect_ratio_amount", 2.0)  
 ```
 
   [ **SetColor** ]
-Usage: Menu.SetBool([Name: string], [Value: color])  
+Syntax: Menu.SetBool([Name: string], [Value: color])  
 Force set SetInt of an items.
 ```lua
 Menu.SetColor("Esp.projectiles_color", color.new(0, 0, 0, 0))  
@@ -240,458 +252,85 @@ Menu.SetColor("Esp.projectiles_color", color.new(0, 0, 0, 0))
 [back to Contents](#-1)
 
 
-## <a name="2"></a>Entity
+## <a name="2"></a>Game
 |-------------------------------|
 
-  [ **GETRENDERBOX** ]
-Syntax: Entity.GetRenderBox(entity_index)  
-**Returns** an array object with state (valid/invalid), min X, min Y, max X, max Y    
-```java
-var target = 0
-function onCM(){
-    target = Ragebot.GetTarget()
-}
-function onDraw(){
-    var pos = Entity.GetRenderBox(target)
-    var font = Render.AddFont("Verdana", 8, 400)
-    var a = pos[3] - pos[1]
-    a /= 2
-    a += pos[1]
-    Render.StringCustom(a,pos[2] - 30,1,"TARGET", [255,255,255,255], font)
-}
-Cheat.RegisterCallback("CreateMove", "onCM")
-Cheat.RegisterCallback("Draw", "onDraw")
+  [ **Framerate** ]
+Syntax: Game.Framerate()
+**Returns** framerate.
+```lua
+Game.Framerate()
 ```
 
-  [ **GETWEAPONS** ]
-Syntax: Entity.GetWeapons( entity_index )  
-**Returns** an array of weapons of the entity.  
-```java
-localplayer_weapons = Entity.GetWeapons(Entity.GetLocalPlayer())
+  [ **Ping** ]
+Syntax: Game.Ping()
+**Returns** ping.
+```lua
+Game.Ping()
 ```
 
-
-  [ **GETENTITIESBYCLASSID** ]
-Syntax: Entity.GetEntitiesByClassID( int classid )  
-**Returns** entities of given Class ID.  
-```java
- entities = Entity.GetEntities();
-    cEnt = Entity.GetEntitiesByClassID(131);
-    for ( i = 0; i < cEnt.length; i++)
-    {
-    cName = Entity.GetName(cEnt[i]);
-  
-    Cheat.Print("Entity class: " + cName + "\n");
+  [ **ServerIPAddress** ]
+Syntax: Game.ServerIPAddress()
+**Returns** Server IP Address.
+```lua
+Game.ServerIPAddress()
 ```
 
-
-  [ **GETHITBOXPOSITION** ]
-Syntax: Entity.GetHitboxPosition(int ent_index, int hitbox_index)
-**Returns** an array object with X, Y, Z for hitbox position.  
-
-**Hitbox indexes:**
-HITBOX_HEAD = 0  
-HITBOX_NECK = 1  
-HITBOX_PELVIS = 2  
-HITBOX_BODY = 3  
-HITBOX_THORAX = 4  
-HITBOX_CHEST = 5  
-HITBOX_UPPER_CHEST = 6  
-HITBOX_LEFT_THIGH = 7  
-HITBOX_RIGHT_THIGH = 8  
-HITBOX_LEFT_CALF = 9  
-HITBOX_RIGHT_CALF = 10  
-HITBOX_LEFT_FOOT = 11  
-HITBOX_RIGHT_FOOT = 12  
-HITBOX_LEFT_HAND = 13  
-HITBOX_RIGHT_HAND = 14  
-HITBOX_LEFT_UPPER_ARM = 15  
-HITBOX_LEFT_FOREARM = 16  
-HITBOX_RIGHT_UPPER_ARM = 17  
-HITBOX_RIGHT_FOREARM = 18  
-
-```java
-    enemies = Entity.GetEnemies();
-    for (i=0; i<enemies.length; i++)
-    {
-        hitbox_pos = Entity.GetHitboxPosition( enemies[i], 0 );
-        enemyName = Entity.GetName(enemies[i]);
-        Cheat.Print(enemyName + "'s HEAD hitbox position is X: " + hitbox_pos[0] + " Y: " + hitbox_pos[1] + " Z: " + hitbox_pos[2] + " \n");
-    }
+  [ **Time** ]
+Syntax: Game.Time()
+**Returns** windows current time.  
+```lua
+Game.Time()
 ```
 
-  [ **GETEYEPOSITION** ]
-Syntax: Entity.GetEyePosition(int ent_index).  
-**Returns**  an array object with X, Y, Z for eye position.  
-```java
- localplayer_eyepos = Entity.GetEyePosition( Entity.GetLocalPlayer( ) );
- Cheat.Print("Local player eye pos X: " + localplayer_eyepos[0] + " Y: " + localplayer_eyepos[1] + " Z: " + localplayer_eyepos[2] + " \n");
+  [ **Realtime** ]
+Syntax: Game.Realtime()  
+**Returns** realtime. 
+```lua
+Game.Realtime()
 ```
 
-  [ **GETGAMERULESPROXY** ]
-Syntax: Entity.GetGameRulesProxy()  
-**Returns** entity index of game rules entity.  
-```java
- function valveServer( )
-{
-    gamerules = Entity.GetGameRulesProxy();
-    is_valve_server = Entity.GetProp( gamerules, "CCSGameRulesProxy", "m_bIsValveDS" );
-    Cheat.Print("Is this Valve Dedicated server: " + is_valve_server + "\n");
-}
+  [ **Curtime** ]
+Syntax: Game.Curtime()
+**Returns** curtime.  
+```lua
+Game.Curtime()
+```
 
-Cheat.RegisterCallback("Draw", "valveServer");
+  [ **Frametime** ]
+Syntax: Game.Frametime() 
+**Returns** frametime.
+```lua
+Game.Frametime() 
 ```
 
 
-  [ **ISBOT** ]
-Syntax:Entity.IsBot(ent_index)  
-Entity.IsBot can be used to check whether passed entity index is a bot or not.  
-```java
- players = Entity.GetPlayers();
-        for ( i = 0; i < players.length; i++)
-        {
-            if (Entity.IsBot(players[i]))
-            {
-                name = Entity.GetName(players[i]);
-                Cheat.Print("Player: " + name + " is bot\n");
-            }
-        }
+  [ **Tickcount** ]
+Syntax: Game.Tickcount() 
+**Returns** tickcount.
+```lua
+Game.Tickcount()
 ```
 
-
-  [ **GETWEAPON** ]
-Syntax:Entity.GetWeapon(ent_index)  
-Entity.GetWeapon returns weapon name of entity index passed as argument.  
-**returns** weapon index of entity index passed as argument.  
-```java
-        localplayer_index = Entity.GetLocalPlayer( );
-        localplayer_weapon = Entity.GetWeapon(localplayer_index);
-        weapon_name = Entity.GetName(localplayer_weapon);
-        Cheat.Print("Localplayer weapon is: " + weapon_name + "\n");
+  [ **Framecount** ]
+Syntax: Game.Framecount()
+**Returns** framecount. 
+```lua
+Game.Framecount()
 ```
 
-  [ **SETPROP** ]
-Entity.SetProp(player_entity_index, table_name, prop_name, new_value)  
-Can be used to override property values.  
-```java
-function ragdollForce( )
-{
-    framestage = Cheat.FrameStage();
-    if (framestage == 3)
-    {
-        entities = Entity.GetEntities();
-        for (i = 0; i < entities.length; i++)
-        {
-            classID = Entity.GetClassID(entities[i]);
-            if (classID == 42)
-            {
-                dir = Entity.GetProp(entities[i], "CCSRagdoll", "m_vecRagdollVelocity");
-                dir[0] = dir[0] * 100;
-                dir[1] = dir[1] * 100;
-                dir[2] = dir[2] * 100;
-                dir1 = Entity.GetProp(entities[i], "CBaseAnimating", "m_vecForce");
-                dir1[0] = dir1[0] * 100;
-                dir1[1] = dir1[1] * 100;
-                dir1[2] = dir1[2] * 100;
-                Entity.SetProp(entities[i], "CCSRagdoll", "m_vecRagdollVelocity", dir);
-                Entity.SetProp(entities[i], "CBaseAnimating", "m_vecForce", dir1);
-            }
-        }
-    }
-}
-
-Cheat.RegisterCallback("FrameStageNotify", "ragdollForce");
+  [ **IntervalPerTick** ]
+Syntax: Game.IntervalPerTick()
+**Returns** interval per tick.
+```lua
+Game.IntervalPerTick()
 ```
 
-
-  [ **GETPROP** ]
-Syntax:Entity.GetProp(player_entity_index, table_name, prop_name)  
-**Returns** the value of the property.  
-```java
-function onRender( )
-{
-    entities = Entity.GetEntities();
-    for ( i = 0; i < entities.length; i++ )
-    {
-     if ( Entity.IsLocalPlayer( entities[i] ) )
-        {
-          duckamount = Entity.GetProp( entities[i], "CBasePlayer", "m_flDuckAmount" );
-          Cheat.Print( duckamount + "\n" );
-        }
-    }
-}
-Cheat.RegisterCallback("Draw", "onRender");
-```
-
-  [ **GETRENDERORIGIN** ]
-Syntax:Entity.GetRenderOrigin()  
-Entity.GetRenderOrigin **returns** an array of x, y, z.  
-```java
-function drawPlayerLines( )
-{
-    players = Entity.GetEnemies( );
-
-    for ( i = 0; i < players.length; i++ )
-    {
-      if ( Entity.IsAlive( players[i] ) )
-      {
-        world = Entity.GetRenderOrigin( players[i] );
-
-        screen_bot = Render.WorldToScreen( world );
-
-        world_top = world;
-        world_top[2] = world_top[2] + 64;
-
-        screen_top = Render.WorldToScreen( world_top );
-       
-        Render.Line( screen_bot[0], screen_bot[1], screen_top[0], screen_top[1], [ 0, 0, 255, 255 ] );
-
-    }
-  }
-}
-Cheat.RegisterCallback("Draw", "drawPlayerLines");
-```
-
-  [ **GETNAME** ]
-Syntax:Entity.GetName(entity_index)  
-**Returns** a string that is the player name..  
-```java
-        players = Entity.GetPlayers();
-        for ( i = 0; i < players.length; i++)
-        {
-            playerName = Entity.GetName(players[i]);
-            Cheat.Print("Players: " + playerName + " \n");
-        }
-```
-
-  [ **GETCLASSNAME** ]
-Syntax:Entity.GetClassName()  
-**Returns** a string that represents the class name instead of the class ID.  
-```java
-function onRender( )
-{
-
-    entities = Entity.GetEntities();
-
-    for ( i = 0; i < entities.length; i++ )
-    {
-        world_pos = Entity.GetRenderOrigin( entities[i] );
-        name = Entity.GetClassName( entities[i] );
-
-        screen_pos = Render.WorldToScreen( world_pos );      
-        Render.String( screen_pos[0], screen_pos[1], 1, name, [ 255, 255, 255, 255 ] );
-        Render.Line( screen_pos[0], screen_pos[1], screen_pos[0], screen_pos[1] + 50, [ 0, 0, 255, 255 ] );
-   
-  }
-}
-Cheat.RegisterCallback("Draw", "onRender");
-```
-
-  [ **GETCLASSNAME** ]
-Syntax:Entity.GetClassID(entity_index)  
-**Returns** a number that is the class ID, lists of class IDs can be found HERE: https://pastebin.com/jyx5sGyC  
-```java
-        entities = Entity.GetEntities();
-        for ( i = 0; i < entities.length; i++)
-        {
-        cID = Entity.GetClassID(entities[i]);
-        Cheat.Print("Entity class ID: " + cID + "\n");
-        }
-```
-
-
-  [ **ISDORMANT** ]
-Syntax:Entity.IsDormant(entity_index)  
-Finds out whether an entity is dormant.  
-```java
-        players = Entity.GetPlayers();
-        for ( i = 0; i < players.length; i++)
-        {
-            if ( Entity.IsDormant(players[i]))
-            {
-            plrName = Entity.GetName(players[i]);
-            Cheat.Print("Dormant player name is: " + plrName + " \n");
-            }
-        }
-```
-
-  [ **ISALIVE** ]
-Syntax:Entity.IsAlive(entity_index)  
-Finds out whether an entity is alive.  
-```java
-    localplayer_index = Entity.GetLocalPlayer( );
-    localplayer_alive = Entity.IsAlive( localplayer_index );
-    if (localplayer_alive == true)
-    {
-        Cheat.Print("Local player is alive\n");
-    }
-    else
-    {
-        Cheat.Print("Local player is not alive\n");
-    }
-```
-
-  [ **ISVALID** ]
-Syntax:Entity.IsValid(entity index)  
-Finds out whether an entity is valid.  
-```java
-players = Entity.GetPlayers();
- 
-    for (i=0; i < players.length; i++);
-    {
-        if (Entity.IsValid(players[i]))
-        {
-        Cheat.Print("Amount of valid players: " + players + "\n");
-        }
-    }
-```
-
-
-  [ **ISLOCALPLAYER** ]
-Syntax:Entity.IsLocalPlayer(entity_index)  
-Finds out whether an entity is the local player.  
-```java
-        players = Entity.GetPlayers();
-        for ( i = 0; i < players.length; i++)
-        {
-            if ( Entity.IsLocalPlayer(players[i]))
-            {
-                plrName = Entity.GetName(players[i]);
-                Cheat.Print("LocalPlayer name is: " + plrName + " \n");
-            }
-        }
-```
-
-  [ **ISENEMY** ]
-Syntax:Entity.IsEnemy(entity index)  
-Finds out whether an entity is an enemy.  
-```java
-        players = Entity.GetPlayers();
-        for ( i = 0; i < players.length; i++)
-        {
-            if ( Entity.IsEnemy(players[i]))
-            {
-                plrName = Entity.GetName(players[i]);
-                Cheat.Print("Player: " + plrName + " is enemy\n");
-            }
-        }
-```
-
-
-  [ **ISTEAMMATE** ]
-Syntax:Entity.IsTeammate(entity_index)  
-Finds out whether an entity is a teammate.  
-```java
-        players = Entity.GetPlayers();
-        for ( i = 0; i < players.length; i++)
-        {
-            if ( Entity.IsTeammate(players[i]))
-            {
-                plrName = Entity.GetName(players[i]);
-                Cheat.Print("Player: " + plrName + " is teammate\n");
-            }
-        }
-```
-
-
-
-  [ **GETENTITYFROMUSERID** ]
-Syntax:Entity.GetEntityFromUserID(userid)  
-Finds the entity of the given user id.  
-```java
-function on_player_death( )
-{
-       
-        attacker = Event.GetInt("attacker");
-        attacker_index = Entity.GetEntityFromUserID(attacker);
-        victim = Event.GetInt("userid");
-        victim_index = Entity.GetEntityFromUserID(victim);
-        attacker_name = Entity.GetName(attacker_index);
-        victim_name = Entity.GetName(victim_index);
-        Cheat.Print(attacker_name + " just killed " + victim_name + "\n");
- 
-     
-}
-Cheat.RegisterCallback("player_death", "on_player_death");
-```
-
-  [ **GETLOCALPLAYER** ]
-Syntax:Entity.GetLocalPlayer()  
-**Returns** the entity index of local the player.  
-```java
-    localplayer_index = Entity.GetLocalPlayer( );
-    localplayer_alive = Entity.IsAlive( localplayer_index );
-    if (localplayer_alive == true)
-    {
-        Cheat.Print("Local player is alive\n");
-    }
-    else
-    {
-        Cheat.Print("Local player is not alive\n");
-    }
-```
-
-
-  [ **GETTEAMMATES** ]
-Syntax:Entity.GetTeammates()  
-**Returns** an array of teammate entity indexes.    
-```java
-    localplayer_index = Entity.GetLocalPlayer( );
-    localplayer_alive = Entity.IsAlive( localplayer_index );
-    if (localplayer_alive == true)
-    {
-        Cheat.Print("Local player is alive\n");
-    }
-    else
-    {
-        Cheat.Print("Local player is not alive\n");
-    }
-```
-
-  [ **GETENEMIES** ]
-Syntax:Entity.GetEnemies()  
-**Returns** an array of enemy entity indexes.  
-```java
-    players = Entity.GetEnemies();
-    for (i=0; i < players.length; i++)
-    {
-        Cheat.Print("Enemy entity index: " + players[i] + "\n");
-    }
-```
-
-  [ **GETPLAYERS** ]
-Syntax:Entity.GetPlayers()  
-**Returns** an array of player entity indexes.  
-```java
-    players = Entity.GetPlayers()
-    for (i=0; i < players.length; i++)
-    {
-        Cheat.Print("Player number: " + players[i] + "\n");
-    }
-```
-
-
-  [ **GETPLAYERS** ]
-Syntax:Entity.GetEntities()  
-**Returns** an array of entity indexes.  
-```java
-function onRender( )
-{
-
-    entities = Entity.GetEntities();
-
-    for ( i = 0; i < entities.length; i++ )
-    {
-        world_pos = Entity.GetRenderOrigin( entities[i] );
-        name = Entity.GetClassName( entities[i] );
-
-        screen_pos = Render.WorldToScreen( world_pos );      
-        Render.String( screen_pos[0], screen_pos[1], 1, name, [ 255, 255, 255, 255 ] );
-        Render.Line( screen_pos[0], screen_pos[1], screen_pos[0], screen_pos[1] + 50, [ 0, 0, 255, 255 ] );
-   
-  }
-}
-Cheat.RegisterCallback("Draw", "onRender");
+  [ **MaxClients** ]
+Syntax: Game.MaxClients()
+**Returns** max clients.
+```lua
+Game.MaxClients()
 ```
 
 [back to Contents](#-1)
