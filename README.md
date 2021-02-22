@@ -10,7 +10,7 @@ https://github.com/ZaUserA**
 |[Global](#0)|
 |[Menu](#1)|
 |[Game](#2)|
-|[Render](#3)|
+|[Engine](#3)|
 |[Convar](#4)|
 |[Event](#5)|
 |[Trace](#6)|
@@ -26,6 +26,22 @@ https://github.com/ZaUserA**
 |[Material](#d)|
 
 ---
+
+**STRUCTS:**
+x **(float)**
+y **(float)**
+z **(float)** 
+Length **Returns the euclidean length.**
+LengthSqr **Returns the squared length of the vector.**
+Length2D **Returns the length of the vector in two dimensions, without the Z axis.**
+Length2DSqr **Returns the squared length of the vectors x and y value.**
+IsZero **Checks whenever all fields of the vector are 0.**
+IsValid **Checks when the vector is all valid.**
+Zero **Sets x, y and z to 0.**
+DistTo **Returns the euclidean distance between the vector and the other vector.**
+DistToSqr **Returns the squared distance of 2 vectors**
+CrossProduct **Calculates the cross product of this vector and the passed one.**
+Normalize **Normalizes the given vector. This changes the vector you call it on.**
 
 ## <a name="0"></a>Global
 |-------------------------------|
@@ -139,7 +155,7 @@ Get bool statement of LUA item and Config items.
 ```lua
 Menu.AddCheckBox("Checkbox") 
 
-local function paint_traverse()
+local function draw()
 if Menu.GetBool("Checkbox") then
 Global.AddLog("This bool is currently active!")
 end
@@ -147,7 +163,7 @@ else
 Global.AddLog("This bool is currently disabled!")
 end
 
-Global.RegisterCallBack("PaintTraverse", paint_traverse)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **GetInt** ]
@@ -156,7 +172,7 @@ Get integer statement of LUA items and Config items. Can be Combo Box or Slider 
 ```lua
 Menu.AddSliderInt("Slider", 0, 1) 
 
-local function paint_traverse()
+local function draw()
 if Menu.GetInt("Slider") > 0 then
 Global.AddLog("This int is currently 1!")
 end
@@ -164,7 +180,7 @@ else
 Global.AddLog("This int is currently 0!")
 end
 
-Global.RegisterCallBack("PaintTraverse", paint_traverse)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **GetFloat** ]
@@ -173,7 +189,7 @@ Get float statement of LUA items and Config items. Only Float Slider.
 ```lua
 Menu.AddSliderFloat("Slider", 0, 1) 
 
-local function paint_traverse()
+local function draw()
 if Menu.GetFloat("Slider") > 0.1 then
 Global.AddLog("This int is currently higher than 0!")
 end
@@ -181,32 +197,32 @@ else
 Global.AddLog("This int is currently 0!")
 end
 
-Global.RegisterCallBack("PaintTraverse", paint_traverse)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **GetColor** ]
 Syntax: Menu.GetColor([Name: string])  
 Get color of LUA items and Config items.
 ```lua
-local function paint_traverse()
+local function draw()
 local color = Menu.GetColor("Hit list Color")
 render.draw_rect_filled(0, 0, 1366, 768, color) 
 end
 
-Global.RegisterCallBack("PaintTraverse", paint_traverse)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **GetKeyState** ]
 Syntax: Menu.GetKeyState([Keybind: integer])
 Get current state of Keybind.   
 ```lua
-local function paint_traverse()
+local function draw()
 if menu.get_key_bind_state(key_binds.double_tap) then
 Global.AddLog("Doubletap is currently active!")
 end
 end
 
-Global.RegisterCallBack("PaintTraverse", paint_traverse)
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
   [ **GetKeyMode** ]
@@ -335,330 +351,120 @@ Game.MaxClients()
 
 [back to Contents](#-1)
 
-## <a name="3"></a>RENDER
+## <a name="3"></a>Engine
 |-------------------------------|
 
-  [ **FILLEDCIRCLE** ]
-Syntax:Render.FilledCircle(x, y, r, color)  
-Draws a filled circle with the given position, radius, and RGBA color.  
-**Returns**  true on success or false on failure.  
-```java
-function drawCircle()
-{
-   Render.FilledCircle( 150, 150, 50, [ 255, 255, 255, 255 ] );
-}
-
-Cheat.RegisterCallback("Draw", "drawCircle")
-// This function will draw filled circle on screen.
+  [ **ScreenWidth** ]
+Syntax: Engine.ScreenWidth()
+**Returns** screen width. 
+```lua
+Menu.AddSliderInt("Screen Width", 0, Engine.ScreenWidth())
 ```
 
-  [ **TEXTUREDRECT** ]
-Syntax:Render.TexturedRect( x, y, width, height, texture );    
-Draws a textured rectangle with the given position, size, and texture.  
-**Returns**  true on success or false on failure.  
-```java
-function drawTexture()
-{
-    forumBG = Render.AddTexture("ot/scripts/forumclr.png");
-    Render.TexturedRect( 300, 300, 100, 100, forumBG );
-}
-Cheat.RegisterCallback("Draw", "drawTexture");
+  [ **ScreenHeight** ]
+Syntax: Engine.ScreenHeight()
+**Returns** screen height. 
+```lua
+Menu.AddSliderInt("Screen Height", 0, Engine.ScreenHeight())
 ```
 
-  [ **TEXTUREDRECT** ]
-Syntax:Render.TexturedRect( x, y, width, height, texture );    
-Draws a textured rectangle with the given position, size, and texture.  
-**Returns**  true on success or false on failure.  
-```java
-function drawTexture()
-{
-    forumBG = Render.AddTexture("ot/scripts/forumclr.png");
-    Render.TexturedRect( 300, 300, 100, 100, forumBG );
-}
-Cheat.RegisterCallback("Draw", "drawTexture");
+  [ **GetPlayerInfo** ]
+Syntax: Engine.GetPlayerInfo()
+
+**STRUCTS:**
+szName **(char)** - *Player Name*
+userId **(integer)** - *Unique Server Identifier*
+szSteamID **(char)** - *STEAM:X:Y:Z*
+iSteamID **(integer)** - *Steam ID*
+friendsName **(char)** - *Friends Name*
+fakeplayer **(boolean)** - *Bots*
+ishltv **(boolean)** - *HLTV*
+
+**Returns** player info. 
+```lua
+Engine.GetPlayerInfo()
 ```
 
-  [ **ADDTEXTURE** ]
-Syntax:Render.AddTexture( path );    
-Adds a texture.  
-**Returns** texture identifier.  
+  [ **GetPlayerForUserID** ]
+Syntax: Engine.GetPlayerForUserID()
+**Returns** player for userid. 
+```lua
+local function draw()
+local player = Engine.GetPlayerForUserID(1)
+local me = Engine.GetLocalPlayerIndex()
+if player ~= me then
+Global.AddLog("I'm local player!")
+end
+end
 
-**Notes:**
-- Path is relative to CSGO folder, so you don't need full path.  
-- Supports the following formats:  
-.bmp  
-.dds  
-.dib  
-.hdr  
-.jpg  
-.pfm  
-.png  
-.ppm  
-.tga  
-
-```java
-function drawTexture()
-{
-    forumBG = Render.AddTexture("ot/scripts/forumclr.png");
-    Render.TexturedRect( 300, 300, 100, 100, forumBG );
-}
-Cheat.RegisterCallback("Draw", "drawTexture");
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
+  [ **GetLocalPlayerIndex** ]
+Syntax: Engine.GetLocalPlayerIndex()
+**Returns** local player index. 
+```lua
+local function draw()
+local player = Engine.GetPlayerForUserID(1)
+local me = Engine.GetLocalPlayerIndex()
+if player ~= me then
+Global.AddLog("I'm local player!")
+end
+end
 
-  [ **TEXTSIZECUSTOM** ]
-Syntax:Render.TextSizeCustom( string text, font );  
-Finds the text width size of the given string with custom font.  
-**Returns** given text height and width.  
-```java
-function getTextSize()
-{
-    font = Render.AddFont( "Comic Sans MS", 15, 400);
-    textSize = Render.TextSizeCustom("Hello", font);
-    Cheat.Print("Text width: " + textSize[0] + "height: " + textSize[1] + "\n");
-}
-
-Cheat.RegisterCallback("Draw", "getTextSize")
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **STRINGCUSTOM** ]
-Syntax:Render.StringCustom( int x, int y, int align, string text, [ color ], font )  
-Draws a string with custom font.  
-**Returns** true on success or false on failure.  
-```java
-function comicSans()
-{
-    font = Render.AddFont( "Comic Sans MS", 15, 100);
-    Render.StringCustom( 100, 100, 0, "This is Comic Sans Text", [ 255, 255, 255, 255 ], font );
-   
-}
-Cheat.RegisterCallback("Draw", "comicSans")
-```
-  [ **FINDFONT** ]
-Syntax:Render.FindFont( string name, int size, int weight );  
-Searches for custom font.  
-**Returns** font identifier.  
-```java
-function getIdentifier()
-{
-    font = Render.AddFont( "Comic Sans MS", 15, 100);
-    identifier = Render.FindFont( "Comic Sans MS", 15, 100 );
-    Cheat.Print("Font identifier is: " + identifier + "\n");
-   
-}
-Cheat.RegisterCallback("Draw", "getIdentifier")
+  [ **GetViewAngles** ]
+Syntax: Engine.GetViewAngles()
+
+**Returns** local player viewangles. 
+```lua
+local function draw()
+local player = Engine.GetPlayerForUserID(1)
+local me = Engine.GetLocalPlayerIndex()
+if player ~= me then
+Global.AddLog("I'm local player!")
+end
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **ADDFONT** ]
-Syntax:Render.AddFont( string name, int size, int weight );  
-Adds a custom font.  
-**Returns** font identifier.  
+  [ **LevelName** ]
+Syntax: Engine.LevelName()
+**Returns** level name. 
+```lua
+local function draw()
+local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
+Render.DrawText(font, 100, 100, color.new(255, 0, 0), tostring(Engine.LevelName()))
+end
 
-Argument weight defines from thickness.
-100	Lightest.
-200	Bolder than 100, lighter than 300.
-300	Bolder than 200, lighter than 400.
-400	Bolder than 300, lighter than 500. Equivalent of normal.
-500	Bolder than 400, lighter than 600.
-600	Bolder than 500, lighter than 700.
-700	Bolder than 600, lighter than 800. Equivalent of bold.
-800	Bolder than 700, lighter than 900.
-900	Boldest.
-
-```java
-function comicSans()
-{
-    font = Render.AddFont( "Comic Sans MS", 15, 100);
-    Render.StringCustom( 100, 100, 0, "This is Comic Sans Text", [ 255, 255, 255, 255 ], font );
-   
-}
-Cheat.RegisterCallback("Draw", "comicSans")
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **FINDFONT** ]
-Syntax:Render.FindFont( string name, int size, int weight );  
-Searches for custom font.  
-**Returns** font identifier.  
-```java
-function getIdentifier()
-{
-    font = Render.AddFont( "Comic Sans MS", 15, 100);
-    identifier = Render.FindFont( "Comic Sans MS", 15, 100 );
-    Cheat.Print("Font identifier is: " + identifier + "\n");
-   
-}
-Cheat.RegisterCallback("Draw", "getIdentifier")
+  [ **LevelNameShort** ]
+Syntax: Engine.LevelNameShort()
+**Returns** short level name. 
+```lua
+local function draw()
+local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
+Render.DrawText(font, 100, 100, color.new(255, 0, 0), tostring(Engine.LevelNameShort()))
+end
+
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
+  [ **MapGroupName** ]
+Syntax: Engine.MapGroupName()
+**Returns** map group name. 
+```lua
+local function draw()
+local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
+Render.DrawText(font, 100, 100, color.new(255, 0, 0), tostring(Engine.MapGroupName()))
+end
 
-  [ **POLYGON** ]
-Syntax:Render.Polygon( [ [ x, y ], [ x1, y1 ], [ x2, y2 ] ], [ R, G, B, A ] );  
-Draws a polygon with shape based on arguments passed.  
-```java
-function drawPolygon()
-{
-    Render.Polygon( [ [ 10.0, 200.0 ], [ 100.0, 10.0 ], [ 200.0, 160.0 ] ], [ 255, 0, 0, 255 ] );
-}
-Cheat.RegisterCallback("Draw", "drawPolygon");
-```
-
-  [ **GRADIENTRECT** ]
-Syntax:Render.GradientRect( x, y, w, h, dir, [ col1 ], [ col2 ] );  
-Draws a gradient rectangle with the given position, size, and RGBA color.  
-**Returns** true on success or false on failure.  
-```java
-function drawGradient()
-{
-
-    Render.GradientRect( 100, 100, 100, 100, 0, [ 255, 0, 0, 255 ], [ 255, 255, 255, 255 ]);
-    Render.GradientRect( 210, 100, 100, 100, 1, [ 255, 0, 0, 255 ], [ 255, 255, 255, 255 ]);
-}
-Cheat.RegisterCallback("Draw", "drawGradient")
-```
-
-  [ **TEXTSIZE** ]
-Syntax:Render.TextSize(string, int size [optional]);  
-Finds the text width size of the given string.  
-**Returns** 0 - default, 1 - bold, 2 - small, 3 - small bold, 4 - large, 5 - icon, 6 - small icon, 8 to 48 regular font with specific size.  
-```java
-var text_width = Render.TextSize("Hello");
-var screen_size = Global.GetScreenSize();
-var screen_height = screen_size[0];
-var screen_width = screen_size[1];
-
-Render.String( screen_width - text_width[1], 100, 0, "Hello", [255, 255, 255, 255], 4 );
-```
-
-  [ **GETSCREENSIZE** ]
-Syntax:Render.GetScreenSize()  
-Returns width and height of your screen.  
-```java
-function getScreenSize()
-{
-    var screen_size = Render.GetScreenSize();
-    Cheat.Print( "Height of screen is: " + screen_size[0] + "\n");
-    Cheat.Print( "Width of screen is: " + screen_size[1] + "\n");
-}
-Cheat.RegisterCallback("Draw", "getScreenSize")
-// This function will print your screen height and width in in-game console.
-```
-
-  [ **WORLDTOSCREEN** ]
-Syntax:Render.WorldToScreen([x, y, z])  
-Finds the world position for the given screen position.  
-Returns the value of the parameter or false.  
-```java
-function drawDuckAmount( )
-{
-    players = Entity.GetEnemies( );
-
-    for ( i = 0; i < players.length; i++ )
-    {
-      if ( Entity.IsAlive( players[i] ) )
-      {
-        world = Entity.GetRenderOrigin( players[i] );
-
-        screen_bot = Render.WorldToScreen( world );
-
-        duckamount = Entity.GetProp( players[i], "DT_BasePlayer", "m_flDuckAmount" );
-    
-        world_top = world;
-        world_top[2] = world_top[2] + ( 64 * ( 1 - duckamount ) );
-
-        screen_top = Render.WorldToScreen( world_top );
-      
-        if ( screen_bot[2] == 1 && screen_top[2] == 1 )
-        {
-            Render.Line( screen_bot[0], screen_bot[1], screen_top[0], screen_top[1], [ 0, 0, 255, 255 ] );
-        }
-    }
-  }
-}
-Cheat.RegisterCallback("Draw", "drawDuckAmount");
-// This script will draw a line on enemy players which represents their duck amount.
-```
-
-
-  [ **CIRCLE** ]
-Syntax:Render.Circle(x, y, r, color)  
-Draws a circle with the given position, radius, and RGBA color.  
-**Returns** true on success or false on failure.  
-```java
-function drawCircle()
-{
-   Render.Circle( 150, 150, 50, [ 255, 255, 255, 255 ] );
-}
-
-Cheat.RegisterCallback("Draw", "drawCircle")
-// This function will draw a circle on screen.
-```
-
-  [ **FILLEDRECT** ]
-Syntax:Render.FilledRect(x, y, width, height, color)  
-Draws a circle with the given position, radius, and RGBA color.  
-**Returns** true on success or false on failure.   
-```java
-function drawFilledRect()
-{
-Render.FilledRect( 100, 100, 150, 150, [ 255, 0, 0, 180 ] );
-}
-
-Cheat.RegisterCallback("Draw", "drawFilledRect")
-// This function will draw a filled rectangle on screen.
-```
-
-  [ **RECT** ]
-Syntax:Render.Rect(x, y, width, height, color)  
-Draws a rectangle with the given position, size, and RGBA color.    
-**Returns** true on success or false on failure.  
-```java
-function drawRect()
-{
-Render.Rect( 100, 100, 150, 150, [ 255, 0, 0, 255 ] );
-}
-
-Cheat.RegisterCallback("Draw", "drawRect")
-// This function will draw a rectangle on screen.
-```
-
-  [ **LINE** ]
-Syntax:Render.Line(x, y, x1, y1, color)  
-Draws a line with the given position RGBA color.    
-**Returns** true on success or false on failure.  
-```java
-function drawLine()
-{
-Render.Line( 100, 200, 300, 200, [ 255, 0, 0, 255 ] );
-}
-
-Cheat.RegisterCallback("Draw", "drawLine")
-// This function will draw a line on your screen.
-```
-
-  [ **STRING** ]
-Syntax:Render.String(x, y, align, message, color, int size [optional])  
-Draws a string with the given position, align, RGBA color, and size.  
-**Returns** true on success or false on failure.  
-
-**Size values**  
-0 - default font  
-1 - bold font  
-2 - small font  
-3 - small bold font  
-4 - BIG font  
-5 - icons  
-6 - small icons  
-even numbers from 8 to 48 are regular font with a more specific size  
-
-
-```java
-function drawString()
-{
-Render.String( 100, 100, 0, "Hello", [ 255, 255, 255, 255 ] );
-}
-
-Cheat.RegisterCallback("Draw", "drawString")
-// This script will draw a string Hello on your screen
+Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
 [back to Contents](#-1)
