@@ -177,7 +177,7 @@ https://github.com/ZaUserA**
 |-------------------------------|
 
 [ **RegisterCallBack** ]       
-Syntax: Global.RegisterCallBack([EventName: string, Function: string])     
+Syntax: Global.RegisterCallBack([EventName: string, Function: function])     
 **Used** to call the functions you write.    
 ```lua
 local function paint_traverse()
@@ -856,189 +856,69 @@ end
 Global.RegisterCallBack("Ragebot_Shot", shot)
 ```
 
-  [ **GETSTRING** ]
-Syntax:Event.GetString(string)
-Finds the string value of the given game event.  
-**Returns** the value of the parameter or false.   
-```java
-var weapon_name = Event.GetString("weaponname");
+  [ **GetInt** ]
+Syntax: Console.GetInt([Convar Name: string])  
+Finds the int value of the given console command.  
+**Returns** the value of the parameter or false.  
+```lua
+local sv_gravity = Console.GetInt("sv_gravity");
 ```
 
-  [ **GETFLOAT** ]
-Syntax:Event.GetFloat(float)  
-Finds the float value of the given game event.  
+  [ **GetFloat** ]
+Syntax: Console.GetFloat([Convar Name: string])  
+Finds the float value of the given console command.  
 **Returns** the value of the parameter or false.  
-```java
-pos_x = Event.GetFloat("x");
+```lua
+local host_timescale = Console.GetFloat("host_timescale");
 ```
 
-  [ **GETINT** ]
-Syntax:Event.GetInt(int)  
-Finds the int value of the given game event.  
+  [ **GetString** ]
+Syntax: Console.GetString([Convar Name: string])  
+Finds the string value of the given console command.  
 **Returns** the value of the parameter or false.  
-```java
-userid = Event.GetInt("userid");
+```lua
+local bot_kick = Console.GetString("bot_kick");
+```
+
+  [ **SetInt** ]
+Syntax: Console.GetInt([Convar Name: string])  
+Change the int value of the given console command.  
+**Returns** the value of the parameter or false.  
+```lua
+local sv_gravity = Console.GetInt("sv_gravity", 100);
+```
+
+  [ **SetFloat** ]
+Syntax: Console.GetFloat([Convar Name: string])  
+Change the float value of the given console command.  
+**Returns** the value of the parameter or false.  
+```lua
+local host_timescale = Console.GetFloat("host_timescale", 0.1);
+```
+
+  [ **SetString** ]
+Syntax: Console.GetString([Convar Name: string])  
+Change the string value of the given console command.  
+**Returns** the value of the parameter or false.  
+```lua
+local bot_kick = Console.GetString("bot_kick", "all");
 ```
 
 [back to Contents](#-1)
 
-## <a name="6"></a>Trace
+## <a name="6"></a>Event
 |-------------------------------|
 
-  [ **RAWLINE** ]
-Syntax:Trace.RawLine( int skip_index, vec3 start, vec3 end, unsigned int mask, int type )  
-Used for advanced line tracing.  
-**Returns** entity index and number fraction.  
-**Fraction info:**  
-1.0 means it didnt hit anything, 0.5 means it hit something half way through, 0.1 is hit  
-**Skip index:**  
-skips a certain entity, can be 0 to not skip any entity.  
-**Mask:**  
-filters what should and shouldn't be taken into consideration when tracing  
-masks can be combined, example below:  
-A bullet would be 0x4600400b ( CONTENTS_SOLID + CONTENTS_WINDOW + CONTENTS_GRATE + CONTENTS_MOVEABLE + CONTENTS_MONSTER + CONTENTS_DEBRIS + CONTENTS_HITBOX )  
-**Type:**  
-0 = TRACE_EVERYTHING  
-1 = TRACE_WORLD_ONLY  
-2 = TRACE_ENTITIES_ONLY  
-```java
-  CONTENTS_SOLID                    0x1
-        CONTENTS_WINDOW                       0x2
-        CONTENTS_AUX                      0x4
-        CONTENTS_GRATE                      0x8
-        CONTENTS_SLIME                      0x10
-        CONTENTS_WATER                      0x20
-        CONTENTS_BLOCKLOS                  0x40
-        CONTENTS_OPAQUE                      0x80
-        CONTENTS_TESTFOGVOLUME              0x100
-        CONTENTS_UNUSED                      0x200
-        CONTENTS_BLOCKLIGHT                  0x400
-        CONTENTS_TEAM1                      0x800
-        CONTENTS_TEAM2                      0x1000
-        CONTENTS_IGNORE_NODRAW_OPAQUE     0x2000
-        CONTENTS_MOVEABLE                  0x4000
-        CONTENTS_AREAPORTAL                  0x8000
-        CONTENTS_PLAYERCLIP                  0x10000
-        CONTENTS_MONSTERCLIP              0x20000
-        CONTENTS_ORIGIN                      0x1000000
-        CONTENTS_MONSTER                  0x2000000
-        CONTENTS_DEBRIS                      0x4000000
-        CONTENTS_DETAIL                      0x8000000
-        CONTENTS_TRANSLUCENT              0x10000000
-        CONTENTS_LADDER                      0x20000000
-        CONTENTS_HITBOX                      0x40000000
+  [ **RegisterSelf** ]
+Syntax: Event.RegisterSelf([Event Name: string], [Function: function])  
+**Used** to call event functions you write.    
+```lua
+local function hurt(event)
+Global.AddLog("Player hurt")
+end
+
+Event.RegisterSelf("player_hurt", hurt)
 ```
-
-
- **IN OT V3 CRACK NOT WORKS** [ **SMOKE** ]
-Syntax:Trace.Smoke(array start, array end)  
-Used to check if smoke is between two points.  
-**Returns** 1 if there was smoke.  
-```java
-function isBehindSmoke(entity_index)
-{
-    eyepos = Entity.GetEyePosition(Entity.GetLocalPlayer());
-        if (Entity.IsValid(entity_index) && Entity.IsAlive(entity_index) && !Entity.IsDormant(entity_index)){
-            hitbox_pos = Entity.GetHitboxPosition(entity_index, 0);
-            result = Trace.Smoke(eyepos, hitbox_pos);
-                if (result == 1)
-                {
-                    return true
-                }
-                else
-                {
-                    return false
-                }
-        }       
-}
-function main()
-{
-    enemies = Entity.GetEnemies()
-    for (i=0; i < enemies.length; i++)
-    {
-        if (isBehindSmoke(enemies[i]))
-        {
-            Cheat.Print("Enemy: " + Entity.GetName(enemies[i])+ " is behind smoke\n")
-        }
-    }
-}
-Cheat.RegisterCallback("CreateMove", "main");
-```
-
-
-  [ **BULLET** ]
-Syntax:Trace.Bullet(int ent_index, int target, array start, array end);  
-Used to trace bullet between two entities.  
-**Returns** entity index, damage, visibility, and hitbox.  
-```java
-function isVisible()
-{
-
-    localPlayer_index = Entity.GetLocalPlayer();
-    localPlayer_eyepos = Entity.GetEyePosition(localPlayer_index);
-    enemies = Entity.GetEnemies();
-    for ( i = 0; i < enemies.length; i++)
-    {
-        if (Entity.IsValid(enemies[i]) == true && Entity.IsAlive(enemies[i]) && Entity.IsDormant(enemies[i]) == false)
-        {
-        hitbox_pos = Entity.GetHitboxPosition(localPlayer_index, 0);
-        bot_eyepos = Entity.GetEyePosition(enemies[i])
-        
-        w2s_s = Render.WorldToScreen(bot_eyepos)
-        w2s_e = Render.WorldToScreen(hitbox_pos)
-        Render.Line(w2s_s[0], w2s_s[1], w2s_e[0], w2s_e[1], [255, 255, 255, 255])
-        Render.String(w2s_s[0], w2s_s[1], 0, "START", [255, 0, 0, 255])
-        Render.String(w2s_e[0], w2s_e[1], 0, "END", [255, 0, 0, 255])
-        }
-    }
-}
-
-function cm()
-{
-    localPlayer_index = Entity.GetLocalPlayer();
-    localPlayer_eyepos = Entity.GetEyePosition(localPlayer_index);
-    enemies = Entity.GetEnemies();
-    for ( i = 0; i < enemies.length; i++)
-    {
-       if (Entity.IsValid(enemies[i]) == true && Entity.IsAlive(enemies[i]) && Entity.IsDormant(enemies[i]) == false)
-        {
-        hitbox_pos = Entity.GetHitboxPosition(localPlayer_index, 0);
-        bot_eyepos = Entity.GetEyePosition(enemies[i])
-        result = Trace.Bullet(enemies[i], localPlayer_index, bot_eyepos, hitbox_pos);
-        Cheat.Print("Trace result:: " + Entity.GetName(enemies[i]) + " can see player: " + Entity.GetName(result[0]) + " damage:: " + result[1] + " visible:: " + result[2] + " hitbox :: " + result[3] + "\n")
-        }
-    }
-
-}
-Cheat.RegisterCallback("Draw", "isVisible");
-Cheat.RegisterCallback("CreateMove", "cm");
-```
-
-  [ **LINE** ]
-Syntax:Trace.Line(int ent_index, array start, array end);  
-Used to trace line between point A and B.  
-**Returns** entity index and number fraction.  
-Fraction info: 1.0 means it didnt hit anything, 0.5 means it hit something half way through, 0.1 is hit  
-```java
-function isVisible()
-{
-
-    localPlayer_index = Entity.GetLocalPlayer();
-    localPlayer_eyepos = Entity.GetEyePosition(localPlayer_index);
-    enemies = Entity.GetEnemies();
-    for ( i = 0; i < enemies.length; i++)
-    {
-        hitbox_pos = Entity.GetHitboxPosition(enemies[i], 0);
-        result = Trace.Line(localPlayer_index, localPlayer_eyepos, hitbox_pos);
-        Cheat.Print("Entity: " + Entity.GetName(result[0]) + " fraction: " + result[1] + "\n");
-    }
-
-}
-
-Cheat.RegisterCallback("Draw", "isVisible");
-// This function will trace line from localplayer eye position to enemy head hitbox position and return whether the enemy is visible or not.
-```
-
 
 [back to Contents](#-1)
 
