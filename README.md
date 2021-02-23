@@ -23,8 +23,8 @@ https://github.com/ZaUserA**
 
 ---
 
-**NOTE**
-*To register game event, use Event.RegisterSelf instead of Global.RegisterCallBack!*
+**NOTE**                
+*To register game event, use Event.RegisterSelf instead of Global.RegisterCallBack!*             
 
 **EVENTNAME LIST:**
 - OnShot - *Used for things related to Ragebot_fire*
