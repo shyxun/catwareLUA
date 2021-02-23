@@ -953,9 +953,9 @@ local host_timescale = Console.GetFloat("host_timescale", 0.1);
 ```
 
   [ **SetString** ]
-Syntax: Console.GetString([Convar Name: string])  
-Change the string value of the given console command.  
-**Returns** the value of the parameter or false.  
+Syntax: Console.GetString([Convar Name: string])                                       
+Change the string value of the given console command.              
+**Returns** the value of the parameter or false.                     
 ```lua
 local bot_kick = Console.GetString("bot_kick", "all");
 ```
@@ -965,9 +965,9 @@ local bot_kick = Console.GetString("bot_kick", "all");
 ## <a name="6"></a>Event
 |-------------------------------|
 
-  [ **RegisterSelf** ]        
-Syntax: Event.RegisterSelf([Event Name: string], [Function: function])            
-**Used** to call event functions you write.            
+  [ **RegisterSelf** ]                                    
+Syntax: Event.RegisterSelf([Event Name: string], [Function: function])                           
+**Used** to call event functions you write.               
 ```lua
 local function hurt(event)
 Global.AddLog("Player hurt")
@@ -981,9 +981,9 @@ Event.RegisterSelf("player_hurt", hurt)
 ## <a name="7"></a>Entity List
 |-------------------------------|
 
-  [ **GetLocalPlayer** ]        
-Syntax: EntityList.GetLocalPlayer();     
-**Used** to obtain localplayer.      
+  [ **GetLocalPlayer** ]             
+Syntax: EntityList.GetLocalPlayer();         
+**Used** to obtain localplayer.                
 ```lua
 local function cm()
 local localplayer = EntityList.GetLocalPlayer()
@@ -993,9 +993,9 @@ end
 Global.RegisterCallBack("CreateMove", cm)
 ```
 
-  [ **GetPlayerByIndex** ]         
-Syntax: EntityList.GetPlayerByIndex([Index: integer]);           
-**Used** to obtain player from it's index.              
+  [ **GetPlayerByIndex** ]                 
+Syntax: EntityList.GetPlayerByIndex([Index: integer]);                            
+**Used** to obtain player from it's index.                      
 ```lua
 local function test()
 for i = 0, 64 do
@@ -1009,9 +1009,9 @@ end
 Global.RegisterCallBack("CreateMove", test)
 ```
 
-  [ **GetWeaponByPlayer** ]           
-Syntax: EntityList.GetWeaponByPlayer([Player: entity]);      
-**Used** to obtain gun from a player.          
+  [ **GetWeaponByPlayer** ]                                 
+Syntax: EntityList.GetWeaponByPlayer([Player: entity]);                   
+**Used** to obtain gun from a player.                
 ```lua
 local function test()
 for i = 0, 64 do
@@ -1032,30 +1032,30 @@ Global.RegisterCallBack("CreateMove", test)
 ## <a name="8"></a>User CMD
 |-------------------------------|
 
-  [ **GetSendPacket** ]     
-Syntax: UserCMD.GetSendPacket()       
-**Used** to get send packet.         
+  [ **GetSendPacket** ]                    
+Syntax: UserCMD.GetSendPacket()                      
+**Used** to get send packet.                           
 ```lua
 UserCMD.GetSendPacket()
 ```
 
-  [ **SetSendPacket** ]
-Syntax: UserCMD.SetSendPacket([SendPacket: boolean])  
-**Used** to force send packet to desired value.    
+  [ **SetSendPacket** ]         
+Syntax: UserCMD.SetSendPacket([SendPacket: boolean])                      
+**Used** to force send packet to desired value.                       
 ```lua
 UserCMD.SetSendPacket(15)
 ```
 
-  [ **GetChoke** ]
-Syntax: UserCMD.GetChoke()  
-**Used** to get current choked commands number. 
+  [ **GetChoke** ]          
+Syntax: UserCMD.GetChoke()        
+**Used** to get current choked commands number.             
 ```lua
 UserCMD.GetChoke()  
 ```
 
-  [ **GetButton** ]
-Syntax: UserCMD.GetButton([Button: integer])  
-**Used** to get current active button. (ex: IN_ATTACK) 
+  [ **GetButton** ]          
+Syntax: UserCMD.GetButton([Button: integer])          
+**Used** to get current active button. (ex: IN_ATTACK)          
 ```lua
 local function attack()
 if UserCMD.GetButton(Buttons.IN_ATTACK) then
@@ -1065,9 +1065,9 @@ end
 Global.RegisterCallBack("CreateMove", attack)
 ```
 
-  [ **SetButton** ]
-Syntax: UserCMD.SetButton()  
-**Used** to set buttons. 
+  [ **SetButton** ]          
+Syntax: UserCMD.SetButton()           
+**Used** to set buttons.           
 ```lua
 local function attack()
 UserCMD.SetButton(Buttons.IN_DUCK, true)
@@ -1083,9 +1083,9 @@ Global.RegisterCallBack("CreateMove", attack)
 |-------------------------------|
 
 
-  [ **FindSignature** ]
-Syntax: Utils.FindSignature([Module: string], [Signature: string]);  
-**Used** to find signature.  
+  [ **FindSignature** ]         
+Syntax: Utils.FindSignature([Module: string], [Signature: string]);         
+**Used** to find signature.               
 ```lua
 local ffi = require("ffi")
 
@@ -1128,7 +1128,7 @@ Syntax: Indicators.Add([Text: string], [Color: color])
 Indicators.Add("HEY", Color.new(255, 255, 255))
 ```
 
-  [ **AddWithPosition** ]
+  [ **AddWithPosition** ]     
 Syntax: Indicators.AddWithPosition([Text: string], [Color: color], [Position: integer])  
 **Add** new items on indicators with position. 
 ```lua
@@ -1140,16 +1140,16 @@ Indicators.AddWithPosition("Hello World", Color.new(255, 255, 255), 15)
 ## <a name="w"></a>HTTP
 |-------------------------------|
 
-  [ **Get** ]
-Syntax: HTTP.Get([Link: string])  
-**Get** request.
-```lua
+  [ **Get** ]         
+Syntax: HTTP.Get([Link: string])           
+**Get** request.       
+```lua 
 HTTP.Get("www.example.com")  
 ```
 
-  [ **Post** ]
-Syntax: HTTP.Post([Link: string], [Parameters: string])  
-**Post** request.
+  [ **Post** ]          
+Syntax: HTTP.Post([Link: string], [Parameters: string])         
+**Post** request.           
 ```lua
 HTTP.Get("www.example.com", "") 
 ```
@@ -1158,23 +1158,23 @@ HTTP.Get("www.example.com", "")
 
 ## <a name="e"></a>File
 
-  [ **Append** ]
-Syntax: File.Append([Path: string], [Data: string])  
-**Append** file text.
+  [ **Append** ]          
+Syntax: File.Append([Path: string], [Data: string])            
+**Append** file text.          
 ```lua
 File.Append("C\hello.txt", "Hi")   
 ```
 
-  [ **Write** ]
+  [ **Write** ]          
 Syntax: File.Write([Path: string], [Data: string])  
-**Write** file.
+**Write** file.                
 ```lua
 File.Write("C:\hello.txt", "Hi") 
 ```
 
-  [ **Read** ]
-Syntax: File.Read([Path: string])  
-**Write** file.
+  [ **Read** ]          
+Syntax: File.Read([Path: string])           
+**Write** file.              
 ```lua
 File.Read("C:\hello.txt") 
 ```
