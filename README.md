@@ -278,7 +278,7 @@ Syntax: Global.Username()
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
-Render.DrawText(font, 100, 100, Color.new(255, 0, 0), tostring(Global.Username()))
+Global.AddLog(tostring(Global.Username()))
 end
 
 Global.RegisterCallBack("PaintTraverse", draw)
