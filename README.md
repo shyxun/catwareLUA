@@ -23,9 +23,6 @@ https://github.com/ZaUserA**
 
 ---
 
-**- NOTE**                
-*To register game event, use Event.RegisterSelf instead of Global.RegisterCallBack!*             
-
 **EVENTNAME LIST:**
 - OnShot - *Used for things related to Ragebot_fire*
 - PaintTraverse - *Used for drawing.*
@@ -124,6 +121,9 @@ https://github.com/ZaUserA**
 - GRADIENT_VERTICAL   
 
 ---
+
+**- NOTE**                
+*To register game event function, use Event.RegisterSelf instead of Global.RegisterCallBack!*             
 
 **CSGO GAME EVENT LIST**                   
 *https://wiki.alliedmods.net/Counter-Strike:_Global_Offensive_Events*        
