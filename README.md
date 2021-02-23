@@ -26,6 +26,13 @@ https://github.com/ZaUserA**
 - OnShot - *Used for things related to Ragebot_fire*
 - PaintTraverse - *Used for drawing.*
 - CreateMove - *Used for things related to commands, antiaim, etc..*
+- FRAME_START
+- FRAME_RENDER_START
+- FRAME_RENDER_END
+- FRAME_NET_UPDATE_START
+- FRAME_NET_UPDATE_END
+- FRAME_NET_UPDATE_POSTDATAUPDATE_START
+- FRAME_NET_UPDATE_POSTDATAUPDATE_END
 
 ---
 
