@@ -772,9 +772,9 @@ end
 Global.RegisterCallBack("PaintTraverse", draw)
 ```
 
-  [ **GetTextWidth** ]
-Syntax: Render.GetTextWidth([Font: font], [Text: string])  
-**Returns** the width value.
+  [ **GetTextWidth** ]                        
+Syntax: Render.GetTextWidth([Font: font], [Text: string])          
+**Returns** the width value.                          
 ```lua
 local function draw()
 local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
