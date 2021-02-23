@@ -23,6 +23,9 @@ https://github.com/ZaUserA**
 
 ---
 
+**NOTE**
+*To register game event, use Event.RegisterSelf instead of Global.RegisterCallBack!*
+
 **EVENTNAME LIST:**
 - OnShot - *Used for things related to Ragebot_fire*
 - PaintTraverse - *Used for drawing.*
@@ -228,6 +231,7 @@ https://github.com/ZaUserA**
 - szSteamID[20] **(char)** - *STEAM:X:Y:Z*       
 
 ---
+
 
 ## <a name="0"></a>Global
 |-------------------------------|
