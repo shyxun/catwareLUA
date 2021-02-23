@@ -23,7 +23,7 @@ https://github.com/ZaUserA**
 
 ---
 
-**NOTE**                
+**- NOTE**                
 *To register game event, use Event.RegisterSelf instead of Global.RegisterCallBack!*             
 
 **EVENTNAME LIST:**
