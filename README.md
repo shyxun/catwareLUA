@@ -1062,7 +1062,7 @@ Syntax: UserCMD.SetButton()
 **Used** to set buttons. 
 ```lua
 local function attack()
-  UserCMD.SetButton(Buttons.in_duck, true)
+UserCMD.SetButton(Buttons.IN_DUCK, true)
 end
 
 Global.RegisterCallBack("CreateMove", attack)
