@@ -1169,14 +1169,14 @@ File.Append("C\hello.txt", "Hi")
 Syntax: File.Write([Path: string], [Data: string])  
 **Write** file.
 ```lua
-File.Write("C\hello.txt", "Hi") 
+File.Write("C:\hello.txt", "Hi") 
 ```
 
   [ **Read** ]
 Syntax: File.Read([Path: string])  
 **Write** file.
 ```lua
-File.Read("C\hello.txt") 
+File.Read("C:\hello.txt") 
 ```
 
 [back to Contents](#-1)
