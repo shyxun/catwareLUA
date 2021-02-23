@@ -19,6 +19,7 @@ https://github.com/ZaUserA**
 |[Utils](#9)|
 |[Indicators](#q)|
 |[HTTP](#w)|
+|[File](#e)|
 
 ---
 
@@ -1136,7 +1137,6 @@ Indicators.AddWithPosition("Hello World", Color.new(255, 255, 255), 15)
 
 [back to Contents](#-1)
 
-
 ## <a name="w"></a>HTTP
 |-------------------------------|
 
@@ -1147,12 +1147,36 @@ Syntax: HTTP.Get([Link: string])
 HTTP.Get("www.example.com")  
 ```
 
-
   [ **Post** ]
 Syntax: HTTP.Post([Link: string], [Parameters: string])  
 **Post** request.
 ```lua
 HTTP.Get("www.example.com", "") 
+```
+
+[back to Contents](#-1)
+
+## <a name="e"></a>File
+
+  [ **Append** ]
+Syntax: File.Append([Path: string], [Data: string])  
+**Append** file text.
+```lua
+File.Append("C\hello.txt", "Hi")   
+```
+
+  [ **Write** ]
+Syntax: File.Write([Path: string], [Data: string])  
+**Write** file.
+```lua
+File.Write("C\hello.txt", "Hi") 
+```
+
+  [ **Read** ]
+Syntax: File.Read([Path: string])  
+**Write** file.
+```lua
+File.Read("C\hello.txt") 
 ```
 
 [back to Contents](#-1)
