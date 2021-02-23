@@ -1,7 +1,7 @@
 # catwareLUA
 
 **CREDIT TO    
-https://github.com/ZaUserA**
+https://github.com/ZaUserA** for Template
 
 <a name="-1"></a>
 
@@ -277,7 +277,6 @@ Syntax: Global.Username()
 **Returns** forum username.               
 ```lua
 local function draw()
-local font =  Render.CreateFont("Verdana", 12, 600, true, true, true)
 Global.AddLog(tostring(Global.Username()))
 end
 
