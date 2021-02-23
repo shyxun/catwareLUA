@@ -23,6 +23,9 @@ https://github.com/ZaUserA** for Template
 
 ---
 
+**- NOTE**                
+*To register game event function, use Event.RegisterSelf instead of Global.RegisterCallBack!*             
+
 **EVENTNAME LIST:**
 - OnShot - *Used for things related to Ragebot_fire*
 - PaintTraverse - *Used for drawing.*
