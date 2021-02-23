@@ -40,6 +40,12 @@ https://github.com/ZaUserA** for Template
 
 ---
 
+**GRADIENTTYPE ENUMERATION:** (usage example: GradientType.Vertical)
+- Horizontal - *used for Horizontal Gradient*
+- Vertical - *used for Vertical Gradient*
+
+---
+
 **HITBOXES ENUMERATION:** (usage example: Hitboxes.HITBOX_HEAD)     
 - HITBOX_HEAD,   
 - HITBOX_NECK,    
